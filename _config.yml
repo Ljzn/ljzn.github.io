@@ -1,0 +1,6 @@
+# Jekyll
+permalink: /:year/:title/
+paginate: 10
+exclude: []
+name: 王二狗子
+baseurl: /wangergouzi.github.io

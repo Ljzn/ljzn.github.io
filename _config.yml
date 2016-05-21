@@ -8,8 +8,6 @@ urls:
       url: /about/
     - text: Github
       url: https://github.com/ljzn
-    - text: XML Feed
-      url: /feed.xml
 url: "https://ljzn.github.io"
 baseurl: ""
 paginate: 20

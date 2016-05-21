@@ -4,6 +4,6 @@ title: About
 permalink: /about/
 ---
 
-I am freelance developer. Currently doing more in backend, actually in Python and Django.
+Born in 1993. More Ruby,More Happy.
 
-email: agus[at]python.web.id
+email: rubyminer[at]foxmail.com

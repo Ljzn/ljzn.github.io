@@ -62,7 +62,7 @@ a, a:link, a:active {
 }
 
 a:hover {
-    color: #B3B3B3;
+    color: black;
     text-decoration: underline;
 }
 
@@ -151,7 +151,7 @@ div.right .post ul {
  */
 div.col-sm-3 {
         margin-top: 100px;
-        font-size: 11px;
+        font-size: 15px;
         color: #666;
 }
 

@@ -1,33 +1,21 @@
-Jekyll bootstrap is a theme for jekyll which uses the [twitter bootstrap css             framework](https://github.com/twitter/bootstrap).
-The advantage of jekyll is that it is self hosted (or hosted on github) and that you can write in markdown on a text editor and just git push new posts to a server which         produces html files. The advantage of this theme is so that you can start blogging       almost right away without having to worry about making a theme.
+## My Stack Problems
 
-###Setting up
-To start you own blog, simply `git clone` the [repository on github](https://github.com/ nhoss2/jekyll-bootstrap). You could also press the "fork" button on github.
+> This project forked and has been modified from [A simple grey theme for Jekyll](https://github.com/liamsymonds/simplygrey-jekyll), and the search posts using [Super Search](https://github.com/chinchang/super-search)
 
-    git clone git://github.com/nhoss2/jekyll-bootstrap.git
+### Demo
+* [https://agusmakmun.github.io](https://agusmakmun.github.io)
 
-If you want to have your blog on github, make sure you change to the `gh-pages` branch.
+#### Feature
 
-    git checkout gh-pages
+* Sitemap and XML Feed
+* Paginations in homepage
+* Posts under category
+* Realtime Search Posts _(title & description)_ under query.
+* Related Posts
+* Highlight pre
+* Next & Previous Post
+* Disqus comment
 
-Then you will need to edit the `_config.yml` file at the root of repository.
+#### Screenshot
 
-To add your own posts, add a file to the `_posts` directory which has the name `year-month-day-title.md`. Note - the file does not have to be markdown.
-
-To publish the post, just `git push` it to your own github repo and your set!
-
-###Things to change on `_config.yml`
-There is a config file at the root called `_config.yml`. By Default it looks like:
-
-    permalink: /:year/:title/
-    paginate: 10
-    exclude:
-    name: Jekyll Bootstrap
-    baseurl: /jekyll-bootstrap/
-
-You will need to change the `name` and `baseurl` fields. The others are optional.
-The `baseurl` field is used for the css files and pagination, if you are hosting the     blog on github, you will need to change it to your repository name unless your           repository is the same name as your github user name, which means you will need to have  no value for `baseurl`.
-
-For more information on Jekyll, visit their [wiki on github](https://github.com/mojombo/ jekyll/wiki).
-
-For more information on github pages: [http://pages.github.com](http://pages.github.com).
+![Screenshot Post Page](https://raw.githubusercontent.com/agusmakmun/agusmakmun.github.io/master/static/img/screenshot-post-page.png  "Screenshot Post Page")

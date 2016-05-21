@@ -1,6 +1,18 @@
-# Jekyll
-permalink: /:year/:title/
-paginate: 10
-exclude: []
-name: 龙井指南
-baseurl: /ljzn.github.io
+title: Stack Problems
+description: My Personal Stack Problems
+author: Agus Makmun
+github: https://github.com/agusmakmun
+about: I am freelance developer. Currently doing more in backend, actually in Python and Django.
+urls:
+    - text: About Me
+      url: /about/
+    - text: Github
+      url: https://github.com/agusmakmun
+    - text: XML Feed
+      url: /feed.xml
+url: "https://agusmakmun.github.io"
+baseurl: ""
+paginate: 20
+per_page: 20
+paginate_path: "/page:num/"
+markdown: kramdown

@@ -6,14 +6,14 @@ layout: default
 ---
 
 
-###新建工程
-$ rails new <name>
+### 新建工程
+`$ rails new name`
 
-###开启服务器
-$ rails server
+### 开启服务器
+`$ rails server`
 
-###生成CRUD数据库
-$ rails generate scaffold <name>:<type> <name>:<type>
+### 生成CRUD数据库
+`$ rails generate scaffold name:type name:type`
 
-###迁移创建数据表
-$ rake db:migrate
+### 迁移创建数据表
+`$ rake db:migrate`

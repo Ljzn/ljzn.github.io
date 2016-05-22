@@ -2,7 +2,7 @@
 layout: post
 title:  "神奇的Ruby小技巧之1～11"
 date:   2015-12-23 00:18:23 +0800
-categories: [ruby]
+categories: [tricks]
 ---
 来自网站best-ruby.com
 

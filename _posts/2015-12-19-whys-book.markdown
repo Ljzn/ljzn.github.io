@@ -2,7 +2,7 @@
 layout: post
 title:  "(翻译)Kon'nichi wa,Ruby::碉堡了的Ruby书"
 date:   2015-12-19 19:39:02 +0700
-categories: [ruby]
+categories: [why]
 ---
 Why the Lucky Stiff
 

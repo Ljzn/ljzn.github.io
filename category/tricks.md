@@ -1,6 +1,6 @@
 ---
 layout: posts_by_category
 categories: tricks
-title: Ruby Tricks
+title: Tricks
 permalink: /category/tricks
 ---

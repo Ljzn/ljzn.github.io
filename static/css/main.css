@@ -6,14 +6,14 @@
 body {
     font-family: "Roboto Condensed", sans-serif;
     background-color: #fff;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.5em;
     color: #333;
     font-weight: 300;
 }
 hr {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: 0;
     border-top: 1px solid #F7F1F1;
     border-bottom: 1px solid #fff;
@@ -33,32 +33,32 @@ hr {
  */
 span.time, span.categories {
     color: #ADADAD;
-    margin-bottom: 5px;
-    font-size: 11px;
+    margin-bottom: 9px;
+    font-size: 15px;
 }
 
 h1 {
     font-weight: normal;
     color: #000;
-    margin-bottom: 10px;
-    font-size: 25px;
+    margin-bottom: 14px;
+    font-size: 29px;
 }
 
 h2 {
     font-weight: normal;
-    margin-bottom: 5px;
+    margin-bottom: 9px;
     color: #000;
 }
         
 h3 {
     font-weight: normal;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     color: #000;
 }
 
 h4 {
     font-weight: normal;
-    margin-bottom: 4px;
+    margin-bottom: 7px;
     color: #000;
 }
 

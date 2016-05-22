@@ -98,6 +98,7 @@ Ruby诞生与日本。这有点奇怪，日本的软件并不出名。而且编�
 所以你知道了在这本书里增效并不真的意味着增效。我不能做通常的增效。在这本书里，增效是指卡通狐狸。我的意思是：本书会以过量的卡通狐狸作为开始。
 
 同时我会观察你，并把它们变成增效。
-**Refference:**
+
+*Refference:*
 
 * [Kon’nichi wa, Ruby :: Why's (Poignant) Guide to Ruby](http://poignant.guide/book/chapter-2.html)

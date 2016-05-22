@@ -39,7 +39,7 @@ span.time, span.categories {
 
 h1 {
     font-weight: normal;
-    color: #fff;
+    color: #000;
     margin-bottom: 10px;
     font-size: 25px;
 }
@@ -47,19 +47,19 @@ h1 {
 h2 {
     font-weight: normal;
     margin-bottom: 5px;
-    color: #fff;
+    color: #000;
 }
         
 h3 {
     font-weight: normal;
     margin-bottom: 5px;
-    color: #fff;
+    color: #000;
 }
 
 h4 {
     font-weight: normal;
-    margin-bottom: 5px;
-    color: #fff;
+    margin-bottom: 4px;
+    color: #000;
 }
 
 a, a:link, a:active {

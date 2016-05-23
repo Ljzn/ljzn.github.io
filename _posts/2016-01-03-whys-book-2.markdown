@@ -89,17 +89,21 @@ population = 12_000_000_000
 当你用引号把字符包起来时，它们以单个字符串的形式存储。
 
 想想一个记者记下名人随口说的话。“我聪明多了，”艾薇儿说，“现在我知道什么是生意————你必须去做和要知道怎么做的事。”
+
 ```
 avril_quote = "I'm a lot wiser.  Now I know
 what the business is like -- what you have
 to do and how to work it."
 ```
+
 现在我们在变量_avril\_quote_中保存了一组字符串，就像刚才在变量_teddy\_bear\_fee_中保存数字一样。记者把这句引述交给了打印机，它专门用于打印Ruby事物。
+
 ```
 print oprah_quote
 print avril_quote
 print ashlee_simpson_debacle
 ```
+
 #### 符号
 
 符号看上去有点像变量。它们也可以包括字母，数字或下划线。但是符号以引号开头。
@@ -205,16 +209,19 @@ Door::new( :oak )
 #### 块
 
 由大括号包围的任何代码都是块。
+
 ```
 2.times {
   print "Yes, I've used chunky bacon in my examples, but never again!"
 }
 ```
+
 你可以使用块把一套指令集合成一个单元以便能传送给你的程序。两个大括号像螃蟹的爪子一样抓住了代码。当你看到这两个爪子，记住里面的代码是被集合成一个单元的。
 
 这就像商场里卖的那种Hello Kitty小盒子，其中填充着微型的纸和笔，都被包装在闪亮的透明小盒子里。你能把它藏在手里随时拿出来看。不同的是使用块不需要使劲眯着眼睛。
 
 大括号也可以由_do_和_end_来代替，当你的块不止一行的时候很管用。
+
 ```
 loop do
   print "Much better."
@@ -222,6 +229,7 @@ loop do
   print "My back was killin' me in those crab pincers."
 end
 ```
+
 #### 块参数
 
 块参数是一组由管道符包围，以逗号分隔的变量。
@@ -401,9 +409,7 @@ print( http.get( '/en/about/license.txt' ).body )
 所以，这段代码做了什么？它通过一个网络公交司机在屏幕上打印出了Ruby证书。
 
 ### 5.接下来，这次快速的旅行要做一个轻松的停留。
+<br/>
+  **Refference:**
 
-
-
-*Refference:*
-
-* [Kon’nichi wa, Ruby :: Why's (Poignant) Guide to Ruby](http://poignant.guide/book/chapter-3.html)
+  * [Kon’nichi wa, Ruby :: Why's (Poignant) Guide to Ruby](http://poignant.guide/book/chapter-3.html)

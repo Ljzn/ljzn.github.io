@@ -299,15 +299,18 @@ Ruby用正则表达式查找数值，要比你把手指按在纸张上查找快�
 #### 运算符
 
 你会用它们来在Ruby中运算和比较。浏览下表，认出一些。比如，加号减号等等。
+
 ```
 ** !  ~  *  /  %  +  -  &
 << >> |  ^  >  >= <  <= <=>
 || != =~ !~ && += -= == ===
 .. ... not and or
 ```
+
 #### 关键字
 
 Ruby中有一些保留在安全房间里的关键字，你不可以用它们作变量，或是按你的意愿重新定义功能。如果你那么做了，会收到一次官方的格式错误。
+
 ```
 alias   and     BEGIN   begin   break   case    class   def     defined
 do      else    elsif   END     end     ensure  false   for     if
@@ -315,6 +318,7 @@ in      module  next    nil     not     or      redo    rescue  retry
 return  self    super   then    true    undef   unless  until   when
 while   yield
 ```
+
 这些是Ruby语言中最显赫的成员。我们将在下面三个章节欣赏它们组成的精巧的（碉堡了的）代码。
 
 我再次建议你除去偏见，给自己一给宽广的视野。我会在下一部分测试你的精神。

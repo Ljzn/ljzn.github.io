@@ -15,7 +15,7 @@ categories: [why]
 {% highlight ruby %}
 blue_crystal = 1
 leaf_tender = 5
-{% end highlight %}
+{% endhighlight %}
 
 在用Ruby编写程序时，完成对变量的赋值相当与完成了一半的工作。
 
@@ -37,7 +37,7 @@ leaf_tender = 5
 
 {% highlight ruby %}
 pipe.catch_a_star
-{% end highlight %}
+{% endhighlight %}
 
 这段代码可以解释为，告诉管道：捉住一颗星星。
 
@@ -51,7 +51,7 @@ pipe.catch_a_star
 
 {% highlight ruby %}
 captive_star = pipe.catch_a_star
-{% end highlight %}
+{% endhighlight %}
 
 这完全取决于你，如果你不把它们收集起来便会立刻消失不见。当你执行一个方法时，你总会收到一些返回值，你可以使用也可以忽略。
 
@@ -61,13 +61,13 @@ captive_star = pipe.catch_a_star
 
 {% highlight ruby %}
 starmonkey = ratchet.attach( captive_monkey, captive_star )
-{% end highlight %}
+{% endhighlight %}
 
 齿轮得到了一个命令：贴合。贴合什么？方法参数：被捉的猴子和被捉的星星。我们得到了一只星星猴！另外，小精灵还在它们的右手上加了一只青蛙。
 
 {% highlight ruby %}
 starmonkey = ratchet.attach( captive_monkey, pipe.catch_a_star ) + deco_hand_frog
-{% end highlight %}
+{% endhighlight %}
 
 想看看管道是如何捉住星星的吗？跟我来。
 
@@ -87,7 +87,7 @@ starmonkey = ratchet.attach( captive_monkey, pipe.catch_a_star ) + deco_hand_fro
 
 {% highlight ruby %}
 plastic_cup = nil
-{% end highlight %}
+{% endhighlight %}
 
 塑料杯是空的。如果你学习过其它编程语言，你可能会说塑料杯是未定义的。在Ruby中一个变量未定义意味着它根本不存在。但在这里Ruby感觉到了塑料杯，它是空的但不是未定义的。
 
@@ -99,7 +99,7 @@ plastic_cup = nil
 if plastic_cup
   print "Plastic cup is on the up 'n' up!"
 end
-{% end highlight %}
+{% endhighlight %}
 
 如果塑料杯里装的是nil或false，那么什么都不会打印在屏幕上。它们两不是if的客人。
 
@@ -109,20 +109,20 @@ end
 unless plastic_cup
   print "Plastic cup is on the down low."
 end
-{% end highlight %}
+{% endhighlight %}
 
 你也可以在一句代码的结尾使用if或unless。
 
 {% highlight ruby %}
 print "Yeah, plastic cup is up again!" if plastic_cup
 print "Hardly. It's down." unless plastic_cup
-{% end highlight %}
+{% endhighlight %}
 
 这里有一个小技巧：把if和unless连着用。
 
 {% highlight ruby %}
 print "We're using plastic 'cause we don't have glass." if plastic_cup unless glass_cup
-{% end highlight %}
+{% endhighlight %}
 
 意思是只在a条件为真且b条件为假时执行。
 
@@ -130,7 +130,7 @@ print "We're using plastic 'cause we don't have glass." if plastic_cup unless gl
 
 {% highlight ruby %}
 approaching_guy = true
-{% end highlight %}
+{% endhighlight %}
 
 我今天在旅馆的桌子上遇到了true。他戴着贝壳项链，脸上是自信的表情。说实话，我不能忍受一个总是正确的人，true一直在说“A-OK.”
 
@@ -143,7 +143,7 @@ if会对true说一些特别的话。
 if approaching_guy == true
  print "That necklace is classic."
 end
-{% end highlight %}
+{% endhighlight %}
 
 两个等号就像是一种身份验证。
 
@@ -153,7 +153,7 @@ end
 if approaching_guy == false
   print "Get in here, you conniving devil."
 end
-{% end highlight %}
+{% endhighlight %}
 
 一切都由你来决定。
 
@@ -163,7 +163,7 @@ end
 
 {% highlight ruby %}
 approaching_guy.==( true )
-{% end highlight %}
+{% endhighlight %}
 
 让我们来试试
 
@@ -171,7 +171,7 @@ approaching_guy.==( true )
 if nil.==( true )
   print "This will never see realization."
 end
-{% end highlight %}
+{% endhighlight %}
 
 当等号两边不匹配时，它会返回false，而if不接受false，所以print不会被执行。
 
@@ -182,7 +182,7 @@ email = if at_hotel
         else
           "why@drnhowardcham.com"
         end
-{% end highlight %}
+{% endhighlight %}
 
 上面的例子说明即便if不是一个方法，它也会有返回值。
 
@@ -194,7 +194,7 @@ email = if at_hotel
           address << "@hotelambrose"
           address << ".com"
         end
-{% end highlight %}
+{% endhighlight %}
 
 两个小于号代表关联操作符。能够在结尾加上一些东西。和==一样，<<也是一种方法。所以if中的第三行代码返回了我的邮箱地址。
 
@@ -212,7 +212,7 @@ print( if at_hotel.nil?
        else
          "The system is on the freee-itz."
        end )
-{% end highlight %}
+{% endhighlight %}
 
 你可以对Ruby中的任何值使用nil？方法。就像在说：“你是nil吗？你是空的吗？”
 
@@ -227,7 +227,7 @@ print( if at_hotel.nil?
 {% highlight ruby %}
 print "Type and be diabolical: "
 idea_backwards = gets.reverse
-{% end highlight %}
+{% endhighlight %}
 
 gets方法是Ruby的核心方法之一，它让Ruby暂停运行等待你的输入。在你按下回车时，它会返回一个包含你所有输入的字符串给Ruby。
 
@@ -237,7 +237,7 @@ reverse方法是字符串的特有方法。许多方法只适用于特定类型�
 
 {% highlight ruby %}
 idea_backwards = gets.upcase.reverse
-{% end highlight %}
+{% endhighlight %}
 
 ###  密码
 
@@ -250,7 +250,7 @@ CODE_WORDS = {
   'Nigeria' => "Ny and Jerry's Dry Cleaning (with Donuts)",
   'Put the kabosh on' => 'Put the cable box on'
 }
-{% end highlight %}
+{% endhighlight %}
 箭头前面的词被称作键，箭头后面的解释被称为值。
 
 我们一般用单引号表示字符串，如果字符串里有单引号，我们就在外面用双引号。
@@ -259,7 +259,7 @@ CODE_WORDS = {
 
 {% highlight ruby %}
 CODE_WORDS['catapult']
-{% end highlight %}
+{% endhighlight %}
 
 它会返回字符串'chucky go-go'。方括号里的字符被称为坐标，当你给了一个坐标，叉车便会开到仓库里，从对应的货架上取来你需要的东西。
 
@@ -267,7 +267,7 @@ CODE_WORDS['catapult']
 
 {% highlight ruby %}
 CODE_WORDS.[]( 'catapult' ) 
-{% end highlight %}
+{% endhighlight %}
 
 ### 开始替换
 
@@ -301,7 +301,7 @@ end
 CODE_WORDS.each do |real, code|
   idea.gsub!( real, code )
 end
-{% end highlight %}
+{% endhighlight %}
 
 each方法出现在Ruby的各个地方，在这里意味着检查hash中的每个键。如果有和idea中匹配的，就对idea使用gusb方法。
 
@@ -311,7 +311,7 @@ each方法出现在Ruby的各个地方，在这里意味着检查hash中的每�
 
 {% highlight ruby %}
 safe_idea = idea.gsub( real, code )
-{% end highlight %}
+{% endhighlight %}
 
 不，我们不需要新建一个文件来保存了，在gsub后面加上！代表直接修改原来的文件。我们把这称为破坏方法。
 
@@ -334,7 +334,7 @@ strip方法用于将字符串开头和结尾的空格（包括回车）去掉。
 
 {% highlight ruby %}
 Kernel::print( "55,000 Starmonkey Salute!" )
-{% end highlight %}
+{% endhighlight %}
 
 这意味着kernel是Ruby宇宙的中心，你不需要再拼写它。
 
@@ -342,17 +342,17 @@ Kernel::print( "55,000 Starmonkey Salute!" )
 
 {% highlight ruby %}
 File::read( "idea-mustard-plus-codeine.txt" ) 
-{% end highlight %}
+{% endhighlight %}
 会返回一个包含文件所有内容的字符串。
 
 {% highlight ruby %}
 File::rename( "old_file.txt", "new_file.txt" ) 
-{% end highlight %}
+{% endhighlight %}
 重命名
 
 {% highlight ruby %}
 File::delete( "new_file.txt" )
-{% end highlight %}
+{% endhighlight %}
 摧毁
 
 这些方法存储在File类里，如果你没有写出全名，Ruby不会自动检查File类。
@@ -361,7 +361,7 @@ File::delete( "new_file.txt" )
 File::open( 'idea-' + idea_name + '.txt', 'w' ) do |f|
   f << idea
 end
-{% end highlight %}
+{% endhighlight %}
 
 我们打开了文件，‘w’代表写一个全新的文件，‘r’代表读一个文件，‘a’代表在文件末尾添加。
 
@@ -389,14 +389,14 @@ Dir[]是一个类方法Dir::[]。它的功能是在地址表中选找符合条�
 {% highlight ruby %}
 p Dir['idea-*.txt']
 #=> ['idea-mustard-plus-codeine.txt'] - an Array of file names!
-{% end highlight %}
+{% endhighlight %}
 
 print方法用于打印字符串，p方法可以打印任何东西。
 
 {% highlight ruby %}
 p File::methods
 #=> ["send", "display", "name", "exist?", "split", ...]
-{% end highlight %}
+{% endhighlight %}
 
 ### 4.神奇的块
 
@@ -410,7 +410,7 @@ kitty_toys =
   [:shape => 'mouse', :fabric => 'calico'] +
   [:shape => 'eggroll', :fabric => 'chenille']
 kitty_toys.sort_by { |toy| toy[:fabric] }
-{% end highlight %}
+{% endhighlight %}
 
 “我搞不懂这是什么东西？”他说，“既有数组的方括号，又有hash的箭头。”
 
@@ -422,7 +422,7 @@ kitty_toys = [
   {:shape => 'mouse', :fabric => 'calico'},
   {:shape => 'eggroll', :fabric => 'chenille'}
 ]
-{% end highlight %}
+{% endhighlight %}
 
 一个数组相当于玩具箱，里面的hash描述了每个玩具。
 
@@ -448,7 +448,7 @@ kitty_toys.each do |toy|
   next if toy[:shape] == 'eggroll'
   non_eggroll = non_eggroll + 1
 end
-{% end highlight %}
+{% endhighlight %}
 
 这段代码有点像“把它从迭代循环中踢出去。”
 
@@ -457,7 +457,7 @@ kitty_toys.each do |toy|
   break if toy[:fabric] == 'chenille'
   p toy
 end
-{% end highlight %}
+{% endhighlight %}
 
 <br/>
   **Refference:**

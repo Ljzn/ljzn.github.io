@@ -33,8 +33,12 @@ hr {
  */
 span.time, span.categories {
     color: #ADADAD;
-    margin-bottom: 9px;
+    margin-bottom: 10px;
     font-size: 15px;
+}
+
+p {
+    margin: 0 0 16px;
 }
 
 h1 {
@@ -46,19 +50,19 @@ h1 {
 
 h2 {
     font-weight: normal;
-    margin-bottom: 9px;
+    margin-bottom: 10px;
     color: #000;
 }
         
 h3 {
     font-weight: normal;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: #000;
 }
 
 h4 {
     font-weight: normal;
-    margin-bottom: 7px;
+    margin-bottom: 8px;
     color: #000;
 }
 

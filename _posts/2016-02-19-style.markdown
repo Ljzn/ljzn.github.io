@@ -33,6 +33,6 @@ end
 #将lines写入原文件中
 File.open( name + ".markdown", "w") { |file| file << lines }
 #提示转换完毕
-p "Code has been changed to " + type + " style."
+p "Code has been changed to " + type
 
 {% endhighlight %}

@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="/static/img/ruby.ico" />
+        <title>(翻译)规则从何来，梦想因何生 - LJZN</title>
+        <meta name="author" content="LJZN" />
+        <meta name="description" content="(翻译)规则从何来，梦想因何生" />
+        <meta name="keywords" content="(翻译)规则从何来，梦想因何生, LJZN, why" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!-- Custom CSS -->        
+        <link rel="stylesheet" href="/static/css/main.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-sm-3">
+                <a href="/"><img id="about" src="/static/img/ruby.png" height="75px" width="75px" /></a>
+                <h1 class="author-name">LJZN</h1>
+                
+                <div id="about">
+                    It's me.
+                </div>
+                
+                <hr/>
+                    &raquo; <a href="/">Home</a> <br />
+		    &raquo; <a href="/category/originalS">Category</a> <br />
+                
+                    &raquo; <a class="about" href="/about/">About Me</a><br />
+                
+                    &raquo; <a class="about" href="https://github.com/ljzn">Github</a><br />
+                
+            </div>
+
+            <div class="col-sm-8 col-offset-1">
+                <h1>(翻译)规则从何来，梦想因何生</h1>
+<span class="time">19 Apr 2016</span>
+
+<span class="categories">
+    &raquo; <a href="/category/why">why</a>
+</span>
+
+
+<div class="content">
+    <div class="post"><blockquote>
+  <p>Why the Lucky Stiff</p>
+</blockquote>
+
+<p>很多人都说可汗博士是个疯子。他曾试图活埋自己，还电死了自己的外甥女，事实上，他把一个退休老人炸上天。但是我认为他做这些都有很好的理由。</p>
+
+<p>我敢肯定你的观点和大多数人一样，但是在他教你Ruby的类定义和混合之后，你或许会有一点点敬佩他。在本章结束后，我们可以忘记博士伤心的过去，并且不再叫他疯子。</p>
+
+<h3 id="section">1.一个被剥夺了选举权的人</h3>
+
+<p>让我们先来看看可汗博士的生平。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">dr_chams_timeline</span><span class="p">(</span> <span class="n">year</span> <span class="p">)</span>
+  <span class="k">case</span> <span class="n">year</span>
+  <span class="k">when</span> <span class="mi">1894</span>
+    <span class="s2">"Born."</span>
+  <span class="k">when</span> <span class="mi">1895</span><span class="p">.</span><span class="nf">.</span><span class="mi">1913</span>
+    <span class="s2">"Childhood in Lousville, Winston Co., Mississippi."</span>
+  <span class="k">when</span> <span class="mi">1914</span><span class="p">.</span><span class="nf">.</span><span class="mi">1919</span>
+    <span class="s2">"Worked at a pecan nursery; punched a Quaker."</span>
+  <span class="k">when</span> <span class="mi">1920</span><span class="p">.</span><span class="nf">.</span><span class="mi">1928</span>
+    <span class="s2">"Sailed in the Brotherhood of River Wisdomming, which journeyed \
+     the Mississippi River and engaged in thoughtful self-improvement, \
+     where he finished 140 credit hours from their Oarniversity."</span>
+  <span class="k">when</span> <span class="mi">1929</span>
+    <span class="s2">"Returned to Louisville to pen a novel about time-travelling pheasant hunters."</span>
+  <span class="k">when</span> <span class="mi">1930</span><span class="p">.</span><span class="nf">.</span><span class="mi">1933</span>
+    <span class="s2">"Took up a respectable career insuring pecan nurseries.  Financially stable, he \
+     spent time in Brazil and New Mexico, buying up rare paper-shell pecan trees.  Just \
+     as his notariety came to a crescendo: gosh, he tried to buried himself alive."</span>
+  <span class="k">when</span> <span class="mi">1934</span>
+    <span class="s2">"Went back to writing his novel.  Changed the hunters to insurance tycoons and the \
+     pheasants to Quakers."</span>
+  <span class="k">when</span> <span class="mi">1935</span><span class="p">.</span><span class="nf">.</span><span class="mi">1940</span>
+    <span class="s2">"Took Arthur Cone, the Headmaster of the Brotherhood of River Wisdomming, as a \
+     houseguest.  Together for five years, engineering and inventing."</span>
+  <span class="k">when</span> <span class="mi">1941</span>
+    <span class="s2">"And this is where things got interesting."</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>def是一个核心方法，用于定义方法。我们可以到处乱用。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="n">dr_chams_timeline</span><span class="p">(</span> <span class="mi">1941</span> <span class="p">)</span></code></pre></figure>
+
+<p>我们用case搭配when来实现选择，也可以用if和else来实现，看看。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">case</span> <span class="n">year</span>
+<span class="k">when</span> <span class="mi">1894</span>
+  <span class="s2">"Born."</span>
+<span class="k">when</span> <span class="mi">1895</span><span class="p">.</span><span class="nf">.</span><span class="mi">1913</span>
+  <span class="s2">"Childhood in Lousville, Winston Co., Mississippi."</span>
+<span class="k">else</span>
+  <span class="s2">"No information about this year."</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>等同于</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="mi">1894</span> <span class="o">===</span> <span class="n">year</span>
+  <span class="s2">"Born."</span>
+<span class="k">elsif</span> <span class="p">(</span><span class="mi">1895</span><span class="p">.</span><span class="nf">.</span><span class="mi">1913</span><span class="p">)</span> <span class="o">===</span> <span class="n">year</span>
+  <span class="s2">"Childhood in Lousville, Winston Co., Mississippi."</span>
+<span class="k">else</span>
+  <span class="s2">"No information about this year."</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>三个等号和两个等号的区别在于它更长，所以更有弹性。不需要完全等于，只需要包含于。</p>
+
+<p>刚传来新闻，经过被炸上天的退休老人的孙女的调查，发现那个老人作恶多端罪有应得。</p>
+
+<h3 id="section-1">但可汗博士真的正常吗</h3>
+
+<p>他电死了自己的外甥女，但据我调查那是一次意外事故。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">opus_magnum</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="k">def</span> <span class="nf">save_hannah</span>
+  <span class="n">success</span> <span class="o">=</span> <span class="n">opus_magnum</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>我们能拯救Hannah吗，Ruby会警告我们：这里没有opus_magnum。</p>
+
+<p>在Ruby中，每个方法和块都有它的范围。</p>
+
+<p>方法的定义范围就像是它的视野，在其中可以定义变量。你可以通过参数把数据传送给方法，方法也可以返回数据，但是方法里面的名字只在范围内有效。</p>
+
+<p>一些变量有更广阔的范围，比如以$开头的全局变量，可以在任何地方使用。以@开头的实例变量和@@的类变量，都可以在一个类的范围中使用。</p>
+
+<p>块也有范围，但更复杂。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">verb</span> <span class="o">=</span> <span class="s1">'rescued'</span>
+<span class="p">[</span><span class="s1">'sedated'</span><span class="p">,</span> <span class="s1">'sprinkled'</span><span class="p">,</span> <span class="s1">'electrocuted'</span><span class="p">].</span>
+<span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">verb</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"Dr. Cham "</span> <span class="o">+</span> <span class="n">verb</span> <span class="o">+</span> <span class="s2">" his niece Hannah."</span>
+<span class="k">end</span>
+<span class="nb">puts</span> <span class="s2">"Finally, Dr. Cham "</span> <span class="o">+</span> <span class="n">verb</span> <span class="o">+</span> <span class="s2">" his niece Hannah."</span></code></pre></figure>
+
+<p>我们会看到</p>
+
+<p>Dr. Cham sedated his niece Hannah.
+Dr. Cham sprinkled his niece Hannah.
+Dr. Cham electrocuted his niece Hannah.
+Finally, Dr. Cham rescued his niece Hannah.</p>
+
+<p>是的，块变量有自己的范围，当块关闭了，块变量也随之消失。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">[</span><span class="s1">'sedated'</span><span class="p">,</span> <span class="s1">'powdered'</span><span class="p">,</span> <span class="s1">'electrocuted'</span><span class="p">].</span>
+<span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">verb</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"Dr. Cham "</span> <span class="o">+</span> <span class="n">verb</span> <span class="o">+</span> <span class="s2">" his niece Hannah."</span>
+<span class="k">end</span>
+<span class="nb">puts</span> <span class="s2">"Yes, Dr. Cham "</span> <span class="o">+</span> <span class="n">verb</span> <span class="o">+</span> <span class="s2">" his niece Hannah."</span></code></pre></figure>
+
+<p>这里会出现错误，提示verb未定义。范围里的变量不可以用在外面。</p>
+
+<p>出于对Hannah的愧疚，可汗博士乘坐他制造的飞行器离开了地球。降落在一个荒芜人眼的星球上。他在荒漠中行走了三天，终于发现了一片开满苹果花的花园，以及一座美丽的城堡。</p>
+
+<h3 id="section-2">2.有电脑的城堡</h3>
+
+<p>城堡看上去还有一段距离，可汗博士对星球许愿：请给我一匹马。但什么也没有出现。看来这个星球并不会读取和实现他的愿望。</p>
+
+<p>不，这个星球可以读取思想，也可以回应愿望。只是不能同时做到。</p>
+
+<p>我曾见过一个许愿机器。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'endertromb'</span>
+<span class="k">class</span> <span class="nc">WishMaker</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="vi">@energy</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span> <span class="mi">6</span> <span class="p">)</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">grant</span><span class="p">(</span> <span class="n">wish</span> <span class="p">)</span>
+    <span class="k">if</span> <span class="n">wish</span><span class="p">.</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="n">or</span> <span class="n">wish</span><span class="p">.</span><span class="nf">include?</span> <span class="s1">' '</span>
+      <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s2">"Bad wish."</span>
+    <span class="k">end</span>
+    <span class="k">if</span> <span class="vi">@energy</span><span class="p">.</span><span class="nf">zero?</span>
+      <span class="k">raise</span> <span class="no">Exception</span><span class="p">,</span> <span class="s2">"No energy left."</span>
+    <span class="k">end</span>
+    <span class="vi">@energy</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="no">Endertromb</span><span class="o">::</span><span class="n">make</span><span class="p">(</span> <span class="n">wish</span> <span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>对Ruby来说，这只是一个类定义，描述了一个特定的对象是如何工作的。</p>
+
+<p>每天清晨，一个新的许愿机都被制造出来。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">todays_wishes</span> <span class="o">=</span> <span class="no">WishMaker</span><span class="p">.</span><span class="nf">new</span></code></pre></figure>
+
+<p>new方法是一个类方法，它用于创造崭新的对象。它也会自动调用对象的initialize方法。在WishMaker的初始化定义中，你会看到一行@energy = rand( 6 )。</p>
+
+<p>rand(6)会随机选取一个0到5的数字。这个数字代表今天的愿望数量。所以有时会没有愿望可以许。</p>
+
+<p>这个随机数被赋值到一个实例变量之中，只可以在class之内使用。</p>
+
+<p>实例变量通常用来存储一些有关于类的信息。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">todays_wishes</span> <span class="o">=</span> <span class="no">WishMaker</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">todays_wishes</span><span class="p">.</span><span class="nf">grant</span><span class="p">(</span> <span class="s2">"antlers"</span> <span class="p">)</span></code></pre></figure>
+
+<p>好吧，这并不是真的许愿机。只是一个例子，告诉你这类魔法机器是如何工作的。我不想听见你真的用它实现了愿望。</p>
+
+<p>之前我们说过：Ruby的工作由两部分组成</p>
+
+<p>1,定义东西</p>
+
+<p>2,让东西动起来</p>
+
+<p>什么是动作？方法。定义方法用def。定义类用class。</p>
+
+<p>这有助于我们理解：Ruby中的所有东西都是对象。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span> <span class="n">number</span><span class="p">.</span><span class="nf">next</span>                   <span class="c1"># prints '6'</span>
+
+<span class="n">phrase</span> <span class="o">=</span> <span class="s1">'wishing for antlers'</span>
+<span class="nb">print</span> <span class="n">phrase</span><span class="p">.</span><span class="nf">length</span>                 <span class="c1"># prints '19'</span>
+
+<span class="n">todays_wishes</span> <span class="o">=</span> <span class="no">WishMaker</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">todays_wishes</span><span class="p">.</span><span class="nf">grant</span><span class="p">(</span> <span class="s2">"antlers"</span> <span class="p">)</span></code></pre></figure>
+
+<p>自然地，每个对象都有它的类</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">print</span> <span class="mi">5</span><span class="p">.</span><span class="nf">class</span>                       <span class="c1"># prints 'Integer'</span>
+<span class="nb">print</span> <span class="s1">'wishing for antlers'</span><span class="p">.</span><span class="nf">class</span>   <span class="c1"># prints 'String'</span>
+<span class="nb">print</span> <span class="no">WishMaker</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">class</span>           <span class="c1"># prints 'WishMaker'</span></code></pre></figure>
+
+<p>在愿望制造机旁边，我发现了一张读心机的设计图</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'endertromb'</span>
+<span class="k">class</span> <span class="nc">MindReader</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="vi">@minds</span> <span class="o">=</span> <span class="no">Endertromb</span><span class="o">::</span><span class="n">scan_for_sentience</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">read</span>
+    <span class="vi">@minds</span><span class="p">.</span><span class="nf">collect</span> <span class="k">do</span> <span class="o">|</span><span class="n">mind</span><span class="o">|</span>
+       <span class="n">mind</span><span class="p">.</span><span class="nf">read</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>你可以看到当新的读心机被创造时，会自动收集mind。这些mind似乎是存在一个数组里，因为之后调用了collect方法来进行迭代。</p>
+
+<p>读心机和许愿机都提到了一个类Endertromb，它存储在endertromb.rb中。使用require ‘endertromb’来调用它。本书之后有一半的部分都在介绍各种有用的可以调用的类。</p>
+
+<h3 id="section-3">可汗博士的冒险</h3>
+
+<p>终于，可汗博士走到了城堡门口，敲了敲门。一只鲸鱼宝宝打开了门，可汗博士在城堡里和各种动物一起吃过饭之后，探索了城堡。在城堡的最底层，发现了一台电脑，以及一本书。书名是“Why的碉堡了的Ruby书”，他看完了自己的整个故事，甚至学习了Ruby。</p>
+
+<p>在一台电脑上，他发现了irb。所以他开始输入：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="no">Object</span><span class="o">::</span><span class="nb">constants</span>
+  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"Marshal"</span><span class="p">,</span> <span class="s2">"String"</span><span class="p">,</span> <span class="s2">"Dir"</span><span class="p">,</span> <span class="s2">"LoadError"</span><span class="p">,</span> <span class="s2">"Float"</span><span class="p">,</span> <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">and</span> <span class="n">so</span> <span class="n">on</span> <span class="p">]</span></code></pre></figure>
+
+<p>这里显示了所有的顶级常量。类名也列在其中，所以这很方便于查看Ruby当前载入了什么。</p>
+
+<p>他开始许找列表中不熟悉的东西</p>
+
+<p>… “Struct”, “Values”, “Time”, “Elevator”, “Range” …</p>
+
+<p>Elevator？没见过。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="no">Elevator</span><span class="o">::</span><span class="nb">methods</span>
+  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"method"</span><span class="p">,</span> <span class="s2">"freeze"</span><span class="p">,</span> <span class="s2">"allocate"</span><span class="p">,</span> <span class="p">.</span><span class="nf">.</span><span class="p">.</span> <span class="nf">another</span> <span class="n">long</span> <span class="n">list</span> <span class="p">.</span><span class="nf">.</span><span class="o">.</span> <span class="p">]</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="no">Elevator</span><span class="o">::</span><span class="nb">class_variables</span>
+  <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'@@diagnostic_report'</span><span class="p">,</span> <span class="s1">'@@power_circuit_active'</span><span class="p">,</span> <span class="s1">'@@maintenance_password'</span><span class="p">]</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="no">Elevator</span><span class="o">::</span><span class="nb">constants</span>
+  <span class="o">=&gt;</span> <span class="p">[]</span></code></pre></figure>
+
+<p>看起来电梯类有一大堆的方法，大多是所有Ruby类都有的。比如freeze和allocate。freeze可以让这个类不被改变，而allocate可以在不调用初始化的情况下创造一个新的类对象。</p>
+
+<p>类变量看上去很有趣，而常量显示在电梯类之中没有类。</p>
+
+<p>他试着创建一个电梯对象。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="no">Elevator</span><span class="o">::</span><span class="kp">new</span>
+<span class="no">ArgumentError</span><span class="p">:</span> <span class="n">wrong</span> <span class="n">number</span> <span class="n">of</span> <span class="n">arguments</span> <span class="p">(</span><span class="mi">0</span> <span class="k">for</span> <span class="mi">1</span><span class="p">),</span> <span class="n">requires</span> <span class="n">a</span> <span class="n">password</span>
+        <span class="n">from</span> <span class="p">(</span><span class="n">irb</span><span class="p">):</span><span class="mi">2</span><span class="ss">:in</span> <span class="sb">`initialize'
+        from (irb):2:in `</span><span class="kp">new</span><span class="err">'</span>
+        <span class="n">from</span> <span class="p">(</span><span class="n">irb</span><span class="p">):</span><span class="mi">2</span>
+        <span class="n">from</span> <span class="p">:</span><span class="mi">0</span></code></pre></figure>
+
+<p>他试了几个密码。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="no">Elevator</span><span class="o">::</span><span class="kp">new</span><span class="p">(</span> <span class="s2">"going up"</span> <span class="p">)</span>
+<span class="no">AccessDeniedError</span><span class="p">:</span> <span class="n">bad</span> <span class="n">password</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="no">Elevator</span><span class="o">::</span><span class="kp">new</span><span class="p">(</span> <span class="s2">"going_up"</span> <span class="p">)</span>
+<span class="no">AccessDeniedError</span><span class="p">:</span> <span class="n">bad</span> <span class="n">password</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="no">Elevator</span><span class="o">::</span><span class="kp">new</span><span class="p">(</span> <span class="s2">"stairs_are_bad"</span> <span class="p">)</span>
+<span class="no">AccessDeniedError</span><span class="p">:</span> <span class="n">bad</span> <span class="n">password</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="no">Elevator</span><span class="o">::</span><span class="kp">new</span><span class="p">(</span> <span class="s2">"StairsAreBad"</span> <span class="p">)</span>
+<span class="no">AccessDeniedError</span><span class="p">:</span> <span class="n">bad</span> <span class="n">password</span></code></pre></figure>
+
+<p>不起作用。喔，等等，在类变量的列表里有维护密码。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="no">Elevator</span><span class="o">::</span><span class="n">maintenance_password</span>
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`maintenance_password' for Elevator:Class
+        from (irb):1
+        from :0</span></code></pre></figure>
+
+<p>嗯，实例变量只在一个对象有用。而类变量只在一个类里有用。如何获取密码呢？</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Elevator</span>
+<span class="n">irb</span><span class="o">&gt;</span>   <span class="k">def</span> <span class="nc">Elevator</span><span class="o">.</span><span class="nf">maintenance_password</span>
+<span class="n">irb</span><span class="o">&gt;</span>     <span class="vc">@@maintenance_password</span>
+<span class="n">irb</span><span class="o">&gt;</span>   <span class="k">end</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="k">end</span>
+  <span class="o">=&gt;</span> <span class="kp">nil</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="no">Elevator</span><span class="o">::</span><span class="n">maintenance_password</span>
+  <span class="o">=&gt;</span> <span class="s2">"stairs_are_history!"</span></code></pre></figure>
+
+<p>好了！他得到了密码，你看见了吗？</p>
+
+<p>他添加了一个类方法给电梯类。你只需要一个新的类定义就可以将你对类的改变添加到已有的定义中。</p>
+
+<p>类方法的双冒号只是为了方便阅读。</p>
+
+<p>密码大概是这样工作的：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Elevator</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span> <span class="n">pass</span> <span class="p">)</span>
+    <span class="k">raise</span> <span class="no">AccessDeniedError</span><span class="p">,</span> <span class="s2">"bad password"</span> <span class="p">\</span>
+      <span class="k">unless</span> <span class="n">pass</span><span class="p">.</span><span class="nf">equals?</span> <span class="vc">@@maintenance_password</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>给一个类加密似乎是没用的。因为Ruby中的任何东西都可以被调用和覆盖以及重塑。可汗博士创造了一个新的电梯：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="no">Elevator</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span> <span class="s2">"stairs_are_history!"</span> <span class="p">)</span>
+<span class="c1">#&lt;Elevator:0x81f12f4 @level=4&gt;</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="n">e</span><span class="p">.</span><span class="nf">level</span> <span class="o">=</span> <span class="mi">1</span></code></pre></figure>
+
+<p>屏幕后面打开了一扇电梯门，可汗博士走进了电梯，按下了4.</p>
+
+<h3 id="section-4">3.关于我女儿的手风琴教师的故事</h3>
+
+<p>“瞎说！你根本没有女儿。”好吧，放轻松，我的确没有女儿。但这不影响我重视她的音乐教育。</p>
+
+<p>他来自于Endertromb星球。他叫Paij-ree。他说话时总会带着家乡方言，比如：“你(tyrr)好，我是(gdfg)Paij-ree(gfh)。”</p>
+
+<p>我给他看了我写的一段关于他的程序</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">wipe_mutterings_from</span><span class="p">(</span> <span class="n">sentence</span> <span class="p">)</span>
+  <span class="k">while</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">include?</span> <span class="s1">'('</span>
+    <span class="nb">open</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span> <span class="s1">'('</span> <span class="p">)</span>
+    <span class="n">close</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span> <span class="s1">')'</span><span class="p">,</span> <span class="nb">open</span> <span class="p">)</span>
+    <span class="n">sentence</span><span class="p">[</span><span class="nb">open</span><span class="p">.</span><span class="nf">.</span><span class="n">close</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span> <span class="k">if</span> <span class="n">close</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>“这可以帮你把句子中的方言去掉。”我说。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">what_he_said</span> <span class="o">=</span> <span class="s2">"But, strangely (em-pithy-dah),
+  I learned upon, played upon (pon-shoo) the
+  organs on my home (oth-rea) planet."</span>
+<span class="n">wipe_mutterings_from</span><span class="p">(</span> <span class="n">what_he_said</span> <span class="p">)</span>
+<span class="nb">print</span> <span class="n">what_he_said</span></code></pre></figure>
+
+<p>然后我们得到了</p>
+
+<p>But, strangely ,
+I learned upon, played upon the
+organs on my home planet.</p>
+
+<p>“我想这个程序还不够优雅。”他说。是的，这里有几处不完善的地方。<strong>第一</strong>：这个方法是整理一个字符串，如果输入了一个数字会发生什么？</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`include?' for 1:Fixnum
+        from (irb):2:in `</span><span class="n">wipe_mutterings_from</span><span class="err">'</span>
+        <span class="n">from</span> <span class="p">(</span><span class="n">irb</span><span class="p">):</span><span class="mi">8</span></code></pre></figure>
+
+<p>幸运的是，我们可以用异常通知来告诉用户他们犯了什么错误。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">wipe_mutterings_from</span><span class="p">(</span> <span class="n">sentence</span> <span class="p">)</span>
+  <span class="k">unless</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">respond_to?</span> <span class="ss">:include?</span>
+    <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span>
+      <span class="s2">"cannot wipe mutterings from a </span><span class="si">#{</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">class</span> <span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+  <span class="k">while</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">include?</span> <span class="s1">'('</span>
+    <span class="nb">open</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span> <span class="s1">'('</span> <span class="p">)</span>
+    <span class="n">close</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span> <span class="s1">')'</span><span class="p">,</span> <span class="nb">open</span> <span class="p">)</span>
+    <span class="n">sentence</span><span class="p">[</span><span class="nb">open</span><span class="p">.</span><span class="nf">.</span><span class="n">close</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span> <span class="k">if</span> <span class="n">close</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>这时对于输入的数字会返回</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">ArgumentError</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">wipe</span> <span class="n">mutterings</span> <span class="n">from</span> <span class="n">a</span> <span class="no">Fixnum</span>
+        <span class="n">from</span> <span class="p">(</span><span class="n">irb</span><span class="p">):</span><span class="mi">3</span><span class="ss">:in</span> <span class="sb">`wipe_mutterings_from'
+        from (irb):12</span></code></pre></figure>
+
+<p>respond_to?方法会检查对象是否具有特定的方法。</p>
+
+<p>接着，<strong>第二</strong>：你注意到了我们的方法是如何改变句子的吗？</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">something_said</span> <span class="o">=</span> <span class="s2">"A (gith) spaceship."</span>
+<span class="n">wipe_mutterings_from</span><span class="p">(</span> <span class="n">something_said</span> <span class="p">)</span>
+<span class="nb">print</span> <span class="n">something_said</span></code></pre></figure>
+
+<p>直接改变而不做备份是很不好的习惯。我们只需要复制一下字符串：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">wipe_mutterings_from</span><span class="p">(</span> <span class="n">sentence</span> <span class="p">)</span>
+  <span class="k">unless</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">respond_to?</span> <span class="ss">:include?</span>
+    <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span>
+      <span class="s2">"cannot wipe mutterings from a </span><span class="si">#{</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">class</span> <span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+  <span class="n">sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">dup</span>
+  <span class="k">while</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">include?</span> <span class="s1">'('</span>
+    <span class="nb">open</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span> <span class="s1">'('</span> <span class="p">)</span>
+    <span class="n">close</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span> <span class="s1">')'</span><span class="p">,</span> <span class="nb">open</span> <span class="p">)</span>
+    <span class="n">sentence</span><span class="p">[</span><span class="nb">open</span><span class="p">.</span><span class="nf">.</span><span class="n">close</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span> <span class="k">if</span> <span class="n">close</span>
+  <span class="k">end</span>
+  <span class="n">sentence</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>这样，我们就可以<strong>不改变原来的字符串</strong>。
+复制是如何工作的？还记得变量名只是一个昵称吗？我们这里有许多例子说明这一点：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="c1"># x now equals 6</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="s2">"Endertromb"</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">.</span><span class="nf">length</span>
+<span class="c1"># y now equals 10</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="ss">:include?</span>
+<span class="n">z</span> <span class="o">=</span> <span class="s2">"a string"</span><span class="p">.</span><span class="nf">respond_to?</span> <span class="n">z</span>
+<span class="c1"># z now equals true</span></code></pre></figure>
+
+<p>如果你不能通过一个变量名找到一个对象，那么Ruby就会把它送到垃圾回收处清理掉。</p>
+
+<p>有些东西不能被dup。数字，符号（:death）。它们是独特的。还有nil,true,false.</p>
+
+<p>也许<strong>第三</strong>是最简单的。字符串的.[]方法有很多用法：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">str</span> <span class="o">=</span> <span class="s2">"A string is a long shelf of letters and spaces."</span>
+<span class="nb">puts</span> <span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>       <span class="c1"># prints 'A'</span>
+<span class="nb">puts</span> <span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c1"># prints 'A string is a long shelf of letters and spaces.'</span>
+<span class="nb">puts</span> <span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>   <span class="c1"># prints ' string is a long shelf of letters and spaces'</span>
+<span class="nb">puts</span> <span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>    <span class="c1"># prints 'A s'</span>
+<span class="nb">puts</span> <span class="n">str</span><span class="p">[</span><span class="s1">'shelf'</span><span class="p">]</span> <span class="c1"># prints 'shelf'</span></code></pre></figure>
+
+<p>最后的<strong>第四</strong>：这个方法有可能进入死循环。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">wipe_mutterings_from</span><span class="p">(</span> <span class="n">sentence</span> <span class="p">)</span>
+  <span class="k">unless</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">respond_to?</span> <span class="ss">:include?</span>
+    <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span>
+      <span class="s2">"cannot wipe mutterings from a </span><span class="si">#{</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">class</span> <span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+  <span class="n">sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">dup</span>
+  <span class="k">while</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">include?</span> <span class="s1">'('</span>
+    <span class="nb">open</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span> <span class="s1">'('</span> <span class="p">)</span>
+    <span class="n">close</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span> <span class="s1">')'</span><span class="p">,</span> <span class="nb">open</span> <span class="p">)</span>
+    <span class="n">sentence</span><span class="p">[</span><span class="nb">open</span><span class="p">.</span><span class="nf">.</span><span class="n">close</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span> <span class="k">if</span> <span class="n">close</span>
+  <span class="k">end</span>
+  <span class="n">sentence</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>让我们试试这个输入：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">muddy_stick</span> <span class="o">=</span> <span class="s2">"Here's a ( curve."</span>
+<span class="n">wipe_mutterings_from</span><span class="p">(</span> <span class="n">muddy_stick</span> <span class="p">)</span></code></pre></figure>
+
+<p>看看我是怎么解决这个问题的：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">wipe_mutterings_from</span><span class="p">(</span> <span class="n">sentence</span> <span class="p">)</span>
+  <span class="k">unless</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">respond_to?</span> <span class="ss">:gsub</span>
+    <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span>
+      <span class="s2">"cannot wipe mutterings from a </span><span class="si">#{</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">class</span> <span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+  <span class="n">sentence</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span> <span class="sr">/\([-\w]+\)/</span><span class="p">,</span> <span class="s1">''</span> <span class="p">)</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>用一个枚举，配合正则表达式很方便。</p>
+
+<p>总结一下：</p>
+
+<p>1,当用户给你的方法输入了奇怪的东西，快报警。</p>
+
+<p>2,修改东西不要用破坏性方法，可以用dup备份一个。</p>
+
+<p>3,[]可以对字符串进行各种操作。</p>
+
+<p>4,尽量不要用if和until。</p>
+
+<h3 id="section-5">叫名机</h3>
+
+<p>我的外星朋友Paji-ree的名字有很多叫法</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">String</span>
+
+  <span class="c1"># The parts of my daughter's organ</span>
+  <span class="c1"># instructor's name.</span>
+  <span class="vc">@@syllables</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="s1">'Paij'</span> <span class="o">=&gt;</span> <span class="s1">'Personal'</span><span class="p">,</span>
+      <span class="s1">'Gonk'</span> <span class="o">=&gt;</span> <span class="s1">'Business'</span><span class="p">,</span>
+      <span class="s1">'Blon'</span> <span class="o">=&gt;</span> <span class="s1">'Slave'</span><span class="p">,</span>
+      <span class="s1">'Stro'</span> <span class="o">=&gt;</span> <span class="s1">'Master'</span><span class="p">,</span>
+      <span class="s1">'Wert'</span> <span class="o">=&gt;</span> <span class="s1">'Father'</span><span class="p">,</span>
+      <span class="s1">'Onnn'</span> <span class="o">=&gt;</span> <span class="s1">'Mother'</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="s1">'ree'</span>  <span class="o">=&gt;</span> <span class="s1">'AM'</span><span class="p">,</span>
+      <span class="s1">'plo'</span>  <span class="o">=&gt;</span> <span class="s1">'PM'</span> <span class="p">}</span>
+  <span class="p">]</span>
+
+  <span class="c1"># A method to determine what a</span>
+  <span class="c1"># certain name of his means.</span>
+  <span class="k">def</span> <span class="nf">name_significance</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span> <span class="s1">'-'</span> <span class="p">)</span>
+    <span class="n">syllables</span> <span class="o">=</span> <span class="vc">@@syllables</span><span class="p">.</span><span class="nf">dup</span>
+    <span class="n">signif</span> <span class="o">=</span> <span class="n">parts</span><span class="p">.</span><span class="nf">collect</span> <span class="k">do</span> <span class="o">|</span><span class="nb">p</span><span class="o">|</span>
+      <span class="n">syllables</span><span class="p">.</span><span class="nf">shift</span><span class="p">[</span><span class="nb">p</span><span class="p">]</span>
+    <span class="k">end</span>
+    <span class="n">signif</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span> <span class="s1">' '</span> <span class="p">)</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+
+<p>我们居然做了一件大部分编程语言都不会允许的事，修改了String类！</p>
+
+<p>我在String里添加了两样东西：一个类变量，一个普通的实例方法。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">print</span> <span class="s2">"Paij-ree"</span><span class="p">.</span><span class="nf">name_significance</span>
+<span class="c1">#=&gt; Personal AM</span></code></pre></figure>
+
+<p>很好，这个方法可以使用在任何字符串中。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">String</span>
+  <span class="k">def</span> <span class="nf">dash_split</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span> <span class="s1">'-'</span> <span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>再一次，我们为String添加了新方法。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="s2">"Gonk-plo"</span><span class="p">.</span><span class="nf">dash_split</span>
+<span class="c1">#=&gt; ['Gonk', 'plo']</span></code></pre></figure>
+
+<p>还能这样写</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">String</span>
+  <span class="k">def</span> <span class="nf">dash_split</span><span class="p">;</span> <span class="nb">split</span><span class="p">(</span> <span class="s1">'-'</span> <span class="p">);</span> <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>回到之前的代码，我们仔细看一下</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">signif</span> <span class="o">=</span> <span class="n">parts</span><span class="p">.</span><span class="nf">collect</span> <span class="k">do</span> <span class="o">|</span><span class="nb">p</span><span class="o">|</span>
+  <span class="n">syllables</span><span class="p">.</span><span class="nf">shift</span><span class="p">[</span><span class="nb">p</span><span class="p">]</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>collect方法与each的不同之处在于，它会将块的结果保存到一个新的数组中。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">catsandtips</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="o">.</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">63</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">09</span><span class="p">].</span><span class="nf">collect</span> <span class="p">{</span> <span class="o">|</span><span class="n">catcost</span><span class="o">|</span> <span class="n">catcost</span> <span class="o">+</span> <span class="p">(</span> <span class="n">catcost</span> <span class="o">*</span> <span class="mi">0</span><span class="o">.</span><span class="mi">20</span> <span class="p">)</span> <span class="p">}</span></code></pre></figure>
+
+<h3 id="section-6">4.看电影的山羊</h3>
+
+<p>可汗博士到达了4楼，遇见了一只外星山羊，他们一起看了一部关于安不螺丝的纪录片。</p>
+
+<p>在Ruby中，Object是非常中心的东西。是万物之源。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">ToastyBear</span> <span class="o">&lt;</span> <span class="no">Object</span><span class="p">;</span> <span class="k">end</span></code></pre></figure>
+
+<p>小于号代表继承。父类的所有方法和常量都可以被子类继承。不过，，，上面的代码等于</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">ToastyBear</span><span class="p">;</span> <span class="k">end</span></code></pre></figure>
+
+<p>我们用特定的格式来判断邮件，因为它们都具有相同特点。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">mail_them_a_kit</span><span class="p">(</span> <span class="n">address</span> <span class="p">)</span>
+  <span class="k">unless</span> <span class="n">address</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Address</span>
+    <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s2">"No Address object found."</span>
+  <span class="k">end</span>
+  <span class="nb">print</span> <span class="n">address</span><span class="p">.</span><span class="nf">formatted</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>我们建立一个自己的数组类</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">ArrayMine</span> <span class="o">&lt;</span> <span class="no">Array</span>
+  <span class="c1"># Build a string from this array, formatting each entry</span>
+  <span class="c1"># then joining them together.</span>
+  <span class="k">def</span> <span class="nf">join</span><span class="p">(</span> <span class="n">sep</span> <span class="o">=</span> <span class="vg">$,</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s2">"%s"</span> <span class="p">)</span>
+    <span class="n">collect</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+      <span class="nb">sprintf</span><span class="p">(</span> <span class="nb">format</span><span class="p">,</span> <span class="n">item</span> <span class="p">)</span>
+    <span class="k">end</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span> <span class="n">sep</span> <span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>我们可以确认一下它的父类</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="no">ArrayMine</span><span class="p">.</span><span class="nf">superclass</span>
+  <span class="o">=&gt;</span> <span class="no">Array</span></code></pre></figure>
+
+<p>完美，现在我们可以将我们的数组设置成房间大小，让它们在一个句子里输出。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rooms</span> <span class="o">=</span> <span class="no">ArrayMine</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="nb">print</span> <span class="s2">"We have "</span> <span class="o">+</span> <span class="n">rooms</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span> <span class="s2">", "</span><span class="p">,</span> <span class="s2">"%d bed"</span> <span class="p">)</span> <span class="o">+</span> <span class="s2">" rooms available."</span></code></pre></figure>
+
+<p>结果是“We have 3 bed, 4 bed, 6 bed rooms available.”</p>
+
+<p>让我们来看一下Ruby中的等级关系：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="no">Class</span><span class="p">.</span><span class="nf">superclass</span>
+  <span class="o">=&gt;</span> <span class="no">Module</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="no">Kernel</span><span class="p">.</span><span class="nf">class</span>
+  <span class="o">=&gt;</span> <span class="no">Module</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="no">Module</span><span class="p">.</span><span class="nf">superclass</span>
+  <span class="o">=&gt;</span> <span class="no">Object</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="no">Object</span><span class="p">.</span><span class="nf">superclass</span>
+  <span class="o">=&gt;</span> <span class="kp">nil</span></code></pre></figure>
+
+<p>让我们来比喻一下，Object是国王，Module是城主，Kernel是上校，Class是老师。</p>
+
+<p>伟大的城主母亲给了所有人一个容身之所：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># See, here is the module -- where else could our code possibly stay?</span>
+<span class="k">module</span> <span class="nn">WatchfulSaintAgnes</span>
+
+ <span class="c1"># A CONSTANT is laying here by the doorway.  Fine.</span>
+  <span class="no">TOOTHLESS_MAN_WITH_FORK</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'man'</span><span class="p">,</span> <span class="s1">'fork'</span><span class="p">,</span> <span class="s1">'exposed gums'</span><span class="p">]</span>
+
+  <span class="c1"># A Class is eating, living well in the kitchen.</span>
+  <span class="k">class</span> <span class="nc">FatWaxyChild</span><span class="p">;</span> <span class="k">end</span>
+
+  <span class="c1"># A Method is hiding back in the banana closet, God knows why.</span>
+  <span class="k">def</span> <span class="nf">timid_foxfaced_girl</span><span class="p">;</span> <span class="p">{</span><span class="s1">'please'</span> <span class="o">=&gt;</span> <span class="s1">'i want an acorn please'</span><span class="p">};</span> <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+
+<p>来通过SaintAgnes找到他们：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="no">WatchfulSaintAgnes</span><span class="o">::</span><span class="no">TOOTHLESS_MAN_WITH_FORK</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"man"</span><span class="p">,</span> <span class="s2">"fork"</span><span class="p">,</span> <span class="s2">"exposed gums"</span><span class="p">]</span>
+<span class="o">&gt;&gt;</span> <span class="no">WatchfulSaintAgnes</span><span class="o">::</span><span class="no">FatWaxyChild</span><span class="p">.</span><span class="nf">new</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;WatchfulSaintAgnes::FatWaxyChild:0xb7d2ad78&gt;</span>
+<span class="o">&gt;&gt;</span> <span class="no">WatchfulSaintAgnes</span><span class="o">::</span><span class="nb">instance_methods</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"timid_foxfaced_girl"</span><span class="p">]</span></code></pre></figure>
+
+<p>Module没有自我意识，所以不能够新建。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="no">WatchfulSaintAgnes</span><span class="p">.</span><span class="nf">new</span>
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`new' for WatchfulSaintAgnes:Module
+        from (irb):2</span></code></pre></figure>
+
+<p>但我们还可以使用extend方法把一个module的所有方法放到一个class里：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">TheTimeWarnerAolCitibankCaringAndLovingFacility</span><span class="p">;</span> <span class="k">end</span>
+<span class="o">&gt;&gt;</span> <span class="no">TheTimeWarnerAolCitibankCaringAndLovingFacility</span><span class="p">.</span><span class="nf">extend</span> <span class="no">WatchfulSaintAgnes</span>
+<span class="o">&gt;&gt;</span> <span class="no">TheTimeWarnerAolCitibankCaringAndLovingFacility</span><span class="o">::</span><span class="nb">instance_methods</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"timid_foxfaced_girl"</span><span class="p">]</span></code></pre></figure>
+
+<p>并没有偷走，而是借走。这些方法现在有两个地址。</p>
+
+<h3 id="section-7">追寻声音</h3>
+
+<p>可汗博士和山羊穿过魔法门找到了死去的汉娜。为了复活汉娜，博士必须找到一台可以编程的电脑。</p>
+
+<h3 id="section-8">5，彩票之都的小偷</h3>
+
+<p>让我们回到Paji-ree的星球。有一天，他的爸爸决定开始卖彩票。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">LotteryTicket</span>
+
+  <span class="nc">NUMERIC_RANGE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">25</span>
+
+  <span class="kp">attr_reader</span> <span class="ss">:picks</span><span class="p">,</span> <span class="ss">:purchased</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span> <span class="o">*</span><span class="n">picks</span> <span class="p">)</span>
+    <span class="k">if</span> <span class="n">picks</span><span class="p">.</span><span class="nf">length</span> <span class="o">!=</span> <span class="mi">3</span>
+      <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s2">"three numbers must be picked"</span>
+    <span class="k">elsif</span> <span class="n">picks</span><span class="p">.</span><span class="nf">uniq</span><span class="p">.</span><span class="nf">length</span> <span class="o">!=</span> <span class="mi">3</span>
+      <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s2">"the three picks must be different numbers"</span>
+    <span class="k">elsif</span> <span class="n">picks</span><span class="p">.</span><span class="nf">detect</span> <span class="p">{</span> <span class="o">|</span><span class="nb">p</span><span class="o">|</span> <span class="n">not</span> <span class="no">NUMERIC_RANGE</span> <span class="o">===</span> <span class="nb">p</span> <span class="p">}</span>
+      <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s2">"the three picks must be numbers between 1 and 25"</span>
+    <span class="k">end</span>
+    <span class="vi">@picks</span> <span class="o">=</span> <span class="n">picks</span>
+    <span class="vi">@purchased</span> <span class="o">=</span> <span class="no">Time</span><span class="p">.</span><span class="nf">now</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+
+<p>在初始化参数中的星号意思是任何参数都会以数组的形式传送。所以之后我们才可以使用数组特有的方法，例如uniq，detect。</p>
+
+<p>这个类里包含两个定义：方法定义def，属性定义attr_reader。其实它们都是方法定义。</p>
+
+<p>attr_reader的完整代码是：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">LotteryTicket</span>
+  <span class="k">def</span> <span class="nf">picks</span><span class="p">;</span> <span class="vi">@picks</span><span class="p">;</span> <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">purchased</span><span class="p">;</span> <span class="vi">@purchased</span><span class="p">;</span> <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>这样我们就可以方便地在外部调用实例变量。</p>
+
+<p>我们来随机创造一组彩票号码：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">ticket</span> <span class="o">=</span> <span class="no">LotteryTicket</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span> <span class="nb">rand</span><span class="p">(</span> <span class="mi">25</span> <span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nb">rand</span><span class="p">(</span> <span class="mi">25</span> <span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">rand</span><span class="p">(</span> <span class="mi">25</span> <span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">)</span>
+<span class="nb">p</span> <span class="n">ticket</span><span class="p">.</span><span class="nf">picks</span></code></pre></figure>
+
+<p>然而，我们不能从外部直接修改彩票号码。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">ticket</span><span class="p">.</span><span class="nf">picks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span></code></pre></figure>
+
+<p>出现了一个错误：未定义的方法‘picks=’。这是因为attr_reader之天添加了一个可读方法，没有可写方法。没关系，毕竟我们不希望数字或者日期被更改。</p>
+
+<p>所以我们为LotteryTicket类添加了新的方法方便生成随机号码：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">LotteryTicket</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">new_random</span>
+    <span class="kp">new</span><span class="p">(</span> <span class="nb">rand</span><span class="p">(</span> <span class="mi">25</span> <span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">rand</span><span class="p">(</span> <span class="mi">25</span> <span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">rand</span><span class="p">(</span> <span class="mi">25</span> <span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>如果两个数碰巧相同，程序因该自动重新生成：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">LotteryTicket</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">new_random</span>
+    <span class="kp">new</span><span class="p">(</span> <span class="nb">rand</span><span class="p">(</span> <span class="mi">25</span> <span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">rand</span><span class="p">(</span> <span class="mi">25</span> <span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">rand</span><span class="p">(</span> <span class="mi">25</span> <span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">)</span>
+  <span class="k">rescue</span> <span class="no">ArgumentError</span>
+    <span class="k">retry</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>彩票之城为每个人保存彩票购买记录</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">LotteryDraw</span>
+  <span class="vc">@@tickets</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">def</span> <span class="nc">LotteryDraw</span><span class="o">.</span><span class="nf">buy</span><span class="p">(</span> <span class="n">customer</span><span class="p">,</span> <span class="o">*</span><span class="n">tickets</span> <span class="p">)</span>
+    <span class="k">unless</span> <span class="vc">@@tickets</span><span class="p">.</span><span class="nf">has_key?</span><span class="p">(</span> <span class="n">customer</span> <span class="p">)</span>
+      <span class="vc">@@tickets</span><span class="p">[</span><span class="n">customer</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">end</span>
+    <span class="vc">@@tickets</span><span class="p">[</span><span class="n">customer</span><span class="p">]</span> <span class="o">+=</span> <span class="n">tickets</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>很快迎来了第一位客户</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">LotteryDraw</span><span class="p">.</span><span class="nf">buy</span> <span class="s1">'Yal-dal-rip-sip'</span><span class="p">,</span>
+    <span class="no">LotteryTicket</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">19</span> <span class="p">),</span>
+    <span class="no">LotteryTicket</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="p">),</span>
+    <span class="no">LotteryTicket</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span> <span class="p">)</span></code></pre></figure>
+
+<p>开奖系统</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">LotteryTicket</span>
+  <span class="k">def</span> <span class="nf">score</span><span class="p">(</span> <span class="n">final</span> <span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final</span><span class="p">.</span><span class="nf">picks</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">note</span><span class="o">|</span>
+      <span class="n">count</span> <span class="o">+=</span><span class="mi">1</span> <span class="k">if</span> <span class="n">picks</span><span class="p">.</span><span class="nf">include?</span> <span class="n">note</span>
+    <span class="k">end</span>
+    <span class="n">count</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>它是这样使用的</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="n">ticket</span> <span class="o">=</span> <span class="no">LotteryTicket</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">19</span> <span class="p">)</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="n">winner</span> <span class="o">=</span> <span class="no">LotteryTicket</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">19</span> <span class="p">)</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="n">ticket</span><span class="p">.</span><span class="nf">score</span><span class="p">(</span> <span class="n">winner</span> <span class="p">)</span>
+  <span class="o">=&gt;</span> <span class="mi">2</span></code></pre></figure>
+
+<p>全自动的开奖系统</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="no">LotteryDraw</span>
+  <span class="k">def</span> <span class="nf">play</span>
+    <span class="n">final</span> <span class="o">=</span> <span class="no">LotteryTicket</span><span class="p">.</span><span class="nf">new_random</span>
+    <span class="n">winners</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="vc">@@tickets</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">buyer</span><span class="p">,</span> <span class="n">ticket_list</span><span class="o">|</span>
+      <span class="n">ticket_list</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">ticket</span><span class="o">|</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">ticket</span><span class="p">.</span><span class="nf">score</span><span class="p">(</span> <span class="n">final</span> <span class="p">)</span>
+        <span class="k">next</span> <span class="k">if</span> <span class="n">score</span><span class="p">.</span><span class="nf">zero?</span>
+        <span class="n">winners</span><span class="p">[</span><span class="n">buyer</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[]</span>
+        <span class="n">winners</span><span class="p">[</span><span class="n">buyer</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="p">[</span> <span class="n">ticket</span><span class="p">,</span> <span class="n">score</span> <span class="p">]</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="vc">@@tickets</span><span class="p">.</span><span class="nf">clear</span>
+    <span class="n">winners</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<table>
+  <tbody>
+    <tr>
+      <td>双小于号的意思是将方法直接添加到类中。双竖线代表or，</td>
+      <td> </td>
+      <td>=[]意思是如果不存在就为空数组。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>让我们输出最后的结果</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="no">LotteryDraw</span><span class="p">.</span><span class="nf">play</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">winner</span><span class="p">,</span> <span class="n">tickets</span><span class="o">|</span>
+<span class="n">irb</span><span class="o">&gt;</span>   <span class="nb">puts</span> <span class="n">winner</span> <span class="o">+</span> <span class="s2">"won on "</span> <span class="o">+</span> <span class="n">tickets</span><span class="p">.</span><span class="nf">length</span> <span class="o">+</span> <span class="s2">" ticket(s)!"</span> 
+<span class="n">irb</span><span class="o">&gt;</span>   <span class="n">tickets</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">ticket</span><span class="p">,</span> <span class="n">score</span><span class="o">|</span>
+<span class="n">irb</span><span class="o">&gt;</span>     <span class="nb">puts</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">"</span> <span class="o">+</span> <span class="n">ticket</span><span class="p">.</span><span class="nf">picks</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span> <span class="s1">', '</span> <span class="p">)</span> <span class="o">+</span> <span class="s2">": "</span> <span class="o">+</span> <span class="n">score</span>
+<span class="n">irb</span><span class="o">&gt;</span>   <span class="k">end</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="k">end</span>
+
+<span class="no">Gram</span><span class="o">-</span><span class="n">yol</span> <span class="n">won</span> <span class="n">on</span> <span class="mi">2</span> <span class="n">ticket</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">!</span>
+    <span class="mi">25</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">33</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">29</span><span class="p">:</span> <span class="mi">1</span>
+<span class="no">Tarker</span><span class="o">-</span><span class="n">azain</span> <span class="n">won</span> <span class="n">on</span> <span class="mi">1</span> <span class="n">ticket</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">!</span>
+    <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">29</span><span class="p">:</span> <span class="mi">2</span>
+<span class="no">Bramlor</span><span class="o">-</span><span class="n">exxon</span> <span class="n">won</span> <span class="n">on</span> <span class="mi">1</span> <span class="n">ticket</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">!</span>
+    <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span> <span class="mi">1</span></code></pre></figure>
+
+<p>之前我们提到了读取属性，下面我们来讲一下写入属性：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="n">ticket</span> <span class="o">=</span> <span class="no">LotteryTicket</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="n">ticket</span><span class="p">.</span><span class="nf">picks</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="no">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`picks=' for #&lt;LotteryTicket:0xb7d49110&gt;</span></code></pre></figure>
+
+<p>我们使用attr_accessor来定义读写属性</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">LotteryTicket</span>
+  <span class="kp">attr_accessor</span> <span class="ss">:picks</span><span class="p">,</span> <span class="ss">:purchased</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>这段代码等同于</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">LotteryTicket</span>
+  <span class="k">def</span> <span class="nf">picks</span><span class="p">;</span>           <span class="vi">@picks</span><span class="p">;</span>            <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">picks</span><span class="o">=</span><span class="p">(</span><span class="n">var</span><span class="p">);</span>     <span class="vi">@picks</span> <span class="o">=</span> <span class="n">var</span><span class="p">;</span>      <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">purchased</span><span class="p">;</span>       <span class="vi">@purchased</span><span class="p">;</span>        <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">purchased</span><span class="o">=</span><span class="p">(</span><span class="n">var</span><span class="p">);</span> <span class="vi">@purchased</span> <span class="o">=</span> <span class="n">var</span><span class="p">;</span>  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>看看这些方法，picks=和purchased=，他们拦截了外部对实例变量的赋值。通常我们不会用到完整代码，但我们可以用它来检查赋值的合法性。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">SkatingContest</span>
+  <span class="k">def</span> <span class="nf">the_winner</span><span class="p">;</span> <span class="vi">@the_winner</span><span class="p">;</span> <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">the_winner</span><span class="o">=</span><span class="p">(</span> <span class="nb">name</span> <span class="p">)</span>
+    <span class="k">unless</span> <span class="nb">name</span><span class="p">.</span><span class="nf">respond_to?</span> <span class="ss">:to_str</span>
+      <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s2">"The winner's name must be a String,
+        not a math problem or a list of names or any of that business."</span>
+    <span class="k">end</span>
+    <span class="vi">@the_winner</span> <span class="o">=</span> <span class="nb">name</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<h3 id="section-9">用更少的手指赌博</h3>
+
+<p>许多年后，我们发现了新的彩票机，我们来看看它的程序</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">AnimalLottoTicket</span>
+
+  <span class="c1"># A list of valid notes.</span>
+  <span class="no">NOTES</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:Ab</span><span class="p">,</span> <span class="ss">:A</span><span class="p">,</span> <span class="ss">:Bb</span><span class="p">,</span> <span class="ss">:B</span><span class="p">,</span> <span class="ss">:C</span><span class="p">,</span> <span class="ss">:Db</span><span class="p">,</span> <span class="ss">:D</span><span class="p">,</span> <span class="ss">:Eb</span><span class="p">,</span> <span class="ss">:E</span><span class="p">,</span> <span class="ss">:F</span><span class="p">,</span> <span class="ss">:Gb</span><span class="p">,</span> <span class="ss">:G</span><span class="p">]</span>
+
+  <span class="c1"># Stores the three picked notes and a purchase date.</span>
+  <span class="kp">attr_reader</span> <span class="ss">:picks</span><span class="p">,</span> <span class="ss">:purchased</span>
+
+  <span class="c1"># Creates a new ticket from three chosen notes.  The three notes</span>
+  <span class="c1"># must be unique notes.</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span> <span class="n">note1</span><span class="p">,</span> <span class="n">note2</span><span class="p">,</span> <span class="n">note3</span> <span class="p">)</span>
+    <span class="k">if</span> <span class="p">[</span><span class="n">note1</span><span class="p">,</span> <span class="n">note2</span><span class="p">,</span> <span class="n">note3</span><span class="p">].</span><span class="nf">uniq!</span>
+      <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s2">"the three picks must be different notes"</span>
+    <span class="k">elsif</span> <span class="n">picks</span><span class="p">.</span><span class="nf">detect</span> <span class="p">{</span> <span class="o">|</span><span class="nb">p</span><span class="o">|</span> <span class="n">not</span> <span class="no">NOTES</span><span class="p">.</span><span class="nf">include?</span> <span class="nb">p</span> <span class="p">}</span>
+      <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s2">"the three picks must be notes in the chromatic scale."</span>
+    <span class="k">end</span>
+    <span class="vi">@picks</span> <span class="o">=</span> <span class="n">picks</span>
+    <span class="vi">@purchased</span> <span class="o">=</span> <span class="no">Time</span><span class="p">.</span><span class="nf">now</span>
+  <span class="k">end</span>
+
+  <span class="c1"># Score this ticket against the final draw.</span>
+  <span class="k">def</span> <span class="nf">score</span><span class="p">(</span> <span class="n">final</span> <span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final</span><span class="p">.</span><span class="nf">picks</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">note</span><span class="o">|</span>
+      <span class="n">count</span> <span class="o">+=</span><span class="mi">1</span> <span class="k">if</span> <span class="n">picks</span><span class="p">.</span><span class="nf">include?</span> <span class="n">note</span>
+    <span class="k">end</span>
+    <span class="n">count</span>
+  <span class="k">end</span>
+
+  <span class="c1"># Constructor to create a random AnimalLottoTicket</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">new_random</span>
+    <span class="kp">new</span><span class="p">(</span> <span class="no">NOTES</span><span class="p">[</span> <span class="nb">rand</span><span class="p">(</span> <span class="no">NOTES</span><span class="p">.</span><span class="nf">length</span> <span class="p">)</span> <span class="p">],</span> <span class="no">NOTES</span><span class="p">[</span> <span class="nb">rand</span><span class="p">(</span> <span class="no">NOTES</span><span class="p">.</span><span class="nf">length</span> <span class="p">)</span> <span class="p">],</span>
+         <span class="no">NOTES</span><span class="p">[</span> <span class="nb">rand</span><span class="p">(</span> <span class="no">NOTES</span><span class="p">.</span><span class="nf">length</span> <span class="p">)</span> <span class="p">]</span> <span class="p">)</span>
+  <span class="k">rescue</span> <span class="no">ArgumentError</span>
+    <span class="k">retry</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+
+<p>我们可以更改常量，但Ruby会发出警告</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="no">AnimalLottoTicket</span><span class="o">::</span><span class="no">NOTES</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:TOOT</span><span class="p">,</span> <span class="ss">:TWEET</span><span class="p">,</span> <span class="ss">:BLAT</span><span class="p">]</span>
+<span class="p">(</span><span class="n">irb</span><span class="p">):</span><span class="mi">3</span><span class="p">:</span> <span class="ss">warning: </span><span class="n">already</span> <span class="n">initialized</span> <span class="n">constant</span> <span class="no">NOTES</span>
+  <span class="o">=&gt;</span> <span class="p">[</span><span class="ss">:TOOT</span><span class="p">,</span> <span class="ss">:TWEET</span><span class="p">,</span> <span class="ss">:BLAT</span><span class="p">]</span></code></pre></figure>
+
+<h3 id="section-10">6.规则从何来</h3>
+
+<p>让我们回到可汗博士，山羊还有汉娜身边。博士终于找到了一台电脑，进入了irb。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="nb">require</span> <span class="s1">'rbconfig'</span>
+  <span class="o">=&gt;</span> <span class="kp">true</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="no">RbConfig</span><span class="o">::</span><span class="no">CONFIG</span>
+  <span class="o">=&gt;</span> <span class="p">{</span><span class="s2">"abs_srcdir"</span><span class="o">=&gt;</span><span class="s2">"$(ac_abs_srcdir)"</span><span class="p">,</span> <span class="s2">"sitedir"</span><span class="o">=&gt;</span><span class="s2">"bay://Ruby/lib/site_ruby"</span><span class="p">,</span> <span class="p">.</span><span class="nf">.</span><span class="o">.</span> <span class="p">}</span></code></pre></figure>
+
+<p>这里有太多的信息，包括Ruby中所有的环境设置。而博士需要的是Ruby核心库之外的由别人安装的库。所以博士检查了一些全局变量：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="vg">$"</span>
+  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"irb.rb"</span><span class="p">,</span> <span class="s2">"e2mmap.rb"</span><span class="p">,</span> <span class="s2">"irb/init.rb"</span><span class="p">,</span> <span class="p">.</span><span class="nf">.</span><span class="o">.</span> <span class="s2">"rbconfig.rb"</span><span class="p">]</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="vg">$:</span>
+  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"bay://Ruby/lib/site_ruby/1.9"</span><span class="p">,</span> <span class="s2">"bay://Ruby/lib/site_ruby/1.9/i686-unknown"</span><span class="p">,</span>
+      <span class="s2">"bay://Ruby/lib/site_ruby"</span><span class="p">,</span> <span class="s2">"bay://Ruby/lib/1.9"</span><span class="p">,</span>
+      <span class="s2">"bay://Ruby/lib/1.9/i686-unknown"</span><span class="p">]</span></code></pre></figure>
+
+<p>哈，变量$”返回了一个包含有所有使用require载入的库名的数组。变量$:代表$LAOD_PATH是一个包含所有Ruby在你试图用require载入文件时会检查的地址的列表。这些地址很可能是绝对地址。在windows中，绝对地址以盘符开头。在linux中以斜杠开头。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="no">Dir</span><span class="p">.</span><span class="nf">chdir</span><span class="p">(</span> <span class="s2">"bay://Ruby/lib/site_ruby/1.9/"</span> <span class="p">)</span>
+  <span class="o">=&gt;</span> <span class="mi">0</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="no">Dir</span><span class="p">[</span><span class="s2">"./*.{rb}"</span><span class="p">]</span>
+  <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'endertromb.rb'</span><span class="p">,</span> <span class="s1">'mindreader.rb'</span><span class="p">,</span> <span class="s1">'wishmaker.rb'</span><span class="p">]</span></code></pre></figure>
+
+<p>可汗博士用chdir把当前的工作地址换到了$LOAD_PATH列表中的第一个地址，这个地址通常用来存储自定义类。</p>
+
+<p>可汗博士找到了读心机和许愿机。“让我们试试能不能让他们同时起作用。”</p>
+
+<h3 id="section-11">7.梦想因何生</h3>
+
+<p>可汗博士编写了一个愿望扫描器。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'endertromb'</span>
+<span class="k">module</span> <span class="nn">WishScanner</span>
+  <span class="k">def</span> <span class="nf">scan_for_a_wish</span>
+    <span class="n">wish</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="nf">read</span><span class="p">.</span><span class="nf">detect</span> <span class="k">do</span> <span class="o">|</span><span class="n">thought</span><span class="o">|</span>
+      <span class="n">thought</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span> <span class="s1">'wish: '</span> <span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">end</span>
+    <span class="n">wish</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span> <span class="s1">'wish: '</span><span class="p">,</span> <span class="s1">''</span> <span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>“用module而不是class是因为更简单，module中只有方法。我要把它混合到读心机里。”</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'mindreader'</span>
+<span class="k">class</span> <span class="nc">MindReader</span>
+  <span class="kp">include</span> <span class="no">WishScanner</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>“注意到我在之前用了self吗？因为混合后方法之间就可以互相调用了。”</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'wishmaker'</span>
+<span class="n">reader</span> <span class="o">=</span> <span class="no">MindReader</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">wisher</span> <span class="o">=</span> <span class="no">WishMaker</span><span class="p">.</span><span class="nf">new</span>
+<span class="kp">loop</span> <span class="k">do</span>
+  <span class="n">wish</span> <span class="o">=</span> <span class="n">reader</span><span class="p">.</span><span class="nf">scan_for_a_wish</span>
+  <span class="k">if</span> <span class="n">wish</span>
+    <span class="n">wisher</span><span class="p">.</span><span class="nf">grant</span><span class="p">(</span> <span class="n">wish</span> <span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>程序开始运作，博士闭上眼睛，默念自己的愿望：“鲸鱼。”</p>
+
+<h3 id="section-12">最后一只回地球的鲸鱼</h3>
+
+<p>博士和汉娜回家了。</p>
+
+<p><br />
+  <strong>Refference:</strong></p>
+
+<ul>
+  <li><a href="http://poignant.guide/book/chapter-5.html">Kon’nichi wa, Ruby :: Why’s (Poignant) Guide to Ruby</a></li>
+</ul>
+</div>
+</div>
+
+
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/why/2016/01/19/whys.html">(翻译)一叶漂浮着的代码</a>
+                    
+                        (Categories: <a href="/category/why">why</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/why/2016/01/03/whys-book-2.html">(翻译)一篇快速的Ruby介绍,希望这是有趣的</a>
+                    
+                        (Categories: <a href="/category/why">why</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/why/2015/12/19/whys-book.html">(翻译)Kon'nichi wa,Ruby::碉堡了的Ruby书</a>
+                    
+                        (Categories: <a href="/category/why">why</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+
+    </ul>
+    </div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/original/2016/02/19/style.html">&laquo; 替换markdown文件中的代码格式</a>
+  
+  
+    <a class="next" href="/bash/2016/04/19/simple-bash-scripting-for-login-before-open-the-terminal.html">Simple bash scripting for login before open the terminal &raquo;</a>
+  
+</div>
+
+
+<div class="disqus-comments">
+<div id="disqus_thread"></div>
+<script>
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//ljzn.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+                <footer>
+                    &copy; LJZN
+                     
+                    - <a href="https://github.com/ljzn">https://github.com/ljzn</a> - Powered by Jekyll.
+                    
+
+
+                </footer>
+            </div><!-- end /.col-sm-8 -->
+        </div><!-- end /.container -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+<script id="dsq-count-scr" src="//ljzn.disqus.com/count.js" async></script>
+    </body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="/static/img/ruby.ico" />
+        <title>神奇的Ruby小技巧之1～11 - LJZN</title>
+        <meta name="author" content="LJZN" />
+        <meta name="description" content="神奇的Ruby小技巧之1～11" />
+        <meta name="keywords" content="神奇的Ruby小技巧之1～11, LJZN, tricks" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!-- Custom CSS -->        
+        <link rel="stylesheet" href="/static/css/main.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-sm-3">
+                <a href="/"><img id="about" src="/static/img/ruby.png" height="75px" width="75px" /></a>
+                <h1 class="author-name">LJZN</h1>
+                
+                <div id="about">
+                    It's me.
+                </div>
+                
+                <hr/>
+                    &raquo; <a href="/">Home</a> <br />
+		    &raquo; <a href="/category/why">Category</a> <br />
+                
+                    &raquo; <a class="about" href="/about/">About Me</a><br />
+                
+                    &raquo; <a class="about" href="https://github.com/ljzn">Github</a><br />
+                
+            </div>
+
+            <div class="col-sm-8 col-offset-1">
+                <h1>神奇的Ruby小技巧之1～11</h1>
+<span class="time">23 Dec 2015</span>
+
+<span class="categories">
+    &raquo; <a href="/category/tricks">tricks</a>
+</span>
+
+
+<div class="content">
+    <div class="post"><p>来自网站best-ruby.com</p>
+
+<h3 id="section">数字字母混合进制</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="s2">"1az"</span><span class="p">.</span><span class="nf">next</span>
+<span class="c1">#=&gt; "1ba"</span>
+
+<span class="s2">"1aaz"</span><span class="p">.</span><span class="nf">next</span>
+<span class="c1">#=&gt; "1aba"</span></code></pre></figure>
+
+<h3 id="section-1">联想数组</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">aa</span> <span class="o">=</span> <span class="p">[</span> <span class="sx">%w[Someone 1]</span><span class="p">,</span>
+      <span class="sx">%w[Bla 2]</span><span class="p">]</span>
+
+<span class="nb">p</span> <span class="n">aa</span><span class="p">.</span><span class="nf">assoc</span><span class="p">(</span><span class="s2">"Someone"</span><span class="p">)</span>
+<span class="nb">p</span> <span class="n">aa</span><span class="p">.</span><span class="nf">assoc</span><span class="p">(</span><span class="s2">"Bla"</span><span class="p">)</span>
+
+<span class="c1"># Result:</span>
+<span class="c1"># ["Someone", "1"]</span>
+<span class="c1"># ["Bla", "2"]</span>
+
+<span class="nb">p</span> <span class="n">aa</span><span class="p">.</span><span class="nf">rassoc</span><span class="p">(</span><span class="s2">"1"</span><span class="p">)</span>
+<span class="nb">p</span> <span class="n">aa</span><span class="p">.</span><span class="nf">rassoc</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span>
+
+<span class="c1"># Result:</span>
+<span class="c1"># ["Someone", "1"]</span>
+<span class="c1"># ["Bla", "2"]</span></code></pre></figure>
+
+<h3 id="section-2">退出时执行</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#Basic use</span>
+<span class="nb">puts</span> <span class="s1">'script start'</span>
+<span class="nb">at_exit</span> <span class="k">do</span>
+  <span class="nb">puts</span> <span class="s1">'inside at_exit method for the first time'</span>
+<span class="k">end</span>
+
+<span class="c1">#anywhere in your code again</span>
+<span class="nb">at_exit</span> <span class="k">do</span>
+  <span class="nb">puts</span> <span class="s1">'inside at_exit method for the second time'</span>
+<span class="k">end</span>
+<span class="nb">puts</span> <span class="s2">"script end"</span>
+
+<span class="c1">#Result:</span>
+<span class="c1">#script start</span>
+<span class="c1">#script end</span>
+<span class="c1">#inside at_exit method for the second time</span>
+<span class="c1">#inside at_exit method for the first time</span>
+
+<span class="c1">#Own exception crash logger</span>
+<span class="nb">at_exit</span> <span class="k">do</span>
+  <span class="k">if</span> <span class="vg">$!</span> <span class="c1"># If the program exits due to an exception</span>
+    <span class="nb">puts</span> <span class="s1">'Exiting'</span>
+
+    <span class="c1">#you can also print log to a file</span>
+    <span class="c1">#you can send notification to another app</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1">#Logging error anywhere when program exit</span>
+
+<span class="p">(</span><span class="no">Thread</span><span class="p">.</span><span class="nf">current</span><span class="p">[</span><span class="ss">:errors</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[])</span> <span class="o">&lt;&lt;</span> <span class="s1">'Any error message goes here'</span>
+<span class="c1">#or</span>
+<span class="k">def</span> <span class="nf">log_error</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
+  <span class="p">(</span><span class="no">Thread</span><span class="p">.</span><span class="nf">current</span><span class="p">[</span><span class="ss">:errors</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[])</span> <span class="o">&lt;&lt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">error_message</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+
+<span class="c1">#Now, log all the errors</span>
+<span class="nb">at_exit</span> <span class="k">do</span>
+  <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s1">'errors.txt'</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+    <span class="p">(</span><span class="no">Thread</span><span class="p">.</span><span class="nf">current</span><span class="p">[</span><span class="ss">:errors</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[]).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">error</span><span class="o">|</span>
+      <span class="n">file</span><span class="p">.</span><span class="nf">puts</span> <span class="n">error</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<h3 id="section-3">自动嵌套</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">deep</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="o">|</span><span class="nb">hash</span><span class="p">,</span><span class="n">key</span><span class="o">|</span> <span class="nb">hash</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">&amp;</span><span class="nb">hash</span><span class="p">.</span><span class="nf">default_proc</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="n">deep</span><span class="p">[</span><span class="ss">:a</span><span class="p">][</span><span class="ss">:b</span><span class="p">][</span><span class="ss">:c</span><span class="p">][</span><span class="ss">:d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="nb">p</span> <span class="n">deep</span>
+
+<span class="c1"># Result:</span>
+<span class="c1"># {:a=&gt;{:b=&gt;{:c=&gt;{:d=&gt;42}}}}</span></code></pre></figure>
+
+<h3 id="section-4">块能包块</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">var</span> <span class="o">=</span> <span class="ss">:var</span>
+<span class="n">object</span> <span class="o">=</span> <span class="no">Object</span><span class="p">.</span><span class="nf">new</span>
+
+<span class="n">object</span><span class="p">.</span><span class="nf">define_singleton_method</span><span class="p">(</span><span class="ss">:show_var_and_block</span><span class="p">)</span> <span class="k">do</span> <span class="o">|&amp;</span><span class="n">block</span><span class="o">|</span>
+  <span class="nb">p</span> <span class="p">[</span><span class="n">var</span><span class="p">,</span> <span class="n">block</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="n">object</span><span class="p">.</span><span class="nf">show_var_and_block</span> <span class="p">{</span> <span class="ss">:block</span> <span class="p">}</span>
+
+<span class="c1"># Result:</span>
+<span class="c1"># [:var, #&lt;Proc:0x007ffd6c038128@./blocks_can_take_blocks.rb:8&gt;]</span></code></pre></figure>
+
+<h3 id="section-5">线程冒泡错误提示</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Thread</span><span class="p">.</span><span class="nf">abort_on_exception</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="no">Thread</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span>
+  <span class="nb">fail</span> <span class="s1">'Ops, we cannot continue'</span>
+<span class="k">end</span>
+
+<span class="kp">loop</span> <span class="k">do</span>
+  <span class="nb">sleep</span>
+<span class="k">end</span>
+
+<span class="c1"># Result:</span>
+<span class="c1"># ./bubbling_up_thread_errors.rb:4:in `block in &lt;main&gt;': Ops, we cannot continue (RuntimeError)</span></code></pre></figure>
+
+<h3 id="section-6">范围情景选择</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">age</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">p</span> <span class="n">age</span>
+
+<span class="k">case</span> <span class="n">age</span>
+  <span class="k">when</span> <span class="o">-</span><span class="no">Float</span><span class="o">::</span><span class="no">INFINITY</span><span class="p">.</span><span class="nf">.</span><span class="mi">20</span>
+    <span class="nb">p</span> <span class="s1">'You are too young'</span>
+  <span class="k">when</span> <span class="mi">21</span><span class="p">.</span><span class="nf">.</span><span class="mi">64</span>
+    <span class="nb">p</span> <span class="s1">'You are at the right age'</span>
+  <span class="k">when</span> <span class="mi">65</span><span class="p">.</span><span class="nf">.</span><span class="no">Float</span><span class="o">::</span><span class="no">INFINITY</span>
+    <span class="nb">p</span> <span class="s1">'You are too old'</span>
+<span class="k">end</span>
+
+<span class="c1"># Result:</span>
+<span class="c1"># 55</span>
+<span class="c1"># "You are at the right age"</span></code></pre></figure>
+
+<h3 id="section-7">罗列所有对象</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'pp'</span>
+
+<span class="n">pp</span> <span class="no">ObjectSpace</span><span class="p">.</span><span class="nf">count_objects</span>
+
+<span class="c1"># Result:</span>
+<span class="c1"># {:TOTAL=&gt;30163,</span>
+<span class="c1">#  :FREE=&gt;1007,</span>
+<span class="c1">#  :T_OBJECT=&gt;39,</span>
+<span class="c1">#  :T_CLASS=&gt;534,</span>
+<span class="c1">#  :T_MODULE=&gt;24,</span>
+<span class="c1">#  :T_FLOAT=&gt;4,</span>
+<span class="c1">#  :T_STRING=&gt;9290,</span>
+<span class="c1">#  :T_REGEXP=&gt;70,</span>
+<span class="c1">#  :T_ARRAY=&gt;2231,</span>
+<span class="c1">#  :T_HASH=&gt;53,</span>
+<span class="c1">#  :T_STRUCT=&gt;1,</span>
+<span class="c1">#  :T_BIGNUM=&gt;2,</span>
+<span class="c1">#  :T_FILE=&gt;14,</span>
+<span class="c1">#  :T_DATA=&gt;966,</span>
+<span class="c1">#  :T_MATCH=&gt;1,</span>
+<span class="c1">#  :T_COMPLEX=&gt;1,</span>
+<span class="c1">#  :T_NODE=&gt;15896,</span>
+<span class="c1">#  :T_ICLASS=&gt;30}</span></code></pre></figure>
+
+<h3 id="section-8">循环</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">ring</span> <span class="o">=</span> <span class="sx">%w[one two three]</span><span class="p">.</span><span class="nf">cycle</span>
+
+<span class="nb">p</span> <span class="n">ring</span><span class="p">.</span><span class="nf">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Result:</span>
+<span class="c1"># ["one", "two", "three", "one", "two"]</span></code></pre></figure>
+
+<h3 id="section-9">读出数据</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="no">DATA</span><span class="p">.</span><span class="nf">read</span>
+
+<span class="cp">__END__
+Hey oh!
+Hey oh!</span></code></pre></figure>
+
+<h3 id="section-10">最简单的数据库</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'pstore'</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="no">PStore</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'mydatabase.pstore'</span><span class="p">)</span>
+
+<span class="n">db</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
+  <span class="n">db</span><span class="p">[</span><span class="s1">'people1'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Someone'</span>
+  <span class="n">db</span><span class="p">[</span><span class="s1">'money1'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="k">end</span>
+
+<span class="n">db</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
+  <span class="n">db</span><span class="p">[</span><span class="s1">'people2'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Someone2'</span>
+  <span class="n">db</span><span class="p">[</span><span class="s1">'money2'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="k">end</span>
+
+<span class="n">db</span><span class="p">.</span><span class="nf">transaction</span><span class="p">(</span><span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
+  <span class="nb">p</span> <span class="s1">'People %p'</span> <span class="o">%</span> <span class="n">db</span><span class="p">[</span><span class="s1">'people1'</span><span class="p">]</span>
+  <span class="nb">p</span> <span class="s1">'Money %p'</span> <span class="o">%</span> <span class="n">db</span><span class="p">[</span><span class="s1">'money1'</span><span class="p">]</span>
+  <span class="nb">p</span> <span class="s2">"SECOND PERSON"</span>
+  <span class="nb">p</span> <span class="s1">'People %p'</span> <span class="o">%</span> <span class="n">db</span><span class="p">[</span><span class="s1">'people2'</span><span class="p">]</span>
+  <span class="nb">p</span> <span class="s1">'Money %p'</span> <span class="o">%</span> <span class="n">db</span><span class="p">[</span><span class="s1">'money2'</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="c1"># Result:</span>
+<span class="c1"># "People \"Someone\""</span>
+<span class="c1"># "Money 400"</span>
+<span class="c1"># "SECOND PERSON"</span>
+<span class="c1"># "People \"Someone2\""</span>
+<span class="c1"># "Money 300"</span></code></pre></figure>
+
+</div>
+</div>
+
+
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/why/2015/12/19/whys-book.html">&laquo; (翻译)Kon'nichi wa,Ruby::碉堡了的Ruby书</a>
+  
+  
+    <a class="next" href="/why/2016/01/03/whys-book-2.html">(翻译)一篇快速的Ruby介绍,希望这是有趣的 &raquo;</a>
+  
+</div>
+
+
+<div class="disqus-comments">
+<div id="disqus_thread"></div>
+<script>
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//ljzn.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+                <footer>
+                    &copy; LJZN
+                     
+                    - <a href="https://github.com/ljzn">https://github.com/ljzn</a> - Powered by Jekyll.
+                    
+
+
+                </footer>
+            </div><!-- end /.col-sm-8 -->
+        </div><!-- end /.container -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+<script id="dsq-count-scr" src="//ljzn.disqus.com/count.js" async></script>
+    </body>
+</html>

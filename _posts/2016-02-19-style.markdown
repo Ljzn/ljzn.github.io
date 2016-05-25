@@ -5,7 +5,7 @@ date:   2016-02-19 19:31:43 +0700
 categories: [original]
 ---
 
-我们知道bootstrape能够支持代码高亮，而且能选择语言。例如在markdown文件中代码块的上下分别加入“{% highlight ruby %}”和“{% endhighlight %}”，就可以使代码以Ruby格式高亮。
+我们知道bootstrape能够支持代码高亮，而且能选择语言。例如在markdown文件中代码块的上下分别加入(不含反斜杠)“{\%\ highlight ruby \%\}”和“{\%\ endhighlight \%\}”，就可以使代码以Ruby格式高亮。
 
 一般地，我们用```在markdown文档中表示代码。下面这段Ruby程序可以方便我们将代码转化成高亮模式。
 
@@ -23,10 +23,12 @@ i = 0
 
 while lines.include?("```") 
  	if i.even?
-  		lines.sub!( "```", "{% highlight " + type + " %}" )
+		#使用时去掉反斜杠
+  		lines.sub!( "```", "\{\% highlight " + type + " \%\}" )
   		i += 1
-  	else
-  		lines.sub!( "```", "{% endhighlight %}" )
+  	else	
+		#使用时去掉反斜杠
+  		lines.sub!( "```", "\{\% endhighlight \%\}" )
   		i += 1
   	end
 end

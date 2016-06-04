@@ -65,11 +65,11 @@ h4 {
 
 a, a:link, a:active {
     text-decoration: none;
-    color: #8C8C8C;
+    color: black;
 }
 
 a:hover {
-    color: black;
+    color: red;
     text-decoration: underline;
 }
 

@@ -12,6 +12,11 @@ body {
     font-weight: 300;
 }
 
+i span {
+    color: gray;
+    font-size: 0.5em;
+}
+
 li {
 line-height: 1.9em;
 }

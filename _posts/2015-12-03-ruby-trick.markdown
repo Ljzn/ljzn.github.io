@@ -1,11 +1,11 @@
 ﻿---
 layout: post
-title:  "(翻译)Kon'nichi wa,Ruby::碉堡了的Ruby书"
-date:   2015-12-19 19:39:02 +0700
-categories: [why]
+title:  "Ruby小技巧之1～11"
+date:   2015-12-03 19:39:02 +0700
+categories: [tricks]
 ---
 
->来自best\-ruby.com
+>来自best-ruby.com
 
 ### 数字字母混合进制
 {% highlight ruby %}

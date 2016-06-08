@@ -11,12 +11,14 @@ body {
     color: #333;
     font-weight: 300;
 }
-hr {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border: 0;
-    border-top: 1px solid #F7F1F1;
-    border-bottom: 1px solid #fff;
+
+i span {
+    color: gray;
+    font-size: 0.5em;
+}
+
+li {
+line-height: 1.9em;
 }
 /*
 @media (min-width: 768px) {
@@ -42,6 +44,7 @@ p {
 }
 
 h1 {
+    font-family: Georgia,Serif;
     font-weight: normal;
     color: #000;
     margin-bottom: 14px;
@@ -68,11 +71,11 @@ h4 {
 
 a, a:link, a:active {
     text-decoration: none;
-    color: #8C8C8C;
+    color: black;
 }
 
 a:hover {
-    color: black;
+    color: red;
     text-decoration: underline;
 }
 
@@ -107,7 +110,7 @@ div.content pre {
     background: #333333;
     padding: 10px;
     color: #FFF;
-    overflow-x: auto;
+    overflow-x: hidden;
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     font-size: 15px;
     border: none;
@@ -161,7 +164,7 @@ div.right .post ul {
  * ///////////////////////////////////
  */
 div.col-sm-3 {
-        margin-top: 100px;
+        margin-top: 40px;
         font-size: 15px;
         color: #666;
 }

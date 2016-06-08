@@ -1,13 +1,13 @@
----
+ï»¿---
 layout: post
-title:  "RubyÐ¡¼¼ÇÉÖ®1¡«11"
+title:  "RubyÐ¡ï¿½ï¿½ï¿½ï¿½Ö®1ï¿½ï¿½11"
 date:   2015-12-03 19:39:02 +0700
 categories: [tricks]
 ---
 
->À´×Ôbest-ruby.com
+>ï¿½ï¿½ï¿½ï¿½best-ruby.com
 
-### Êý×Ö×ÖÄ¸»ìºÏ½øÖÆ
+### ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½Ï½ï¿½ï¿½ï¿½
 {% highlight ruby %}
 "1az".next
 #=> "1ba"
@@ -16,7 +16,7 @@ categories: [tricks]
 #=> "1aba"
 {% endhighlight %}
 
-### ÁªÏëÊý×é
+### ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {% highlight ruby %}
 aa = [ %w[Someone 1],
       %w[Bla 2]]
@@ -36,7 +36,7 @@ p aa.rassoc("2")
 # ["Bla", "2"]
 {% endhighlight %}
 
-### ÍË³öÊ±Ö´ÐÐ
+### ï¿½Ë³ï¿½Ê±Ö´ï¿½ï¿½
 {% highlight ruby %}
 #Basic use
 puts 'script start'
@@ -84,7 +84,7 @@ at_exit do
 end
 {% endhighlight %}
 
-### ×Ô¶¯Ç¶Ì×
+### ï¿½Ô¶ï¿½Ç¶ï¿½ï¿½
 {% highlight ruby %}
 deep = Hash.new { |hash,key| hash[key] = Hash.new(&hash.default_proc) }
 
@@ -95,7 +95,7 @@ p deep
 # {:a=>{:b=>{:c=>{:d=>42}}}}
 {% endhighlight %}
 
-### ¿éÄÜ°ü¿é
+### ï¿½ï¿½ï¿½Ü°ï¿½ï¿½ï¿½
 {% highlight ruby %}
 var = :var
 object = Object.new
@@ -110,7 +110,7 @@ object.show_var_and_block { :block }
 # [:var, #<Proc:0x007ffd6c038128@./blocks_can_take_blocks.rb:8>]
 {% endhighlight %}
 
-### Ïß³ÌÃ°ÅÝ´íÎóÌáÊ¾
+### ï¿½ß³ï¿½Ã°ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
 {% highlight ruby %}
 Thread.abort_on_exception = true
 
@@ -126,7 +126,7 @@ end
 # ./bubbling_up_thread_errors.rb:4:in `block in <main>': Ops, we cannot continue (RuntimeError)
 {% endhighlight %}
 
-### ·¶Î§Çé¾°Ñ¡Ôñ
+### ï¿½ï¿½Î§ï¿½é¾°Ñ¡ï¿½ï¿½
 {% highlight ruby %}
 age = rand(1..100)
 p age
@@ -145,7 +145,7 @@ end
 # "You are at the right age"
 {% endhighlight %}
 
-### ÂÞÁÐËùÓÐ¶ÔÏó
+### ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
 {% highlight ruby %}
 require 'pp'
 
@@ -172,7 +172,7 @@ pp ObjectSpace.count_objects
 #  :T_ICLASS=>30}
 {% endhighlight %}
 
-### Ñ­»·
+### Ñ­ï¿½ï¿½
 {% highlight ruby %}
 ring = %w[one two three].cycle
 
@@ -182,7 +182,7 @@ p ring.take(5)
 # ["one", "two", "three", "one", "two"]
 {% endhighlight %}
 
-### ¶Á³öÊý¾Ý
+### ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {% highlight ruby %}
 puts DATA.read
 
@@ -191,7 +191,7 @@ Hey oh!
 Hey oh!
 {% endhighlight %}
 
-### ×î¼òµ¥µÄÊý¾Ý¿â
+### ï¿½ï¿½òµ¥µï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 {% highlight ruby %}
 require 'pstore'
 

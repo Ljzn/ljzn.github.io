@@ -1,23 +1,23 @@
-ï»¿---
+---
 layout: post
-title:  "Rubyå°æŠ€å·§ä¹‹12"
+title:  "RubyĞ¡¼¼ÇÉÖ®12"
 date:   2016-03-20 00:18:23 +0800
 categories: [tricks]
 ---
 
->æ¥è‡ªbest-ruby.com
+>À´×Ôbest-ruby.com
 
-### ç”¨yamlåˆ›å»ºæœ€ç®€å•çš„pstoreæ•°æ®åº“
+### ÓÃyaml´´½¨×î¼òµ¥µÄpstoreÊı¾İ¿â
 
 {% highlight ruby %}
 
-#å¼•å…¥yaml/storeåº“
+#ÒıÈëyaml/store¿â
 require 'yaml/store'
 
-#æ–°å»ºymlæ•°æ®åº“æ–‡ä»¶
+#ĞÂ½¨ymlÊı¾İ¿âÎÄ¼ş
 db = YAML::Store.new('people.yml')
 
-#å¾€æ•°æ®åº“dbä¸­å†™å…¥å¯¹è±¡
+#ÍùÊı¾İ¿âdbÖĞĞ´Èë¶ÔÏó
 db.transaction do
   db['people1'] = 'Someone'
   db['money1'] = 400
@@ -28,7 +28,7 @@ db.transaction do
   db['money2'] = 300
 end
 
-#è¾“å‡ºæ•°æ®åº“ä¸­çš„å¯¹è±¡
+#Êä³öÊı¾İ¿âÖĞµÄ¶ÔÏó
 db.transaction(true) do
   p 'People %p' % db['people1']
   p 'Money %p' % db['money1']
@@ -40,4 +40,4 @@ end
 {% endhighlight %}
 
 
-    è¿™æ ·åˆ›å»ºçš„æ•°æ®åº“å¯ä»¥åœ¨ymlæ–‡ä»¶ä¸­è‡ªç”±ä¿®æ”¹ï¼Œéå¸¸æ–¹ä¾¿ã€‚
+    ÕâÑù´´½¨µÄÊı¾İ¿â¿ÉÒÔÔÚymlÎÄ¼şÖĞ×ÔÓÉĞŞ¸Ä£¬·Ç³£·½±ã¡£

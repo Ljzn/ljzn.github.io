@@ -33,16 +33,17 @@
                     {{ site.about }}
                 </div>
                 {% endif %}
-                <hr/>
+                <hr size=2>
                     &raquo; <a href="/">Home</a> <br />
-		    &raquo; <a href="/category/originalS">Category</a> <br />
+		    &raquo; <a href="/category/original">Category</a> <br />
                 {% for i in site.urls %}
                     &raquo; <a class="about" href="{{ i.url }}">{{ i.text }}</a><br />
                 {% endfor %}
             </div>
 
             <div class="col-sm-8 col-offset-1">
-                {{ content }}
+                
+		{{ content }}
 
                 <footer>
                     &copy; {{ site.author }}

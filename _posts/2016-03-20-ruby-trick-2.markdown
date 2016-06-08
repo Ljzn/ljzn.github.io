@@ -4,7 +4,7 @@ title:  "神奇的Ruby小技巧之12"
 date:   2016-03-20 00:18:23 +0800
 categories: [tricks]
 ---
-> 来自网站best-ruby.com
+>best-ruby.com
 
 ### 用yaml创建最简单的pstore数据库
 

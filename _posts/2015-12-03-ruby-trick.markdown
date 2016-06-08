@@ -4,7 +4,7 @@ title:  "神奇的Ruby小技巧之1～11"
 date:   2015-12-23 00:18:23 +0800
 categories: [tricks]
 ---
-> 来自网站best-ruby.com
+>best-ruby.com
 
 ### 数字字母混合进制
 {% highlight ruby %}

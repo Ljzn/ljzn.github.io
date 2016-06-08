@@ -1,0 +1,42 @@
+﻿---
+layout: post
+title:  "神奇的Ruby小技巧之12"
+date:   2016-03-20 00:18:23 +0800
+categories: [tricks]
+---
+>来自网站best-ruby.com
+
+### 用yaml创建最简单的pstore数据库
+
+{% highlight ruby %}
+
+#引入yaml/store库
+require 'yaml/store'
+
+#新建yml数据库文件
+db = YAML::Store.new('people.yml')
+
+#往数据库db中写入对象
+db.transaction do
+  db['people1'] = 'Someone'
+  db['money1'] = 400
+end
+
+db.transaction do
+  db['people2'] = 'Someone2'
+  db['money2'] = 300
+end
+
+#输出数据库中的对象
+db.transaction(true) do
+  p 'People %p' % db['people1']
+  p 'Money %p' % db['money1']
+  p "SECOND PERSON"
+  p 'People %p' % db['people2']
+  p 'Money %p' % db['money2']
+end
+
+{% endhighlight %}
+
+
+    这样创建的数据库可以在yml文件中自由修改，非常方便。

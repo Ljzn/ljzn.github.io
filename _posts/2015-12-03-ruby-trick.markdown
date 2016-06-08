@@ -1,13 +1,13 @@
-ï»¿---
+---
 layout: post
-title:  "Rubyå°æŠ€å·§ä¹‹1ï½11"
+title:  "RubyĞ¡¼¼ÇÉÖ®1¡«11"
 date:   2015-12-03 19:39:02 +0700
 categories: [tricks]
 ---
 
->æ¥è‡ªbest-ruby.com
+>À´×Ôbest-ruby.com
 
-### æ•°å­—å­—æ¯æ··åˆè¿›åˆ¶
+### Êı×Ö×ÖÄ¸»ìºÏ½øÖÆ
 {% highlight ruby %}
 "1az".next
 #=> "1ba"
@@ -16,7 +16,7 @@ categories: [tricks]
 #=> "1aba"
 {% endhighlight %}
 
-### è”æƒ³æ•°ç»„
+### ÁªÏëÊı×é
 {% highlight ruby %}
 aa = [ %w[Someone 1],
       %w[Bla 2]]
@@ -36,7 +36,7 @@ p aa.rassoc("2")
 # ["Bla", "2"]
 {% endhighlight %}
 
-### é€€å‡ºæ—¶æ‰§è¡Œ
+### ÍË³öÊ±Ö´ĞĞ
 {% highlight ruby %}
 #Basic use
 puts 'script start'
@@ -84,7 +84,7 @@ at_exit do
 end
 {% endhighlight %}
 
-### è‡ªåŠ¨åµŒå¥—
+### ×Ô¶¯Ç¶Ì×
 {% highlight ruby %}
 deep = Hash.new { |hash,key| hash[key] = Hash.new(&hash.default_proc) }
 
@@ -95,7 +95,7 @@ p deep
 # {:a=>{:b=>{:c=>{:d=>42}}}}
 {% endhighlight %}
 
-### å—èƒ½åŒ…å—
+### ¿éÄÜ°ü¿é
 {% highlight ruby %}
 var = :var
 object = Object.new
@@ -110,7 +110,7 @@ object.show_var_and_block { :block }
 # [:var, #<Proc:0x007ffd6c038128@./blocks_can_take_blocks.rb:8>]
 {% endhighlight %}
 
-### çº¿ç¨‹å†’æ³¡é”™è¯¯æç¤º
+### Ïß³ÌÃ°Åİ´íÎóÌáÊ¾
 {% highlight ruby %}
 Thread.abort_on_exception = true
 
@@ -126,7 +126,7 @@ end
 # ./bubbling_up_thread_errors.rb:4:in `block in <main>': Ops, we cannot continue (RuntimeError)
 {% endhighlight %}
 
-### èŒƒå›´æƒ…æ™¯é€‰æ‹©
+### ·¶Î§Çé¾°Ñ¡Ôñ
 {% highlight ruby %}
 age = rand(1..100)
 p age
@@ -145,7 +145,7 @@ end
 # "You are at the right age"
 {% endhighlight %}
 
-### ç½—åˆ—æ‰€æœ‰å¯¹è±¡
+### ÂŞÁĞËùÓĞ¶ÔÏó
 {% highlight ruby %}
 require 'pp'
 
@@ -172,7 +172,7 @@ pp ObjectSpace.count_objects
 #  :T_ICLASS=>30}
 {% endhighlight %}
 
-### å¾ªç¯
+### Ñ­»·
 {% highlight ruby %}
 ring = %w[one two three].cycle
 
@@ -182,7 +182,7 @@ p ring.take(5)
 # ["one", "two", "three", "one", "two"]
 {% endhighlight %}
 
-### è¯»å‡ºæ•°æ®
+### ¶Á³öÊı¾İ
 {% highlight ruby %}
 puts DATA.read
 
@@ -191,7 +191,7 @@ Hey oh!
 Hey oh!
 {% endhighlight %}
 
-### æœ€ç®€å•çš„æ•°æ®åº“
+### ×î¼òµ¥µÄÊı¾İ¿â
 {% highlight ruby %}
 require 'pstore'
 

@@ -5,7 +5,7 @@ date:   2015-12-03 00:18:23 +0800
 categories: [tricks]
 ---
 
-来自best-ruby.com
+>来自best\-ruby.com
 
 ### 数字字母混合进制
 {% highlight ruby %}

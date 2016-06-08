@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "替换markdown文件中的代码格式"
+date:   2016-02-19 19:31:43 +0700
+categories: [original]
+---
+
+我们知道bootstrape能够支持代码高亮，而且能选择语言。例如在markdown文件中代码块的上下分别加入(不含反斜杠)“{\%\ highlight ruby \%\}”和“{\%\ endhighlight \%\}”，就可以使代码以Ruby格式高亮。
+
+一般地，我们用```在markdown文档中表示代码。下面这段Ruby程序可以方便我们将代码转化成高亮模式。
+
+{% highlight ruby %}
+#要求输入markdown文件的文件名
+print "Please input a file name:"
+name = gets.strip
+#要求输入想转换成的格式
+print "Please input language type:"
+type = gets.strip
+#打开文件并读取到字符串lines中
+lines = File.open( name + ".markdown" ).read
+#寻找并替换lines中的```
+i = 0
+
+while lines.include?("```") 
+ 	if i.even?
+		#使用时去掉反斜杠
+  		lines.sub!( "```", "\{\% highlight " + type + " \%\}" )
+  		i += 1
+  	else	
+		#使用时去掉反斜杠
+  		lines.sub!( "```", "\{\% endhighlight \%\}" )
+  		i += 1
+  	end
+end
+#将lines写入原文件中
+File.open( name + ".markdown", "w") { |file| file << lines }
+#提示转换完毕
+p "Code has been changed to " + type
+
+{% endhighlight %}

@@ -1,0 +1,1063 @@
+---
+layout: post
+title:  "(翻译)规则从何来，梦想因何生"
+date:   2016-04-19 14:39:34 +0700
+categories: [why]
+---
+>Why the Lucky Stiff
+
+很多人都说可汗博士是个疯子。他曾试图活埋自己，还电死了自己的外甥女，事实上，他把一个退休老人炸上天。但是我认为他做这些都有很好的理由。
+
+我敢肯定你的观点和大多数人一样，但是在他教你Ruby的类定义和混合之后，你或许会有一点点敬佩他。在本章结束后，我们可以忘记博士伤心的过去，并且不再叫他疯子。
+
+### 1.一个被剥夺了选举权的人
+
+让我们先来看看可汗博士的生平。
+
+{% highlight ruby %}
+def dr_chams_timeline( year )
+  case year
+  when 1894
+    "Born."
+  when 1895..1913
+    "Childhood in Lousville, Winston Co., Mississippi."
+  when 1914..1919
+    "Worked at a pecan nursery; punched a Quaker."
+  when 1920..1928
+    "Sailed in the Brotherhood of River Wisdomming, which journeyed \
+     the Mississippi River and engaged in thoughtful self-improvement, \
+     where he finished 140 credit hours from their Oarniversity."
+  when 1929
+    "Returned to Louisville to pen a novel about time-travelling pheasant hunters."
+  when 1930..1933
+    "Took up a respectable career insuring pecan nurseries.  Financially stable, he \
+     spent time in Brazil and New Mexico, buying up rare paper-shell pecan trees.  Just \
+     as his notariety came to a crescendo: gosh, he tried to buried himself alive."
+  when 1934
+    "Went back to writing his novel.  Changed the hunters to insurance tycoons and the \
+     pheasants to Quakers."
+  when 1935..1940
+    "Took Arthur Cone, the Headmaster of the Brotherhood of River Wisdomming, as a \
+     houseguest.  Together for five years, engineering and inventing."
+  when 1941
+    "And this is where things got interesting."
+  end
+end
+{% endhighlight %}
+
+def是一个核心方法，用于定义方法。我们可以到处乱用。
+
+{% highlight ruby %}
+puts dr_chams_timeline( 1941 )
+{% endhighlight %}
+
+我们用case搭配when来实现选择，也可以用if和else来实现，看看。
+
+{% highlight ruby %}
+case year
+when 1894
+  "Born."
+when 1895..1913
+  "Childhood in Lousville, Winston Co., Mississippi."
+else
+  "No information about this year."
+end
+{% endhighlight %}
+
+等同于
+
+{% highlight ruby %}
+if 1894 === year
+  "Born."
+elsif (1895..1913) === year
+  "Childhood in Lousville, Winston Co., Mississippi."
+else
+  "No information about this year."
+end
+{% endhighlight %}
+三个等号和两个等号的区别在于它更长，所以更有弹性。不需要完全等于，只需要包含于。
+
+刚传来新闻，经过被炸上天的退休老人的孙女的调查，发现那个老人作恶多端罪有应得。
+
+### 但可汗博士真的正常吗
+
+他电死了自己的外甥女，但据我调查那是一次意外事故。
+
+{% highlight ruby %}
+opus_magnum = true
+def save_hannah
+  success = opus_magnum
+end
+{% endhighlight %}
+
+我们能拯救Hannah吗，Ruby会警告我们：这里没有opus_magnum。
+
+在Ruby中，每个方法和块都有它的范围。
+
+方法的定义范围就像是它的视野，在其中可以定义变量。你可以通过参数把数据传送给方法，方法也可以返回数据，但是方法里面的名字只在范围内有效。
+
+一些变量有更广阔的范围，比如以$开头的全局变量，可以在任何地方使用。以@开头的实例变量和@@的类变量，都可以在一个类的范围中使用。
+
+块也有范围，但更复杂。
+
+{% highlight ruby %}
+verb = 'rescued'
+['sedated', 'sprinkled', 'electrocuted'].
+each do |verb|
+  puts "Dr. Cham " + verb + " his niece Hannah."
+end
+puts "Finally, Dr. Cham " + verb + " his niece Hannah."
+{% endhighlight %}
+
+我们会看到
+
+Dr. Cham sedated his niece Hannah.
+Dr. Cham sprinkled his niece Hannah.
+Dr. Cham electrocuted his niece Hannah.
+Finally, Dr. Cham rescued his niece Hannah.
+
+是的，块变量有自己的范围，当块关闭了，块变量也随之消失。
+
+{% highlight ruby %}
+['sedated', 'powdered', 'electrocuted'].
+each do |verb|
+  puts "Dr. Cham " + verb + " his niece Hannah."
+end
+puts "Yes, Dr. Cham " + verb + " his niece Hannah."
+{% endhighlight %}
+
+这里会出现错误，提示verb未定义。范围里的变量不可以用在外面。
+
+出于对Hannah的愧疚，可汗博士乘坐他制造的飞行器离开了地球。降落在一个荒芜人眼的星球上。他在荒漠中行走了三天，终于发现了一片开满苹果花的花园，以及一座美丽的城堡。
+
+### 2.有电脑的城堡
+
+城堡看上去还有一段距离，可汗博士对星球许愿：请给我一匹马。但什么也没有出现。看来这个星球并不会读取和实现他的愿望。
+
+不，这个星球可以读取思想，也可以回应愿望。只是不能同时做到。
+
+我曾见过一个许愿机器。
+
+{% highlight ruby %}
+require 'endertromb'
+class WishMaker
+  def initialize
+    @energy = rand( 6 )
+  end
+  def grant( wish )
+    if wish.length > 10 or wish.include? ' '
+      raise ArgumentError, "Bad wish."
+    end
+    if @energy.zero?
+      raise Exception, "No energy left."
+    end
+    @energy -= 1
+    Endertromb::make( wish )
+  end
+end
+{% endhighlight %}
+
+对Ruby来说，这只是一个类定义，描述了一个特定的对象是如何工作的。
+
+每天清晨，一个新的许愿机都被制造出来。
+
+{% highlight ruby %}
+todays_wishes = WishMaker.new
+{% endhighlight %}
+
+new方法是一个类方法，它用于创造崭新的对象。它也会自动调用对象的initialize方法。在WishMaker的初始化定义中，你会看到一行@energy = rand( 6 )。
+
+rand(6)会随机选取一个0到5的数字。这个数字代表今天的愿望数量。所以有时会没有愿望可以许。
+
+这个随机数被赋值到一个实例变量之中，只可以在class之内使用。
+
+实例变量通常用来存储一些有关于类的信息。
+
+{% highlight ruby %}
+todays_wishes = WishMaker.new
+todays_wishes.grant( "antlers" )
+{% endhighlight %}
+
+好吧，这并不是真的许愿机。只是一个例子，告诉你这类魔法机器是如何工作的。我不想听见你真的用它实现了愿望。
+
+之前我们说过：Ruby的工作由两部分组成
+
+1,定义东西
+
+2,让东西动起来
+
+什么是动作？方法。定义方法用def。定义类用class。
+
+这有助于我们理解：Ruby中的所有东西都是对象。
+
+{% highlight ruby %}
+number = 5
+print number.next                   # prints '6'
+
+phrase = 'wishing for antlers'
+print phrase.length                 # prints '19'
+
+todays_wishes = WishMaker.new
+todays_wishes.grant( "antlers" )
+{% endhighlight %}
+
+自然地，每个对象都有它的类
+
+{% highlight ruby %}
+print 5.class                       # prints 'Integer'
+print 'wishing for antlers'.class   # prints 'String'
+print WishMaker.new.class           # prints 'WishMaker'
+{% endhighlight %}
+
+在愿望制造机旁边，我发现了一张读心机的设计图
+
+{% highlight ruby %}
+require 'endertromb'
+class MindReader
+  def initialize
+    @minds = Endertromb::scan_for_sentience
+  end
+  def read
+    @minds.collect do |mind|
+       mind.read
+    end
+  end
+end
+{% endhighlight %}
+
+你可以看到当新的读心机被创造时，会自动收集mind。这些mind似乎是存在一个数组里，因为之后调用了collect方法来进行迭代。
+
+读心机和许愿机都提到了一个类Endertromb，它存储在endertromb.rb中。使用require 'endertromb'来调用它。本书之后有一半的部分都在介绍各种有用的可以调用的类。
+
+### 可汗博士的冒险
+
+终于，可汗博士走到了城堡门口，敲了敲门。一只鲸鱼宝宝打开了门，可汗博士在城堡里和各种动物一起吃过饭之后，探索了城堡。在城堡的最底层，发现了一台电脑，以及一本书。书名是“Why的碉堡了的Ruby书”，他看完了自己的整个故事，甚至学习了Ruby。
+
+在一台电脑上，他发现了irb。所以他开始输入：
+
+{% highlight ruby %}
+irb> Object::constants
+  => ["Marshal", "String", "Dir", "LoadError", "Float", ... and so on ]
+{% endhighlight %}
+
+这里显示了所有的顶级常量。类名也列在其中，所以这很方便于查看Ruby当前载入了什么。
+
+他开始许找列表中不熟悉的东西
+
+... "Struct", "Values", "Time", "Elevator", "Range" ...
+
+Elevator？没见过。
+
+{% highlight ruby %}
+irb> Elevator::methods
+  => ["method", "freeze", "allocate", ... another long list ... ]
+irb> Elevator::class_variables
+  => ['@@diagnostic_report', '@@power_circuit_active', '@@maintenance_password']
+irb> Elevator::constants
+  => []
+{% endhighlight %}
+
+看起来电梯类有一大堆的方法，大多是所有Ruby类都有的。比如freeze和allocate。freeze可以让这个类不被改变，而allocate可以在不调用初始化的情况下创造一个新的类对象。
+
+类变量看上去很有趣，而常量显示在电梯类之中没有类。
+
+他试着创建一个电梯对象。
+
+{% highlight ruby %}
+irb> e = Elevator::new
+ArgumentError: wrong number of arguments (0 for 1), requires a password
+        from (irb):2:in `initialize'
+        from (irb):2:in `new'
+        from (irb):2
+        from :0
+{% endhighlight %}
+
+他试了几个密码。
+
+{% highlight ruby %}
+irb> e = Elevator::new( "going up" )
+AccessDeniedError: bad password
+irb> e = Elevator::new( "going_up" )
+AccessDeniedError: bad password
+irb> e = Elevator::new( "stairs_are_bad" )
+AccessDeniedError: bad password
+irb> e = Elevator::new( "StairsAreBad" )
+AccessDeniedError: bad password
+{% endhighlight %}
+
+不起作用。喔，等等，在类变量的列表里有维护密码。
+
+{% highlight ruby %}
+irb> Elevator::maintenance_password
+NoMethodError: undefined method `maintenance_password' for Elevator:Class
+        from (irb):1
+        from :0
+{% endhighlight %}
+
+嗯，实例变量只在一个对象有用。而类变量只在一个类里有用。如何获取密码呢？
+
+{% highlight ruby %}
+irb> class Elevator
+irb>   def Elevator.maintenance_password
+irb>     @@maintenance_password
+irb>   end
+irb> end
+  => nil
+irb> Elevator::maintenance_password
+  => "stairs_are_history!"
+{% endhighlight %}
+
+好了！他得到了密码，你看见了吗？
+
+他添加了一个类方法给电梯类。你只需要一个新的类定义就可以将你对类的改变添加到已有的定义中。
+
+类方法的双冒号只是为了方便阅读。
+
+密码大概是这样工作的：
+
+{% highlight ruby %}
+class Elevator
+  def initialize( pass )
+    raise AccessDeniedError, "bad password" \
+      unless pass.equals? @@maintenance_password
+  end
+end
+{% endhighlight %}
+
+给一个类加密似乎是没用的。因为Ruby中的任何东西都可以被调用和覆盖以及重塑。可汗博士创造了一个新的电梯：
+
+{% highlight ruby %}
+irb> e = Elevator.new( "stairs_are_history!" )
+#<Elevator:0x81f12f4 @level=4>
+irb> e.level = 1
+{% endhighlight %}
+
+屏幕后面打开了一扇电梯门，可汗博士走进了电梯，按下了4.
+
+### 3.关于我女儿的手风琴教师的故事
+
+“瞎说！你根本没有女儿。”好吧，放轻松，我的确没有女儿。但这不影响我重视她的音乐教育。
+
+他来自于Endertromb星球。他叫Paij-ree。他说话时总会带着家乡方言，比如：“你(tyrr)好，我是(gdfg)Paij-ree(gfh)。”
+
+我给他看了我写的一段关于他的程序
+
+{% highlight ruby %}
+def wipe_mutterings_from( sentence )
+  while sentence.include? '('
+    open = sentence.index( '(' )
+    close = sentence.index( ')', open )
+    sentence[open..close] = '' if close
+  end
+end
+{% endhighlight %}
+
+“这可以帮你把句子中的方言去掉。”我说。
+
+{% highlight ruby %}
+what_he_said = "But, strangely (em-pithy-dah),
+  I learned upon, played upon (pon-shoo) the
+  organs on my home (oth-rea) planet."
+wipe_mutterings_from( what_he_said )
+print what_he_said
+{% endhighlight %}
+
+然后我们得到了
+
+But, strangely ,
+I learned upon, played upon the
+organs on my home planet.
+
+“我想这个程序还不够优雅。”他说。是的，这里有几处不完善的地方。**第一**：这个方法是整理一个字符串，如果输入了一个数字会发生什么？
+
+{% highlight ruby %}
+NoMethodError: undefined method `include?' for 1:Fixnum
+        from (irb):2:in `wipe_mutterings_from'
+        from (irb):8
+{% endhighlight %}
+
+幸运的是，我们可以用异常通知来告诉用户他们犯了什么错误。
+
+{% highlight ruby %}
+def wipe_mutterings_from( sentence )
+  unless sentence.respond_to? :include?
+    raise ArgumentError,
+      "cannot wipe mutterings from a #{ sentence.class }"
+  end
+  while sentence.include? '('
+    open = sentence.index( '(' )
+    close = sentence.index( ')', open )
+    sentence[open..close] = '' if close
+  end
+end
+{% endhighlight %}
+
+这时对于输入的数字会返回
+
+{% highlight ruby %}
+ArgumentError: cannot wipe mutterings from a Fixnum
+        from (irb):3:in `wipe_mutterings_from'
+        from (irb):12
+{% endhighlight %}
+
+respond_to?方法会检查对象是否具有特定的方法。
+
+接着，**第二**：你注意到了我们的方法是如何改变句子的吗？
+
+{% highlight ruby %}
+something_said = "A (gith) spaceship."
+wipe_mutterings_from( something_said )
+print something_said
+{% endhighlight %}
+
+直接改变而不做备份是很不好的习惯。我们只需要复制一下字符串：
+
+{% highlight ruby %}
+def wipe_mutterings_from( sentence )
+  unless sentence.respond_to? :include?
+    raise ArgumentError,
+      "cannot wipe mutterings from a #{ sentence.class }"
+  end
+  sentence = sentence.dup
+  while sentence.include? '('
+    open = sentence.index( '(' )
+    close = sentence.index( ')', open )
+    sentence[open..close] = '' if close
+  end
+  sentence
+end
+{% endhighlight %}
+
+这样，我们就可以**不改变原来的字符串**。
+复制是如何工作的？还记得变量名只是一个昵称吗？我们这里有许多例子说明这一点：
+
+{% highlight ruby %}
+x = 5
+x = x + 1
+# x now equals 6
+
+y = "Endertromb"
+y = y.length
+# y now equals 10
+
+z = :include?
+z = "a string".respond_to? z
+# z now equals true
+{% endhighlight %}
+
+如果你不能通过一个变量名找到一个对象，那么Ruby就会把它送到垃圾回收处清理掉。
+
+有些东西不能被dup。数字，符号（:death）。它们是独特的。还有nil,true,false.
+
+也许**第三**是最简单的。字符串的.[]方法有很多用法：
+
+{% highlight ruby %}
+str = "A string is a long shelf of letters and spaces."
+puts str[0]       # prints 'A'
+puts str[0..-1]   # prints 'A string is a long shelf of letters and spaces.'
+puts str[1..-2]   # prints ' string is a long shelf of letters and spaces'
+puts str[0, 3]    # prints 'A s'
+puts str['shelf'] # prints 'shelf'
+{% endhighlight %}
+
+最后的**第四**：这个方法有可能进入死循环。
+
+{% highlight ruby %}
+def wipe_mutterings_from( sentence )
+  unless sentence.respond_to? :include?
+    raise ArgumentError,
+      "cannot wipe mutterings from a #{ sentence.class }"
+  end
+  sentence = sentence.dup
+  while sentence.include? '('
+    open = sentence.index( '(' )
+    close = sentence.index( ')', open )
+    sentence[open..close] = '' if close
+  end
+  sentence
+end
+{% endhighlight %}
+
+让我们试试这个输入：
+
+{% highlight ruby %}
+muddy_stick = "Here's a ( curve."
+wipe_mutterings_from( muddy_stick )
+{% endhighlight %}
+
+看看我是怎么解决这个问题的：
+
+{% highlight ruby %}
+def wipe_mutterings_from( sentence )
+  unless sentence.respond_to? :gsub
+    raise ArgumentError,
+      "cannot wipe mutterings from a #{ sentence.class }"
+  end
+  sentence.gsub( /\([-\w]+\)/, '' )
+end
+{% endhighlight %}
+
+用一个枚举，配合正则表达式很方便。
+
+总结一下：
+
+1,当用户给你的方法输入了奇怪的东西，快报警。
+
+2,修改东西不要用破坏性方法，可以用dup备份一个。
+
+3,[]可以对字符串进行各种操作。
+
+4,尽量不要用if和until。
+
+### 叫名机
+
+我的外星朋友Paji-ree的名字有很多叫法
+
+{% highlight ruby %}
+class String
+
+  # The parts of my daughter's organ
+  # instructor's name.
+  @@syllables = [
+    { 'Paij' => 'Personal',
+      'Gonk' => 'Business',
+      'Blon' => 'Slave',
+      'Stro' => 'Master',
+      'Wert' => 'Father',
+      'Onnn' => 'Mother' },
+    { 'ree'  => 'AM',
+      'plo'  => 'PM' }
+  ]
+
+  # A method to determine what a
+  # certain name of his means.
+  def name_significance
+    parts = self.split( '-' )
+    syllables = @@syllables.dup
+    signif = parts.collect do |p|
+      syllables.shift[p]
+    end
+    signif.join( ' ' )
+  end
+
+end
+{% endhighlight %}
+
+我们居然做了一件大部分编程语言都不会允许的事，修改了String类！
+
+我在String里添加了两样东西：一个类变量，一个普通的实例方法。
+
+{% highlight ruby %}
+print "Paij-ree".name_significance
+#=> Personal AM
+{% endhighlight %}
+很好，这个方法可以使用在任何字符串中。
+
+{% highlight ruby %}
+class String
+  def dash_split
+    self.split( '-' )
+  end
+end
+{% endhighlight %}
+
+再一次，我们为String添加了新方法。
+
+{% highlight ruby %}
+"Gonk-plo".dash_split
+#=> ['Gonk', 'plo']
+{% endhighlight %}
+
+还能这样写
+
+{% highlight ruby %}
+class String
+  def dash_split; split( '-' ); end
+end
+{% endhighlight %}
+
+回到之前的代码，我们仔细看一下
+
+{% highlight ruby %}
+signif = parts.collect do |p|
+  syllables.shift[p]
+end
+{% endhighlight %}
+
+collect方法与each的不同之处在于，它会将块的结果保存到一个新的数组中。
+
+{% highlight ruby %}
+catsandtips = [0.12, 0.63, 0.09].collect { |catcost| catcost + ( catcost * 0.20 ) }
+{% endhighlight %}
+
+### 4.看电影的山羊
+
+可汗博士到达了4楼，遇见了一只外星山羊，他们一起看了一部关于安不螺丝的纪录片。
+
+在Ruby中，Object是非常中心的东西。是万物之源。
+
+{% highlight ruby %}
+class ToastyBear < Object; end
+{% endhighlight %}
+
+小于号代表继承。父类的所有方法和常量都可以被子类继承。不过，，，上面的代码等于
+
+{% highlight ruby %}
+class ToastyBear; end
+{% endhighlight %}
+
+我们用特定的格式来判断邮件，因为它们都具有相同特点。
+
+{% highlight ruby %}
+def mail_them_a_kit( address )
+  unless address.is_a? Address
+    raise ArgumentError, "No Address object found."
+  end
+  print address.formatted
+end
+{% endhighlight %}
+
+我们建立一个自己的数组类
+
+{% highlight ruby %}
+class ArrayMine < Array
+  # Build a string from this array, formatting each entry
+  # then joining them together.
+  def join( sep = $,, format = "%s" )
+    collect do |item|
+      sprintf( format, item )
+    end.join( sep )
+  end
+end
+{% endhighlight %}
+
+我们可以确认一下它的父类
+
+{% highlight ruby %}
+irb> ArrayMine.superclass
+  => Array
+{% endhighlight %}
+
+完美，现在我们可以将我们的数组设置成房间大小，让它们在一个句子里输出。
+
+{% highlight ruby %}
+rooms = ArrayMine[3, 4, 6]
+print "We have " + rooms.join( ", ", "%d bed" ) + " rooms available."
+{% endhighlight %}
+
+结果是“We have 3 bed, 4 bed, 6 bed rooms available.”
+
+让我们来看一下Ruby中的等级关系：
+
+{% highlight ruby %}
+irb> Class.superclass
+  => Module
+irb> Kernel.class
+  => Module
+irb> Module.superclass
+  => Object
+irb> Object.superclass
+  => nil
+{% endhighlight %}
+
+让我们来比喻一下，Object是国王，Module是城主，Kernel是上校，Class是老师。
+
+伟大的城主母亲给了所有人一个容身之所：
+
+{% highlight ruby %}
+# See, here is the module -- where else could our code possibly stay?
+module WatchfulSaintAgnes
+
+ # A CONSTANT is laying here by the doorway.  Fine.
+  TOOTHLESS_MAN_WITH_FORK = ['man', 'fork', 'exposed gums']
+
+  # A Class is eating, living well in the kitchen.
+  class FatWaxyChild; end
+
+  # A Method is hiding back in the banana closet, God knows why.
+  def timid_foxfaced_girl; {'please' => 'i want an acorn please'}; end
+
+end
+{% endhighlight %}
+
+来通过SaintAgnes找到他们：
+
+{% highlight ruby %}
+>> WatchfulSaintAgnes::TOOTHLESS_MAN_WITH_FORK
+=> ["man", "fork", "exposed gums"]
+>> WatchfulSaintAgnes::FatWaxyChild.new
+=> #<WatchfulSaintAgnes::FatWaxyChild:0xb7d2ad78>
+>> WatchfulSaintAgnes::instance_methods
+=> ["timid_foxfaced_girl"]
+{% endhighlight %}
+
+Module没有自我意识，所以不能够新建。
+
+{% highlight ruby %}
+>> WatchfulSaintAgnes.new
+NoMethodError: undefined method `new' for WatchfulSaintAgnes:Module
+        from (irb):2
+{% endhighlight %}
+
+但我们还可以使用extend方法把一个module的所有方法放到一个class里：
+
+{% highlight ruby %}
+>> class TheTimeWarnerAolCitibankCaringAndLovingFacility; end
+>> TheTimeWarnerAolCitibankCaringAndLovingFacility.extend WatchfulSaintAgnes
+>> TheTimeWarnerAolCitibankCaringAndLovingFacility::instance_methods
+=> ["timid_foxfaced_girl"]
+{% endhighlight %}
+
+并没有偷走，而是借走。这些方法现在有两个地址。
+
+### 追寻声音
+
+可汗博士和山羊穿过魔法门找到了死去的汉娜。为了复活汉娜，博士必须找到一台可以编程的电脑。
+
+### 5，彩票之都的小偷
+
+让我们回到Paji-ree的星球。有一天，他的爸爸决定开始卖彩票。
+
+{% highlight ruby %}
+class LotteryTicket
+
+  NUMERIC_RANGE = 1..25
+
+  attr_reader :picks, :purchased
+
+  def initialize( *picks )
+    if picks.length != 3
+      raise ArgumentError, "three numbers must be picked"
+    elsif picks.uniq.length != 3
+      raise ArgumentError, "the three picks must be different numbers"
+    elsif picks.detect { |p| not NUMERIC_RANGE === p }
+      raise ArgumentError, "the three picks must be numbers between 1 and 25"
+    end
+    @picks = picks
+    @purchased = Time.now
+  end
+
+end
+{% endhighlight %}
+
+在初始化参数中的星号意思是任何参数都会以数组的形式传送。所以之后我们才可以使用数组特有的方法，例如uniq，detect。
+
+这个类里包含两个定义：方法定义def，属性定义attr_reader。其实它们都是方法定义。
+
+attr_reader的完整代码是：
+
+{% highlight ruby %}
+class LotteryTicket
+  def picks; @picks; end
+  def purchased; @purchased; end
+end
+{% endhighlight %}
+
+这样我们就可以方便地在外部调用实例变量。
+
+我们来随机创造一组彩票号码：
+
+{% highlight ruby %}
+ticket = LotteryTicket.new( rand( 25 ) + 1,
+            rand( 25 ) + 1, rand( 25 ) + 1 )
+p ticket.picks
+{% endhighlight %}
+
+然而，我们不能从外部直接修改彩票号码。
+
+{% highlight ruby %}
+ticket.picks = [2, 6, 19]
+{% endhighlight %}
+
+出现了一个错误：未定义的方法‘picks=’。这是因为attr_reader之天添加了一个可读方法，没有可写方法。没关系，毕竟我们不希望数字或者日期被更改。
+
+所以我们为LotteryTicket类添加了新的方法方便生成随机号码：
+
+{% highlight ruby %}
+class LotteryTicket
+  def self.new_random
+    new( rand( 25 ) + 1, rand( 25 ) + 1, rand( 25 ) + 1 )
+  end
+end
+{% endhighlight %}
+
+如果两个数碰巧相同，程序因该自动重新生成：
+
+{% highlight ruby %}
+class LotteryTicket
+  def self.new_random
+    new( rand( 25 ) + 1, rand( 25 ) + 1, rand( 25 ) + 1 )
+  rescue ArgumentError
+    retry
+  end
+end
+{% endhighlight %}
+
+彩票之城为每个人保存彩票购买记录
+
+{% highlight ruby %}
+class LotteryDraw
+  @@tickets = {}
+  def LotteryDraw.buy( customer, *tickets )
+    unless @@tickets.has_key?( customer )
+      @@tickets[customer] = []
+    end
+    @@tickets[customer] += tickets
+  end
+end
+{% endhighlight %}
+
+很快迎来了第一位客户
+
+{% highlight ruby %}
+LotteryDraw.buy 'Yal-dal-rip-sip',
+    LotteryTicket.new( 12, 6, 19 ),
+    LotteryTicket.new( 5, 1, 3 ),
+    LotteryTicket.new( 24, 6, 8 )
+{% endhighlight %}
+
+开奖系统
+
+{% highlight ruby %}
+class LotteryTicket
+  def score( final )
+    count = 0
+    final.picks.each do |note|
+      count +=1 if picks.include? note
+    end
+    count
+  end
+end
+{% endhighlight %}
+
+它是这样使用的
+
+{% highlight ruby %}
+irb> ticket = LotteryTicket.new( 2, 5, 19 )
+irb> winner = LotteryTicket.new( 4, 5, 19 )
+irb> ticket.score( winner )
+  => 2
+{% endhighlight %}
+
+全自动的开奖系统
+
+{% highlight ruby %}
+class << LotteryDraw
+  def play
+    final = LotteryTicket.new_random
+    winners = {}
+    @@tickets.each do |buyer, ticket_list|
+      ticket_list.each do |ticket|
+        score = ticket.score( final )
+        next if score.zero?
+        winners[buyer] ||= []
+        winners[buyer] << [ ticket, score ]
+      end
+    end
+    @@tickets.clear
+    winners
+  end
+end
+{% endhighlight %}
+
+双小于号的意思是将方法直接添加到类中。双竖线代表or，||=[]意思是如果不存在就为空数组。
+
+让我们输出最后的结果
+
+{% highlight ruby %}
+irb> LotteryDraw.play.each do |winner, tickets|
+irb>   puts winner + "won on " + tickets.length + " ticket(s)!" 
+irb>   tickets.each do |ticket, score|
+irb>     puts "\t" + ticket.picks.join( ', ' ) + ": " + score
+irb>   end
+irb> end
+
+Gram-yol won on 2 ticket(s)!
+    25, 14, 33: 1
+    12, 11, 29: 1
+Tarker-azain won on 1 ticket(s)!
+    13, 15, 29: 2
+Bramlor-exxon won on 1 ticket(s)!
+    2, 6, 14: 1
+{% endhighlight %}
+
+之前我们提到了读取属性，下面我们来讲一下写入属性：
+
+{% highlight ruby %}
+irb> ticket = LotteryTicket.new
+irb> ticket.picks = 3
+NoMethodError: undefined method `picks=' for #<LotteryTicket:0xb7d49110>
+{% endhighlight %}
+
+我们使用attr_accessor来定义读写属性
+
+{% highlight ruby %}
+class LotteryTicket
+  attr_accessor :picks, :purchased
+end
+{% endhighlight %}
+
+这段代码等同于
+
+{% highlight ruby %}
+class LotteryTicket
+  def picks;           @picks;            end
+  def picks=(var);     @picks = var;      end
+  def purchased;       @purchased;        end
+  def purchased=(var); @purchased = var;  end
+end
+{% endhighlight %}
+
+看看这些方法，picks=和purchased=，他们拦截了外部对实例变量的赋值。通常我们不会用到完整代码，但我们可以用它来检查赋值的合法性。
+
+{% highlight ruby %}
+class SkatingContest
+  def the_winner; @the_winner; end
+  def the_winner=( name )
+    unless name.respond_to? :to_str
+      raise ArgumentError, "The winner's name must be a String,
+        not a math problem or a list of names or any of that business."
+    end
+    @the_winner = name
+  end
+end
+{% endhighlight %}
+
+### 用更少的手指赌博
+
+许多年后，我们发现了新的彩票机，我们来看看它的程序
+
+{% highlight ruby %}
+class AnimalLottoTicket
+
+  # A list of valid notes.
+  NOTES = [:Ab, :A, :Bb, :B, :C, :Db, :D, :Eb, :E, :F, :Gb, :G]
+
+  # Stores the three picked notes and a purchase date.
+  attr_reader :picks, :purchased
+
+  # Creates a new ticket from three chosen notes.  The three notes
+  # must be unique notes.
+  def initialize( note1, note2, note3 )
+    if [note1, note2, note3].uniq!
+      raise ArgumentError, "the three picks must be different notes"
+    elsif picks.detect { |p| not NOTES.include? p }
+      raise ArgumentError, "the three picks must be notes in the chromatic scale."
+    end
+    @picks = picks
+    @purchased = Time.now
+  end
+
+  # Score this ticket against the final draw.
+  def score( final )
+    count = 0
+    final.picks.each do |note|
+      count +=1 if picks.include? note
+    end
+    count
+  end
+
+  # Constructor to create a random AnimalLottoTicket
+  def self.new_random
+    new( NOTES[ rand( NOTES.length ) ], NOTES[ rand( NOTES.length ) ],
+         NOTES[ rand( NOTES.length ) ] )
+  rescue ArgumentError
+    retry
+  end
+
+end
+{% endhighlight %}
+
+我们可以更改常量，但Ruby会发出警告
+
+{% highlight ruby %}
+irb> AnimalLottoTicket::NOTES = [:TOOT, :TWEET, :BLAT]
+(irb):3: warning: already initialized constant NOTES
+  => [:TOOT, :TWEET, :BLAT]
+{% endhighlight %}
+
+### 6.规则从何来
+
+让我们回到可汗博士，山羊还有汉娜身边。博士终于找到了一台电脑，进入了irb。
+
+{% highlight ruby %}
+irb> require 'rbconfig'
+  => true
+irb> RbConfig::CONFIG
+  => {"abs_srcdir"=>"$(ac_abs_srcdir)", "sitedir"=>"bay://Ruby/lib/site_ruby", ... }
+{% endhighlight %}
+
+这里有太多的信息，包括Ruby中所有的环境设置。而博士需要的是Ruby核心库之外的由别人安装的库。所以博士检查了一些全局变量：
+
+{% highlight ruby %}
+irb> $"
+  => ["irb.rb", "e2mmap.rb", "irb/init.rb", ... "rbconfig.rb"]
+irb> $:
+  => ["bay://Ruby/lib/site_ruby/1.9", "bay://Ruby/lib/site_ruby/1.9/i686-unknown",
+      "bay://Ruby/lib/site_ruby", "bay://Ruby/lib/1.9",
+      "bay://Ruby/lib/1.9/i686-unknown"]
+{% endhighlight %}
+
+哈，变量$"返回了一个包含有所有使用require载入的库名的数组。变量$:代表$LAOD_PATH是一个包含所有Ruby在你试图用require载入文件时会检查的地址的列表。这些地址很可能是绝对地址。在windows中，绝对地址以盘符开头。在linux中以斜杠开头。
+
+{% highlight ruby %}
+irb> Dir.chdir( "bay://Ruby/lib/site_ruby/1.9/" )
+  => 0
+irb> Dir["./*.{rb}"]
+  => ['endertromb.rb', 'mindreader.rb', 'wishmaker.rb']
+{% endhighlight %}
+
+可汗博士用chdir把当前的工作地址换到了$LOAD_PATH列表中的第一个地址，这个地址通常用来存储自定义类。
+
+可汗博士找到了读心机和许愿机。“让我们试试能不能让他们同时起作用。”
+
+### 7.梦想因何生
+
+可汗博士编写了一个愿望扫描器。
+
+{% highlight ruby %}
+require 'endertromb'
+module WishScanner
+  def scan_for_a_wish
+    wish = self.read.detect do |thought|
+      thought.index( 'wish: ' ) == 0
+    end
+    wish.gsub( 'wish: ', '' )
+  end
+end
+{% endhighlight %}
+
+“用module而不是class是因为更简单，module中只有方法。我要把它混合到读心机里。”
+
+{% highlight ruby %}
+require 'mindreader'
+class MindReader
+  include WishScanner
+end
+{% endhighlight %}
+
+“注意到我在之前用了self吗？因为混合后方法之间就可以互相调用了。”
+
+{% highlight ruby %}
+require 'wishmaker'
+reader = MindReader.new
+wisher = WishMaker.new
+loop do
+  wish = reader.scan_for_a_wish
+  if wish
+    wisher.grant( wish )
+  end
+end
+{% endhighlight %}
+
+程序开始运作，博士闭上眼睛，默念自己的愿望：“鲸鱼。”
+
+### 最后一只回地球的鲸鱼
+
+博士和汉娜回家了。
+
+
+<br/>
+  **Refference:**
+
+  * [Kon’nichi wa, Ruby :: Why's (Poignant) Guide to Ruby](http://poignant.guide/book/chapter-5.html)

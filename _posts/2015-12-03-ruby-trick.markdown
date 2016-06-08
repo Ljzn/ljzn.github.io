@@ -5,8 +5,12 @@ date:   2015-12-23 00:18:23 +0800
 categories: [tricks]
 ---
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 >best-ruby.com
+=======
+来自网站best-ruby.com
+>>>>>>> parent of e50279b... trick
 =======
 来自网站best-ruby.com
 >>>>>>> parent of e50279b... trick

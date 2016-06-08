@@ -1,8 +1,8 @@
 ﻿---
 layout: post
-title:  "神奇的Ruby小技巧之1～11"
-date:   2015-12-03 00:18:23 +0800
-categories: [tricks]
+title:  "(翻译)Kon'nichi wa,Ruby::碉堡了的Ruby书"
+date:   2015-12-19 19:39:02 +0700
+categories: [why]
 ---
 
 >来自best\-ruby.com

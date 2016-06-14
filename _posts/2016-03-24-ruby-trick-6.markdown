@@ -1,0 +1,27 @@
+---
+layout: post
+title:  "Ruby技巧之16 数据获取"
+date:   2016-03-24 00:18:23 +0800
+categories: [tricks]
+---
+
+>代码来自best-ruby.com
+
+### 用fetch方法可以返回一个集合中有定义的参数
+
+{% highlight ruby %}
+
+#定义Hash，key是：var
+params = {var: 42}
+
+#当fetch得到的参数是不存在的key时，返回参数中的值
+p params.fetch(:var)
+p params.fetch(:missing,42)
+p params.fetch(:missing){40 + 2}
+
+#fetch方法不会对原Hash做任何修改
+params.fetch(:missing)
+
+{% endhighlight %}
+
+使用fetch方法，即使参数中包含不存在的key，也不妨碍我们获取其它key的值。

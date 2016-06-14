@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>Simple bash scripting for login before open the terminal - LJZN</title>
+        <title>Ruby技巧之14 Warning - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="Simple bash scripting for login before open the terminal" />
-        <meta name="keywords" content="Simple bash scripting for login before open the terminal, LJZN, bash" />
+        <meta name="description" content="Ruby技巧之14 Warning" />
+        <meta name="keywords" content="Ruby技巧之14 Warning, LJZN, tricks" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,43 +45,40 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>Simple bash scripting for login before open the terminal</h1>
-<span class="time">19 Apr 2016</span>
+		<h1>Ruby技巧之14 Warning</h1>
+<span class="time">22 Mar 2016</span>
 
 <span class="categories">
-    &raquo; <a href="/category/bash">bash</a>
+    &raquo; <a href="/category/tricks">tricks</a>
 </span>
 
 
 <div class="content">
-    <div class="post"><p>Add this in your file of <code class="highlighter-rouge">/etc/bash.bashrc</code>, makesure you logged in as root.</p>
+    <div class="post"><blockquote>
+  <p>代码来自best-ruby.com</p>
+</blockquote>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">### ===============================================</span>
-<span class="c1">### Simple bash scripting for login before open the terminal.</span>
-<span class="c1">### Credit: &lt;Summon Agus&gt; - agus@python.web.id</span>
-<span class="c1">### Location, end script of: /etc/bash.bashrc</span>
-<span class="c1">### ===============================================</span>
+<h3 id="ruby">开启Ruby警告</h3>
 
-<span class="k">while</span> <span class="kp">true</span><span class="p">;</span> <span class="k">do</span>
-  <span class="c1"># Don't exit at Ctrl-C</span>
-  <span class="nb">trap</span> <span class="s2">"echo"</span> <span class="no">SIGINT</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#将全局变量VERBOSE设为真
+</span>
+<span class="vg">$VERBOSE</span> <span class="o">=</span> <span class="kp">true</span>
 
-  <span class="nb">printf</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
-  <span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s2">" Who are you guys? "</span><span class="p">;</span> <span class="n">read</span> <span class="o">-</span><span class="n">s</span> <span class="nb">name</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">[</span> <span class="s2">"$name"</span> <span class="o">==</span> <span class="s2">"agus"</span> <span class="p">];</span> <span class="k">then</span>
-    <span class="n">reset</span>
-    <span class="nb">printf</span> <span class="s2">"</span><span class="se">\n</span><span class="s2"> Welcome my KING! you are the best!!</span><span class="se">\n</span><span class="s2">"</span>
-    <span class="nb">printf</span> <span class="s2">" "</span><span class="p">;</span> <span class="n">date</span><span class="p">;</span>
-    <span class="nb">printf</span> <span class="s2">" Please start your activity with Basmalah</span><span class="se">\n\n</span><span class="s2">"</span>
-    <span class="k">break</span>
-  <span class="k">else</span>
-    <span class="nb">printf</span> <span class="s2">"</span><span class="se">\n</span><span class="s2"> Heey you! why you here!! You are not owner of this machine!</span><span class="se">\n</span><span class="s2">"</span>
-  <span class="n">fi</span>
-<span class="n">done</span>
+<span class="c1">#定义类方法var，在实例变量var为nil时返回42
+</span>
+<span class="k">class</span> <span class="nc">WarnMe</span>
+  <span class="k">def</span> <span class="nf">var</span>
+    <span class="vi">@var</span> <span class="o">||</span> <span class="mi">42</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
-<span class="c1">### ===============================================</span>
-<span class="c1">### END</span>
-<span class="c1">### ===============================================</span></code></pre></figure>
+<span class="c1">#调用方法var
+</span>
+<span class="nb">p</span> <span class="no">WarnMe</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">var</span></code></pre></figure>
+
+<p>在开启了VERBOSE后，即使方法var能够返回42,Ruby仍然会提出警告，提示变量@var未初始化。</p>
+
+<p>使用这个技巧，我们能在保证程序完整运行的同时得到警告。</p>
 </div>
 </div>
 
@@ -144,7 +141,65 @@
             
         
     
+
+    
+    
         
+            
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/tricks/2016/03/22/ruby-trick-4.html">Ruby技巧之14 Warning</a>
+                    
+                        (Categories: <a href="/category/tricks">tricks</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/tricks/2016/03/21/ruby-trick-3.html">Ruby技巧之13 垃圾回收</a>
+                    
+                        (Categories: <a href="/category/tricks">tricks</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/tricks/2016/03/20/ruby-trick-2.html">Ruby技巧之12</a>
+                    
+                        (Categories: <a href="/category/tricks">tricks</a>)
+                    
+                </li>
+                
+                
             
         
     
@@ -174,12 +229,15 @@
     
         
             
-        
-    
-
-    
-    
-        
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/tricks/2015/12/23/ruby-trick.html">神奇的Ruby小技巧之1～11</a>
+                    
+                        (Categories: <a href="/category/tricks">tricks</a>)
+                    
+                </li>
+                
+                
             
         
     
@@ -191,35 +249,17 @@
         
     
 
-    
-    
-        
-            
-        
-    
 
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
+    </ul>
+    </div>
 
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/why/2016/04/19/whys-c5-l.html">&laquo; (翻译)规则从何来，梦想因何生</a>
+    <a class="prev" href="/tricks/2016/03/21/ruby-trick-3.html">&laquo; Ruby技巧之13 垃圾回收</a>
   
   
-    <a class="next" href="/python/django/2016/04/20/custom-redirect-urls-django.html">Custom redirect urls django &raquo;</a>
+    <a class="next" href="/tricks/2016/03/22/ruby-trick-4.html">Ruby技巧之14 Warning &raquo;</a>
   
 </div>
 

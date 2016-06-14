@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "Ruby技巧之13 垃圾回收"
+date:   2016-03-21 00:18:23 +0800
+categories: [tricks]
+---
+
+>代码来自best-ruby.com
+
+### 开启垃圾回收分析器
+
+{% highlight ruby %}
+
+#开启回收分析
+GC::Profiler.enable
+
+#运行一段程序
+10.times do
+  array = Array.new(1_000_000) { |i| i.to_s }
+end
+
+#输出垃圾回收的结果
+puts GC::Profiler.result
+
+{% endhighlight %}
+
+GC(Garbage collection)垃圾回收是内存管理的方式。
+
+所谓垃圾(Garbage)，就是需要回收的对象。

@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>Ruby技巧之12 - LJZN</title>
+        <title>Ruby技巧之15 fibonacci数列 - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="Ruby技巧之12" />
-        <meta name="keywords" content="Ruby技巧之12, LJZN, tricks" />
+        <meta name="description" content="Ruby技巧之15 fibonacci数列" />
+        <meta name="keywords" content="Ruby技巧之15 fibonacci数列, LJZN, tricks" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,8 +45,8 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>Ruby技巧之12</h1>
-<span class="time">20 Mar 2016</span>
+		<h1>Ruby技巧之15 fibonacci数列</h1>
+<span class="time">23 Mar 2016</span>
 
 <span class="categories">
     &raquo; <a href="/category/tricks">tricks</a>
@@ -55,42 +55,22 @@
 
 <div class="content">
     <div class="post"><blockquote>
-  <p>来自best-ruby.com</p>
+  <p>代码来自best-ruby.com</p>
 </blockquote>
 
-<h3 id="yamlpstore">用yaml创建最简单的pstore数据库</h3>
+<h3 id="fibonacci">非常简短的fibonacci数列</h3>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#引入yaml/store库
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#使用update方法可以直接修改Hash中的元素
 </span>
-<span class="nb">require</span> <span class="s1">'yaml/store'</span>
+<span class="n">fibonacci</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">{</span> <span class="o">|</span><span class="n">numbers</span><span class="p">,</span><span class="n">index</span><span class="o">|</span>
+  <span class="n">numbers</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">fibonacci</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">}.</span><span class="nf">update</span><span class="p">(</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="c1">#新建yml数据库文件
+<span class="c1">#输出数列的一项
 </span>
-<span class="n">db</span> <span class="o">=</span> <span class="no">YAML</span><span class="o">::</span><span class="no">Store</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'people.yml'</span><span class="p">)</span>
+<span class="nb">p</span> <span class="n">fibonacci</span><span class="p">[</span><span class="mi">300</span><span class="p">]</span></code></pre></figure>
 
-<span class="c1">#往数据库db中写入对象
-</span>
-<span class="n">db</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
-  <span class="n">db</span><span class="p">[</span><span class="s1">'people1'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Someone'</span>
-  <span class="n">db</span><span class="p">[</span><span class="s1">'money1'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">400</span>
-<span class="k">end</span>
-
-<span class="n">db</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
-  <span class="n">db</span><span class="p">[</span><span class="s1">'people2'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Someone2'</span>
-  <span class="n">db</span><span class="p">[</span><span class="s1">'money2'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
-<span class="k">end</span>
-
-<span class="c1">#输出数据库中的对象
-</span>
-<span class="n">db</span><span class="p">.</span><span class="nf">transaction</span><span class="p">(</span><span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
-  <span class="nb">p</span> <span class="s1">'People %p'</span> <span class="o">%</span> <span class="n">db</span><span class="p">[</span><span class="s1">'people1'</span><span class="p">]</span>
-  <span class="nb">p</span> <span class="s1">'Money %p'</span> <span class="o">%</span> <span class="n">db</span><span class="p">[</span><span class="s1">'money1'</span><span class="p">]</span>
-  <span class="nb">p</span> <span class="s2">"SECOND PERSON"</span>
-  <span class="nb">p</span> <span class="s1">'People %p'</span> <span class="o">%</span> <span class="n">db</span><span class="p">[</span><span class="s1">'people2'</span><span class="p">]</span>
-  <span class="nb">p</span> <span class="s1">'Money %p'</span> <span class="o">%</span> <span class="n">db</span><span class="p">[</span><span class="s1">'money2'</span><span class="p">]</span>
-<span class="k">end</span></code></pre></figure>
-
-<p>这样创建的数据库可以在yml文件中自由修改，非常方便。</p>
+<p>update方法可以在定义时调用。</p>
 </div>
 </div>
 
@@ -168,16 +148,6 @@
     
         
             
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/23/ruby-trick-5.html">Ruby技巧之15 fibonacci数列</a>
-                    
-                        (Categories: <a href="/category/tricks">tricks</a>)
-                    
-                </li>
-                
-                
-            
         
     
 
@@ -218,6 +188,16 @@
     
     
         
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/tricks/2016/03/20/ruby-trick-2.html">Ruby技巧之12</a>
+                    
+                        (Categories: <a href="/category/tricks">tricks</a>)
+                    
+                </li>
+                
+                
             
         
     
@@ -274,10 +254,10 @@
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/original/2016/02/19/style.html">&laquo; 替换markdown文件中的代码格式</a>
+    <a class="prev" href="/tricks/2016/03/22/ruby-trick-4.html">&laquo; Ruby技巧之14 Warning</a>
   
   
-    <a class="next" href="/tricks/2016/03/21/ruby-trick-3.html">Ruby技巧之13 垃圾回收 &raquo;</a>
+    <a class="next" href="/tricks/2016/03/24/ruby-trick-6.html">Ruby技巧之16 数据获取 &raquo;</a>
   
 </div>
 

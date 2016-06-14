@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "Ruby技巧之15 fibonacci数列"
+date:   2016-03-23 00:18:23 +0800
+categories: [tricks]
+---
+
+>代码来自best-ruby.com
+
+### 非常简短的fibonacci数列
+
+{% highlight ruby %}
+
+#使用update方法可以直接修改Hash中的元素
+fibonacci = Hash.new{ |numbers,index|
+  numbers[index] = fibonacci[index - 2] + fibonacci[index - 1]
+}.update(0 => 0, 1 => 1)
+
+#输出数列的一项
+p fibonacci[300]
+
+{% endhighlight %}
+
+update方法可以在定义时调用。

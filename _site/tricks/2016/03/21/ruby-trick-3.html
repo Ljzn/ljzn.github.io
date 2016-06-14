@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>Python Crazy Decrypter has been Released - LJZN</title>
+        <title>Ruby技巧之13 垃圾回收 - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="Python Crazy Decrypter has been Released" />
-        <meta name="keywords" content="Python Crazy Decrypter has been Released, LJZN, python, security" />
+        <meta name="description" content="Ruby技巧之13 垃圾回收" />
+        <meta name="keywords" content="Ruby技巧之13 垃圾回收, LJZN, tricks" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,52 +45,89 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>Python Crazy Decrypter has been Released</h1>
-<span class="time">21 May 2016</span>
+		<h1>Ruby技巧之13 垃圾回收</h1>
+<span class="time">21 Mar 2016</span>
 
 <span class="categories">
-    &raquo; <a href="/category/python">python</a>, <a href="/category/security">security</a>
+    &raquo; <a href="/category/tricks">tricks</a>
 </span>
 
 
 <div class="content">
-    <div class="post"><p>Hello gays, this night i want to share my Python Crazy Decrypter tool. Python Crazy Decrypter is real crazy tool to decrypt md5, sha1, sha224, sha256, sha384, and sha512 with Brute Force method. Like most hashes Decrypter we know used the database to check the hash is valid or not.</p>
+    <div class="post"><blockquote>
+  <p>代码来自best-ruby.com</p>
+</blockquote>
 
-<p>This Python Crazy Decrypter tool use the brute force method with complete charachters or with custom charachters choices, and with Hash Type Checker. But, of course it will spend a long time if the result of hash have a very long length, coz this use the brute force method.</p>
+<h3 id="section">开启垃圾回收分析器</h3>
 
-<p><strong>Example Usage</strong></p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#开启回收分析
+</span>
+<span class="no">GC</span><span class="o">::</span><span class="no">Profiler</span><span class="p">.</span><span class="nf">enable</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ crazy_decrypter -a 2f2ec1296695a9fb3251bbc94a2e0cef -c ichp 4 4
-</code></pre>
-</div>
+<span class="c1">#运行一段程序
+</span>
+<span class="mi">10</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span>
+  <span class="n">array</span> <span class="o">=</span> <span class="no">Array</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="p">.</span><span class="nf">to_s</span> <span class="p">}</span>
+<span class="k">end</span>
 
-<p><strong>Example Proccess</strong></p>
+<span class="c1">#输出垃圾回收的结果
+</span>
+<span class="nb">puts</span> <span class="no">GC</span><span class="o">::</span><span class="no">Profiler</span><span class="p">.</span><span class="nf">result</span></code></pre></figure>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>   *** Please drink your coffee first! ***
-    Python Crazy Decrypter 0.0.4
+<p>GC(Garbage collection)垃圾回收是内存管理的方式。</p>
 
-CTRL+C to Exit!
-Charachters to try : ichp
-Min-length         : 3
-Max-length         : 4
-Type Decrypt found : md5
-Trying with        : iipc - 373fa60ea77f4695bc05fbc1b49d40e3
-</code></pre>
-</div>
-
-<p><strong>Example Result</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Decrypt found : chip
-Type Decrypt  : md5
-End time      : 06:53:06
-</code></pre>
-</div>
-
-<p>For more you can checkout on our repository: <a href="https://github.com/agusmakmun/Crazy-Decrypter">https://github.com/agusmakmun/Crazy-Decrypter</a></p>
+<p>所谓垃圾(Garbage)，就是需要回收的对象。</p>
 </div>
 </div>
 
 
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
 
     
     
@@ -102,20 +139,77 @@ End time      : 06:53:06
                 <ul>
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/python/security/2016/05/21/python-simple-ciphertext.html">Python Simple Ciphertext</a>
+                    <a href="https://ljzn.github.io/tricks/2016/03/24/ruby-trick-6.html">Ruby技巧之16 数据获取</a>
                     
-                        (Categories: <a href="/category/python">python</a>, <a href="/category/security">security</a>)
+                        (Categories: <a href="/category/tricks">tricks</a>)
                     
                 </li>
                 
                 
             
         
-            
-        
+    
+
+    
     
         
             
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/tricks/2016/03/23/ruby-trick-5.html">Ruby技巧之15 fibonacci数列</a>
+                    
+                        (Categories: <a href="/category/tricks">tricks</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/tricks/2016/03/22/ruby-trick-4.html">Ruby技巧之14 Warning</a>
+                    
+                        (Categories: <a href="/category/tricks">tricks</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/tricks/2016/03/20/ruby-trick-2.html">Ruby技巧之12</a>
+                    
+                        (Categories: <a href="/category/tricks">tricks</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
         
             
         
@@ -126,11 +220,10 @@ End time      : 06:53:06
         
             
         
-            
-        
     
-        
-            
+
+    
+    
         
             
         
@@ -140,120 +233,21 @@ End time      : 06:53:06
     
         
             
-        
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/tricks/2015/12/23/ruby-trick.html">神奇的Ruby小技巧之1～11</a>
+                    
+                        (Categories: <a href="/category/tricks">tricks</a>)
+                    
+                </li>
+                
+                
             
         
     
 
     
     
-        
-            
-        
-            
-        
-    
-        
-            
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-            
-        
-    
-
-    
-    
-        
-            
         
             
         
@@ -266,10 +260,10 @@ End time      : 06:53:06
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/others/2016/04/26/javascript-validator-for-input-number.html">&laquo; Javascript Validator for Input Number</a>
+    <a class="prev" href="/tricks/2016/03/20/ruby-trick-2.html">&laquo; Ruby技巧之12</a>
   
   
-    <a class="next" href="/python/security/2016/05/21/python-simple-ciphertext.html">Python Simple Ciphertext &raquo;</a>
+    <a class="next" href="/tricks/2016/03/22/ruby-trick-4.html">Ruby技巧之14 Warning &raquo;</a>
   
 </div>
 

@@ -1,0 +1,31 @@
+---
+layout: post
+title:  "Ruby技巧之14 Warning"
+date:   2016-03-22 00:18:23 +0800
+categories: [tricks]
+---
+
+>代码来自best-ruby.com
+
+### 开启Ruby警告
+
+{% highlight ruby %}
+
+#将全局变量VERBOSE设为真
+$VERBOSE = true
+
+#定义类方法var，在实例变量var为nil时返回42
+class WarnMe
+  def var
+    @var || 42
+  end
+end
+
+#调用方法var
+p WarnMe.new.var
+
+{% endhighlight %}
+
+在开启了VERBOSE后，即使方法var能够返回42,Ruby仍然会提出警告，提示变量@var未初始化。
+
+使用这个技巧，我们能在保证程序完整运行的同时得到警告。

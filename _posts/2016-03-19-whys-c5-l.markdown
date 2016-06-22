@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "(翻译)规则从何来，梦想因何生"
-date:   2016-04-19 14:39:34 +0700
+date:   2016-03-19 14:39:34 +0700
 categories: [why]
 ---
 >Why the Lucky Stiff

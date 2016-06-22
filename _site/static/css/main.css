@@ -207,3 +207,8 @@ div.col-sm-3 img#about {
 .PageNavigation .prev {
     text-align: left;
 }
+
+.col-sm-8 {
+    padding-left: 0px;
+    padding-right: 0px;
+}

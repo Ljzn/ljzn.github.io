@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "Rails日记第一天"
+date:   2016-06-22 00:18:23 +0800
+categories: [rails]
+---
+
+Rails是一个开源网络应用框架。使用Ruby编写。遵循DRY原则，即不要重复你自己。  
+MVC架构包含Model,View,Controller.  
+Bundler是一个快速安装gem的工具。  
+Rails支持Mysql数据库。  
+服务器会优先访问应用文件中的public文件夹寻找。  
+route中写有域名访问规则。  
+ERB代表可以嵌入Ruby代码。  
+url中可以附加参数。  
+Rails有开发，生产和测试三种环境设置。  
+Rake的意思是Ruby make。  
+Migration是数据库迁移工具，允许用Ruby语言代替SQL。  
+

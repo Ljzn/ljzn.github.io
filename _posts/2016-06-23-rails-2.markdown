@@ -1,0 +1,20 @@
+---
+layout: post
+title:  "Rails日记第二天"
+date:   2016-06-23 00:18:23
+categories: [rails]
+---
+
+通过注释掉已经执行的代码可以解决migration时出现的问题。  
+保持migration的简洁。  
+ActiveRecord是一种对数据库的“智能”操作。  
+ActiveRelation是简洁的面向对象的数据库关系算法。  
+rails console是控制台，可以对record进行创造，更新，删除，查找，筛选。  
+条件表达式有字符串，数组，hash三种形式。  
+query方法有order,limit,offset.  
+scope是用来定义model中的query，可以接受参数。  
+关系数据库有一对一，一对多，多对多三种联想方式。  
+对象之间分拥有和从属关系。  
+
+
+

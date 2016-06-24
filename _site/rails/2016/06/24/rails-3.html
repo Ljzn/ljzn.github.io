@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>Ruby技巧之16 数据获取 - LJZN</title>
+        <title>Rails日记第三天 - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="Ruby技巧之16 数据获取" />
-        <meta name="keywords" content="Ruby技巧之16 数据获取, LJZN, tricks" />
+        <meta name="description" content="Rails日记第三天" />
+        <meta name="keywords" content="Rails日记第三天, LJZN, rails" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,61 +45,29 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>Ruby技巧之16 数据获取</h1>
-<span class="time">24 Mar 2016</span>
+		<h1>Rails日记第三天</h1>
+<span class="time">24 Jun 2016</span>
 
 <span class="categories">
-    &raquo; <a href="/category/tricks">tricks</a>
+    &raquo; <a href="/category/rails">rails</a>
 </span>
 
 
 <div class="content">
-    <div class="post"><blockquote>
-  <p>代码来自best-ruby.com</p>
-</blockquote>
+    <div class="post"><p>多对多关系有‘简单’和‘复杂’两种形式。<br />
+多对多关系里，两头的对象之间有中介对象。<br />
+CRUD代表创造，读取，更新，删除四种基本操作。<br />
+CRUD实现需要生成新的控制器，通常一个模型一个控制器，模型用复数形式。<br />
+CRUD遵守简洁url原则。<br />
+任何用Rails/ERB格式写的代码都可以用HTML格式实现。<br />
+Rails/ERB格式比简单HTML代码更容易编写，也更强大。<br />
+用Rails/ERB新建表单有三种格式：array of parameters,object-aware和form_for:object.<br />
+在控制器中可以预设表单的默认值。</p>
 
-<h3 id="fetch">用fetch方法可以返回一个集合中有定义的参数</h3>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#定义Hash，key是：var
-</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="ss">var: </span><span class="mi">42</span><span class="p">}</span>
-
-<span class="c1">#当fetch得到的参数是不存在的key时，返回参数中的值
-</span>
-<span class="nb">p</span> <span class="n">params</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:var</span><span class="p">)</span>
-<span class="nb">p</span> <span class="n">params</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:missing</span><span class="p">,</span><span class="mi">42</span><span class="p">)</span>
-<span class="nb">p</span> <span class="n">params</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:missing</span><span class="p">){</span><span class="mi">40</span> <span class="o">+</span> <span class="mi">2</span><span class="p">}</span>
-
-<span class="c1">#fetch方法不会对原Hash做任何修改
-</span>
-<span class="n">params</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:missing</span><span class="p">)</span></code></pre></figure>
-
-<p>使用fetch方法，即使参数中包含不存在的key，也不妨碍我们获取其它key的值。</p>
 </div>
 </div>
 
 
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
 
     
     
@@ -118,26 +86,9 @@
                 <ul>
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/23/ruby-trick-5.html">Ruby技巧之15 fibonacci数列</a>
+                    <a href="https://ljzn.github.io/rails/2016/06/23/rails-2.html">Rails日记第二天</a>
                     
-                        (Categories: <a href="/category/tricks">tricks</a>)
-                    
-                </li>
-                
-                
-            
-        
-    
-
-    
-    
-        
-            
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/22/ruby-trick-4.html">Ruby技巧之14 Warning</a>
-                    
-                        (Categories: <a href="/category/tricks">tricks</a>)
+                        (Categories: <a href="/category/rails">rails</a>)
                     
                 </li>
                 
@@ -152,26 +103,9 @@
             
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/21/ruby-trick-3.html">Ruby技巧之13 垃圾回收</a>
+                    <a href="https://ljzn.github.io/rails/2016/06/22/rails-1.html">Rails日记第一天</a>
                     
-                        (Categories: <a href="/category/tricks">tricks</a>)
-                    
-                </li>
-                
-                
-            
-        
-    
-
-    
-    
-        
-            
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/20/ruby-trick-2.html">Ruby技巧之12</a>
-                    
-                        (Categories: <a href="/category/tricks">tricks</a>)
+                        (Categories: <a href="/category/rails">rails</a>)
                     
                 </li>
                 
@@ -212,15 +146,40 @@
     
         
             
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2015/12/23/ruby-trick.html">神奇的Ruby小技巧之1～11</a>
-                    
-                        (Categories: <a href="/category/tricks">tricks</a>)
-                    
-                </li>
-                
-                
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
             
         
     
@@ -239,10 +198,8 @@
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/tricks/2016/03/23/ruby-trick-5.html">&laquo; Ruby技巧之15 fibonacci数列</a>
+    <a class="prev" href="/rails/2016/06/23/rails-2.html">&laquo; Rails日记第二天</a>
   
-  
-    <a class="next" href="/rails/2016/06/22/rails-1.html">Rails日记第一天 &raquo;</a>
   
 </div>
 

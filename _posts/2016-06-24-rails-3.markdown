@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "Rails日记第三天"
+date:   2016-06-24 00:18:23
+categories: [rails]
+---
+
+多对多关系有‘简单’和‘复杂’两种形式。  
+多对多关系有两头的对象之间有中介对象。  
+CRUD代表创造，读取，更新，删除四种基本操作。  
+CRUD实现需要生成新的控制器，通常一个模型一个控制器，模型用复数形式。  
+遵守简洁url。  
+任何用Rails/ERB格式写的代码都可以用HTML格式实现。  
+Rails/ERB格式比简单HTML代码更容易编写，也更强大。  
+用Rails/ERB新建表单有三种格式：array of parameters,object-aware和form_for:object.  
+在控制器中可以预设表单的默认值。  
+

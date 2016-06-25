@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "Rails日记第四天"
+date:   2016-06-25 00:18:23
+categories: [rails]
+---
+
+Rails 4中使用强参数对群体赋值进行过滤。  
+create动作的流程：实例化新对象，保存对象，若成功，跳转到主页，若失败，重现表格。  
+delete动作的流程：确认删除，警告，显示记录。  
+网站可以重复使用存放在cookie中的数据。  
+Flash Hash是保存在session中的数据，每次调用后会被destroy。  
+本地变量在destroy后依然可以访问。  
+使用layouts可以对页面框架布局。  
+组件模板partial templates的文件名以下划线开头。  
+使用render来在不同页面中调用组件模板。  
+文本助手包括文本的去格式化，省略，高亮，截取，复数，循环等。  
+

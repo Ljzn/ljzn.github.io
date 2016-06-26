@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>Ruby技巧之15 fibonacci数列 - LJZN</title>
+        <title>Rails日记第五天 - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="Ruby技巧之15 fibonacci数列" />
-        <meta name="keywords" content="Ruby技巧之15 fibonacci数列, LJZN, tricks" />
+        <meta name="description" content="Rails日记第五天" />
+        <meta name="keywords" content="Rails日记第五天, LJZN, rails" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,71 +45,30 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>Ruby技巧之15 fibonacci数列</h1>
-<span class="time">23 Mar 2016</span>
+		<h1>Rails日记第五天</h1>
+<span class="time">26 Jun 2016</span>
 
 <span class="categories">
-    &raquo; <a href="/category/tricks">tricks</a>
+    &raquo; <a href="/category/rails">rails</a>
 </span>
 
 
 <div class="content">
-    <div class="post"><blockquote>
-  <p>代码来自best-ruby.com</p>
-</blockquote>
+    <div class="post"><p>数字助手包括单位，百分比，精度，千分位，口语表述，体积表述和电话格式。<br />
+日期时间计算使用整数。<br />
+Rails可以通过格式符号来设置日期时间如何转换成字符串。<br />
+自定义助手在生成控制器的时候被创建，它的方法可以在view模板中使用。<br />
+自定义助手的用途：代替高频使用的代码，存放复杂代码以简化view，或书写大量Ruby代码。<br />
+清理助手可以屏蔽不必要的HTML代码。<br />
+sanitize的设置参数是白名单形式，默认是全部元素。<br />
+raw（）代表直接执行其中的代码。<br />
+资源管线用于优化css和javascript的管理。<br />
+在生产环境中不会进行预编译，因为很耗时间。</p>
 
-<h3 id="fibonacci">非常简短的fibonacci数列</h3>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#使用update方法可以直接修改Hash中的元素
-</span>
-<span class="n">fibonacci</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">{</span> <span class="o">|</span><span class="n">numbers</span><span class="p">,</span><span class="n">index</span><span class="o">|</span>
-  <span class="n">numbers</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">fibonacci</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-<span class="p">}.</span><span class="nf">update</span><span class="p">(</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1">#输出数列的一项
-</span>
-<span class="nb">p</span> <span class="n">fibonacci</span><span class="p">[</span><span class="mi">300</span><span class="p">]</span></code></pre></figure>
-
-<p>update方法可以在定义时调用。</p>
 </div>
 </div>
 
 
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
 
     
     
@@ -149,9 +108,9 @@
                 <ul>
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/24/ruby-trick-6.html">Ruby技巧之16 数据获取</a>
+                    <a href="https://ljzn.github.io/rails/2016/06/25/rails-4.html">Rails日记第四天</a>
                     
-                        (Categories: <a href="/category/tricks">tricks</a>)
+                        (Categories: <a href="/category/rails">rails</a>)
                     
                 </li>
                 
@@ -173,26 +132,9 @@
             
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/22/ruby-trick-4.html">Ruby技巧之14 Warning</a>
+                    <a href="https://ljzn.github.io/rails/2016/06/24/rails-3.html">Rails日记第三天</a>
                     
-                        (Categories: <a href="/category/tricks">tricks</a>)
-                    
-                </li>
-                
-                
-            
-        
-    
-
-    
-    
-        
-            
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/21/ruby-trick-3.html">Ruby技巧之13 垃圾回收</a>
-                    
-                        (Categories: <a href="/category/tricks">tricks</a>)
+                        (Categories: <a href="/category/rails">rails</a>)
                     
                 </li>
                 
@@ -207,41 +149,13 @@
             
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/20/ruby-trick-2.html">Ruby技巧之12</a>
+                    <a href="https://ljzn.github.io/rails/2016/06/23/rails-2.html">Rails日记第二天</a>
                     
-                        (Categories: <a href="/category/tricks">tricks</a>)
+                        (Categories: <a href="/category/rails">rails</a>)
                     
                 </li>
                 
                 
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
             
         
     
@@ -252,13 +166,83 @@
             
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2015/12/23/ruby-trick.html">神奇的Ruby小技巧之1～11</a>
+                    <a href="https://ljzn.github.io/rails/2016/06/22/rails-1.html">Rails日记第一天</a>
                     
-                        (Categories: <a href="/category/tricks">tricks</a>)
+                        (Categories: <a href="/category/rails">rails</a>)
                     
                 </li>
                 
                 
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
             
         
     
@@ -277,10 +261,8 @@
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/tricks/2016/03/22/ruby-trick-4.html">&laquo; Ruby技巧之14 Warning</a>
+    <a class="prev" href="/lrthw/2016/06/26/lrhw-4.html">&laquo; 笨方法学Ruby第四天</a>
   
-  
-    <a class="next" href="/tricks/2016/03/24/ruby-trick-6.html">Ruby技巧之16 数据获取 &raquo;</a>
   
 </div>
 

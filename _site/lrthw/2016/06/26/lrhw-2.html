@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>Ruby技巧之14 Warning - LJZN</title>
+        <title>笨方法学Ruby第二天 - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="Ruby技巧之14 Warning" />
-        <meta name="keywords" content="Ruby技巧之14 Warning, LJZN, tricks" />
+        <meta name="description" content="笨方法学Ruby第二天" />
+        <meta name="keywords" content="笨方法学Ruby第二天, LJZN, LRTHW" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,100 +45,30 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>Ruby技巧之14 Warning</h1>
-<span class="time">22 Mar 2016</span>
+		<h1>笨方法学Ruby第二天</h1>
+<span class="time">26 Jun 2016</span>
 
 <span class="categories">
-    &raquo; <a href="/category/tricks">tricks</a>
+    &raquo; <a href="/category/LRTHW">LRTHW</a>
 </span>
 
 
 <div class="content">
-    <div class="post"><blockquote>
-  <p>代码来自best-ruby.com</p>
-</blockquote>
+    <div class="post">
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># A comment, this is so you can read your program later.</span>
+<span class="c1"># Anything after the # is ignored by ruby.</span>
 
-<h3 id="ruby">开启Ruby警告</h3>
+<span class="nb">puts</span> <span class="s2">"I could have code like this."</span> <span class="c1"># and the comment after is ignored</span>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#将全局变量VERBOSE设为真
-</span>
-<span class="vg">$VERBOSE</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="c1"># You can also use a comment to "disable" or comment out a piece of code:</span>
+<span class="c1"># puts "This won't run."</span>
 
-<span class="c1">#定义类方法var，在实例变量var为nil时返回42
-</span>
-<span class="k">class</span> <span class="nc">WarnMe</span>
-  <span class="k">def</span> <span class="nf">var</span>
-    <span class="vi">@var</span> <span class="o">||</span> <span class="mi">42</span>
-  <span class="k">end</span>
-<span class="k">end</span>
+<span class="nb">puts</span> <span class="s2">"This will run."</span></code></pre></figure>
 
-<span class="c1">#调用方法var
-</span>
-<span class="nb">p</span> <span class="no">WarnMe</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">var</span></code></pre></figure>
-
-<p>在开启了VERBOSE后，即使方法var能够返回42,Ruby仍然会提出警告，提示变量@var未初始化。</p>
-
-<p>使用这个技巧，我们能在保证程序完整运行的同时得到警告。</p>
 </div>
 </div>
 
 
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
 
     
     
@@ -157,50 +87,9 @@
                 <ul>
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/24/ruby-trick-6.html">Ruby技巧之16 数据获取</a>
+                    <a href="https://ljzn.github.io/lrthw/2016/06/26/lrhw-4.html">笨方法学Ruby第四天</a>
                     
-                        (Categories: <a href="/category/tricks">tricks</a>)
-                    
-                </li>
-                
-                
-            
-        
-    
-
-    
-    
-        
-            
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/23/ruby-trick-5.html">Ruby技巧之15 fibonacci数列</a>
-                    
-                        (Categories: <a href="/category/tricks">tricks</a>)
-                    
-                </li>
-                
-                
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/21/ruby-trick-3.html">Ruby技巧之13 垃圾回收</a>
-                    
-                        (Categories: <a href="/category/tricks">tricks</a>)
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
                     
                 </li>
                 
@@ -215,27 +104,13 @@
             
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2016/03/20/ruby-trick-2.html">Ruby技巧之12</a>
+                    <a href="https://ljzn.github.io/lrthw/2016/06/26/lrhw-3.html">笨方法学Ruby第三天</a>
                     
-                        (Categories: <a href="/category/tricks">tricks</a>)
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
                     
                 </li>
                 
                 
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
             
         
     
@@ -260,13 +135,104 @@
             
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/tricks/2015/12/23/ruby-trick.html">神奇的Ruby小技巧之1～11</a>
+                    <a href="https://ljzn.github.io/lrthw/2016/06/25/lrhw-1.html">笨方法学Ruby第一天</a>
                     
-                        (Categories: <a href="/category/tricks">tricks</a>)
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
                     
                 </li>
                 
                 
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
             
         
     
@@ -285,10 +251,10 @@
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/tricks/2016/03/21/ruby-trick-3.html">&laquo; Ruby技巧之13 垃圾回收</a>
+    <a class="prev" href="/rails/2016/06/25/rails-4.html">&laquo; Rails日记第四天</a>
   
   
-    <a class="next" href="/tricks/2016/03/23/ruby-trick-5.html">Ruby技巧之15 fibonacci数列 &raquo;</a>
+    <a class="next" href="/lrthw/2016/06/26/lrhw-3.html">笨方法学Ruby第三天 &raquo;</a>
   
 </div>
 

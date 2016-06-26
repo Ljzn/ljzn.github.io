@@ -1,0 +1,25 @@
+---
+layout: post
+title:  "笨方法学Ruby第十二天"
+date:   2016-06-26 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+print "Give me some money: "
+number = gets.chomp.to_f
+
+back_money = number * 0.1
+puts "Return money is $#{back_money}."
+
+print "Give me another number: "
+another = gets.chomp
+number = another.to_f
+
+smaller = number / 100
+puts "A smaller number is #{smaller}."
+
+{% endhighlight %}
+
+

@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "笨方法学Ruby第一天"
+date:   2016-06-25 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+puts "Hello World!"
+puts "Hello Again"
+puts "I like typing this."
+puts "This is fun."
+puts "Yay! Printing."
+puts "I'd much rather you 'not'."
+puts 'I "said" do not touch this.'
+
+{% endhighlight %}

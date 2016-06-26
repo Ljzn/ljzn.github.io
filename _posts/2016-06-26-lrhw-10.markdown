@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "笨方法学Ruby第十天"
+date:   2016-06-26 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+tabby_cat = "\tI'm tabbed in."
+persian_cat = "I'm split\non a line."
+backslash_cat = "I'm \\ a \\ cat."
+cat_food = """
+\t* Cat food
+\t* Fishies
+\t* Catnip\n\t* Grass
+"""
+
+fat_cat = "\nI'll do a list:#{cat_food}"
+
+puts tabby_cat
+puts persian_cat
+puts backslash_cat
+puts fat_cat
+
+{% endhighlight %}
+
+

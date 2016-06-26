@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "笨方法学Ruby第十三天"
+date:   2016-06-26 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+length, width = ARGV
+
+puts "Your length is: #{length}"
+puts "Your width is: #{width}"
+
+print "Give me your height: "
+height = $stdin.gets.chomp
+
+puts "Your volume is #{length.to_i * width.to_i * height.to_i}"
+
+{% endhighlight %}
+
+gets会将ARGV附带的第一个参数当作文件名，试图从中读取数据。所以需要在gets前加上$stdin重新定位到键盘。

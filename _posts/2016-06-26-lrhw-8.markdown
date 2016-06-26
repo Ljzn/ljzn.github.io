@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "笨方法学Ruby第八天"
+date:   2016-06-26 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+formatter = "%{first} %{second} %{third} %{fourth}"
+
+puts formatter % {first: 1, second: 2, third: 3, fourth: 4}
+puts formatter % {first: "one", second: "two", third: "three", fourth: "four"}
+puts formatter % {first: true, second: false, third: true, fourth: false}
+puts formatter % {first: formatter, second: formatter, third: formatter, fourth: formatter}
+
+puts formatter % {
+	first: "I had this thing.",
+	second: "That you could type up right.",
+	third: "But it didn't sing.",
+	fourth: "So I said goodnight."
+}
+
+{% endhighlight %}
+
+创建格式化字符串通常用#{}，给多个值指定同一格式时%{}更好用。

@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>Rails日记第一天 - LJZN</title>
+        <title>笨方法学Ruby第四天 - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="Rails日记第一天" />
-        <meta name="keywords" content="Rails日记第一天, LJZN, rails" />
+        <meta name="description" content="笨方法学Ruby第四天" />
+        <meta name="keywords" content="笨方法学Ruby第四天, LJZN, LRTHW" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,31 +45,51 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>Rails日记第一天</h1>
-<span class="time">22 Jun 2016</span>
+		<h1>笨方法学Ruby第四天</h1>
+<span class="time">26 Jun 2016</span>
 
 <span class="categories">
-    &raquo; <a href="/category/rails">rails</a>
+    &raquo; <a href="/category/LRTHW">LRTHW</a>
 </span>
 
 
 <div class="content">
-    <div class="post"><p>Rails是一个开源网络应用框架。使用Ruby编写。遵循DRY原则，即不要重复你自己。<br />
-MVC架构包含Model,View,Controller.<br />
-Bundler是一个快速安装gem的工具。<br />
-Rails支持Mysql数据库。<br />
-服务器会优先访问应用文件中的public文件夹寻找。<br />
-route中写有域名访问规则。<br />
-ERB代表可以嵌入Ruby代码。<br />
-url中可以附加参数。<br />
-Rails有开发，生产和测试三种环境设置。<br />
-Rake的意思是Ruby make。<br />
-Migration是数据库迁移工具，允许用Ruby语言代替SQL。</p>
+    <div class="post">
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cars</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">space_in_a_car</span> <span class="o">=</span> <span class="mi">4</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">drivers</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">passengers</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="n">cars_not_driven</span> <span class="o">=</span> <span class="n">cars</span> <span class="o">-</span> <span class="n">drivers</span>
+<span class="n">cars_driven</span> <span class="o">=</span> <span class="n">drivers</span>
+<span class="n">carpool_capacity</span> <span class="o">=</span> <span class="n">cars_driven</span> <span class="o">*</span> <span class="n">space_in_a_car</span>
+<span class="n">average_passengers_per_car</span> <span class="o">=</span> <span class="n">passengers</span> <span class="o">/</span> <span class="n">cars_driven</span>
+
+
+<span class="nb">puts</span> <span class="s2">"There are </span><span class="si">#{</span><span class="n">cars</span><span class="si">}</span><span class="s2"> cars available."</span>
+<span class="nb">puts</span> <span class="s2">"There are only </span><span class="si">#{</span><span class="n">drivers</span><span class="si">}</span><span class="s2"> drivers available."</span>
+<span class="nb">puts</span> <span class="s2">"There will be </span><span class="si">#{</span><span class="n">cars_not_driven</span><span class="si">}</span><span class="s2"> empty cars today."</span>
+<span class="nb">puts</span> <span class="s2">"We can transport </span><span class="si">#{</span><span class="n">carpool_capacity</span><span class="si">}</span><span class="s2"> people today."</span>
+<span class="nb">puts</span> <span class="s2">"We have </span><span class="si">#{</span><span class="n">passengers</span><span class="si">}</span><span class="s2"> to carpool today."</span>
+<span class="nb">puts</span> <span class="s2">"We need to put about </span><span class="si">#{</span><span class="n">average_passengers_per_car</span><span class="si">}</span><span class="s2"> in each car."</span></code></pre></figure>
 
 </div>
 </div>
 
 
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
 
     
     
@@ -81,9 +101,9 @@ Migration是数据库迁移工具，允许用Ruby语言代替SQL。</p>
                 <ul>
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/rails/2016/06/26/rails-5.html">Rails日记第五天</a>
+                    <a href="https://ljzn.github.io/lrthw/2016/06/26/lrhw-3.html">笨方法学Ruby第三天</a>
                     
-                        (Categories: <a href="/category/rails">rails</a>)
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
                     
                 </li>
                 
@@ -96,32 +116,11 @@ Migration是数据库迁移工具，允许用Ruby语言代替SQL。</p>
     
         
             
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/rails/2016/06/25/rails-4.html">Rails日记第四天</a>
+                    <a href="https://ljzn.github.io/lrthw/2016/06/26/lrhw-2.html">笨方法学Ruby第二天</a>
                     
-                        (Categories: <a href="/category/rails">rails</a>)
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
                     
                 </li>
                 
@@ -143,9 +142,9 @@ Migration是数据库迁移工具，允许用Ruby语言代替SQL。</p>
             
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/rails/2016/06/24/rails-3.html">Rails日记第三天</a>
+                    <a href="https://ljzn.github.io/lrthw/2016/06/25/lrhw-1.html">笨方法学Ruby第一天</a>
                     
-                        (Categories: <a href="/category/rails">rails</a>)
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
                     
                 </li>
                 
@@ -158,15 +157,12 @@ Migration是数据库迁移工具，允许用Ruby语言代替SQL。</p>
     
         
             
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/rails/2016/06/23/rails-2.html">Rails日记第二天</a>
-                    
-                        (Categories: <a href="/category/rails">rails</a>)
-                    
-                </li>
-                
-                
+        
+    
+
+    
+    
+        
             
         
     
@@ -262,10 +258,10 @@ Migration是数据库迁移工具，允许用Ruby语言代替SQL。</p>
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/tricks/2016/03/24/ruby-trick-6.html">&laquo; Ruby技巧之16 数据获取</a>
+    <a class="prev" href="/lrthw/2016/06/26/lrhw-3.html">&laquo; 笨方法学Ruby第三天</a>
   
   
-    <a class="next" href="/rails/2016/06/23/rails-2.html">Rails日记第二天 &raquo;</a>
+    <a class="next" href="/rails/2016/06/26/rails-5.html">Rails日记第五天 &raquo;</a>
   
 </div>
 

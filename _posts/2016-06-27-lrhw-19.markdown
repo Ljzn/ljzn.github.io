@@ -1,0 +1,39 @@
+---
+layout: post
+title:  "笨方法学Ruby第十九天"
+date:   2016-06-27 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+def heros_and_food(hero_count, boxes_of_food)
+	puts "There are #{hero_count} heros!"
+	puts "We have #{boxes_of_food} boxes of food!"
+	puts "Man that's enough for a party!"
+	puts "Get a fire.\n"
+end
+
+
+puts "We can just give the function numbers directly:"
+heros_and_food(20, 30)
+
+
+puts "OR, we can use variables from our script:"
+amount_of_hero = 10
+amount_of_food = 50
+
+heros_and_food(amount_of_hero, amount_of_food)
+
+
+puts "We can even do math inside too:"
+heros_and_food(10 + 20, 5 + 6)
+
+
+puts "And we can combine the two, variables and math:"
+heros_and_food(amount_of_hero + 100, amount_of_food + 1000)
+
+
+{% endhighlight %}
+
+

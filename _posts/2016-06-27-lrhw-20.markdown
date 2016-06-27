@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "笨方法学Ruby第二十天"
+date:   2016-06-27 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+
+
+
+{% endhighlight %}
+
+

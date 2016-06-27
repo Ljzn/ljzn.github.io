@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>笨方法学Ruby第一天 - LJZN</title>
+        <title>笨方法学Ruby第八天 - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="笨方法学Ruby第一天" />
-        <meta name="keywords" content="笨方法学Ruby第一天, LJZN, LRTHW" />
+        <meta name="description" content="笨方法学Ruby第八天" />
+        <meta name="keywords" content="笨方法学Ruby第八天, LJZN, LRTHW" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,8 +45,8 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>笨方法学Ruby第一天</h1>
-<span class="time">25 Jun 2016</span>
+		<h1>笨方法学Ruby第八天</h1>
+<span class="time">26 Jun 2016</span>
 
 <span class="categories">
     &raquo; <a href="/category/LRTHW">LRTHW</a>
@@ -55,14 +55,21 @@
 
 <div class="content">
     <div class="post">
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="s2">"Hello World!"</span>
-<span class="nb">puts</span> <span class="s2">"Hello Again"</span>
-<span class="nb">puts</span> <span class="s2">"I like typing this."</span>
-<span class="nb">puts</span> <span class="s2">"This is fun."</span>
-<span class="nb">puts</span> <span class="s2">"Yay! Printing."</span>
-<span class="nb">puts</span> <span class="s2">"I'd much rather you 'not'."</span>
-<span class="nb">puts</span> <span class="s1">'I "said" do not touch this.'</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">formatter</span> <span class="o">=</span> <span class="s2">"%{first} %{second} %{third} %{fourth}"</span>
 
+<span class="nb">puts</span> <span class="n">formatter</span> <span class="o">%</span> <span class="p">{</span><span class="ss">first: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">second: </span><span class="mi">2</span><span class="p">,</span> <span class="ss">third: </span><span class="mi">3</span><span class="p">,</span> <span class="ss">fourth: </span><span class="mi">4</span><span class="p">}</span>
+<span class="nb">puts</span> <span class="n">formatter</span> <span class="o">%</span> <span class="p">{</span><span class="ss">first: </span><span class="s2">"one"</span><span class="p">,</span> <span class="ss">second: </span><span class="s2">"two"</span><span class="p">,</span> <span class="ss">third: </span><span class="s2">"three"</span><span class="p">,</span> <span class="ss">fourth: </span><span class="s2">"four"</span><span class="p">}</span>
+<span class="nb">puts</span> <span class="n">formatter</span> <span class="o">%</span> <span class="p">{</span><span class="ss">first: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">second: </span><span class="kp">false</span><span class="p">,</span> <span class="ss">third: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">fourth: </span><span class="kp">false</span><span class="p">}</span>
+<span class="nb">puts</span> <span class="n">formatter</span> <span class="o">%</span> <span class="p">{</span><span class="ss">first: </span><span class="n">formatter</span><span class="p">,</span> <span class="ss">second: </span><span class="n">formatter</span><span class="p">,</span> <span class="ss">third: </span><span class="n">formatter</span><span class="p">,</span> <span class="ss">fourth: </span><span class="n">formatter</span><span class="p">}</span>
+
+<span class="nb">puts</span> <span class="n">formatter</span> <span class="o">%</span> <span class="p">{</span>
+	<span class="ss">first: </span><span class="s2">"I had this thing."</span><span class="p">,</span>
+	<span class="ss">second: </span><span class="s2">"That you could type up right."</span><span class="p">,</span>
+	<span class="ss">third: </span><span class="s2">"But it didn't sing."</span><span class="p">,</span>
+	<span class="ss">fourth: </span><span class="s2">"So I said goodnight."</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>创建格式化字符串通常用#{}，给多个值指定同一格式时%{}更好用。</p>
 </div>
 </div>
 
@@ -99,16 +106,6 @@
     
     
         
-            
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/lrthw/2016/06/26/lrhw-8.html">笨方法学Ruby第八天</a>
-                    
-                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
-                    
-                </li>
-                
-                
             
         
     
@@ -184,6 +181,16 @@
     
     
         
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/06/26/lrhw-3.html">笨方法学Ruby第三天</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
             
         
     
@@ -356,10 +363,10 @@
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/rails/2016/06/24/rails-3.html">&laquo; Rails日记第三天</a>
+    <a class="prev" href="/lrthw/2016/06/26/lrhw-7.html">&laquo; 笨方法学Ruby第七天</a>
   
   
-    <a class="next" href="/rails/2016/06/25/rails-4.html">Rails日记第四天 &raquo;</a>
+    <a class="next" href="/lrthw/2016/06/26/lrhw-9.html">笨方法学Ruby第九天 &raquo;</a>
   
 </div>
 

@@ -1,0 +1,60 @@
+---
+layout: post
+title:  "笨方法学Ruby第十六天"
+date:   2016-06-27 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+filename = ARGV.first
+
+puts "We're going to erase #{filename}"
+puts "If you don't want that, hit CTRL-C (^C)."
+puts "If you do want that, hit RETURN."
+
+$stdin.gets
+
+puts "Opening the file..."
+target = open(filename, 'w')
+
+puts "Truncating the file. Goodbye!"
+target.truncate(0)
+
+puts "Now I'm going to ask you for three lines."
+
+print "line 1: "
+line1 = $stdin.gets.chomp
+print "line 2: "
+line2 = $stdin.gets.chomp
+print "line 3: "
+line3 = $stdin.gets.chomp
+
+puts "I'm going to write this to the file."
+
+target.write(line1)
+target.write("\n")
+target.write(line2)
+target.write("\n")
+target.write(line3)
+target.write("\n")
+
+puts "And finally, we close it."
+target.close
+
+{% endhighlight %}
+
+用了‘w’参数，truncate()就不是必需的了。
+
+{% highlight ruby %}
+
+filename = ARGV.first
+
+txt = open(filename)
+
+print txt.read
+
+txt.close
+
+{% endhighlight %}
+

@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "Rails日记第六天"
+date:   2016-06-27 00:18:23
+categories: [rails]
+---
+
+使用资源管线时，css样式表，js文件和图片保存在app/assets文件中。  
+sass意思是语法惊艳的样式表。  
+在javascript的变量格式化中加入');(',就可以退出当前命令。  
+j()表示不执行括号内的javascript语句。  
+当要显示许多输入框时，用form_for格式比较方便。  
+表单助手包括短文本，密码，长文本，隐藏，播放，打勾，选择，标签。  
+表单设置参数可以使范围，数组，hash或数组的数组。  
+在Rails中以1i,2i,3i,4i,5i分别代表年，月，日，小时，分钟。  
+可以在view/application文件夹中存放需要再多个页面调用的代码块。  
+输入不合法的表单会自动归为field_with\_error类。  
+

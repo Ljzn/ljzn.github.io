@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>笨方法学Ruby第一天 - LJZN</title>
+        <title>笨方法学Ruby第十四天 - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="笨方法学Ruby第一天" />
-        <meta name="keywords" content="笨方法学Ruby第一天, LJZN, LRTHW" />
+        <meta name="description" content="笨方法学Ruby第十四天" />
+        <meta name="keywords" content="笨方法学Ruby第十四天, LJZN, LRTHW" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,8 +45,8 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>笨方法学Ruby第一天</h1>
-<span class="time">25 Jun 2016</span>
+		<h1>笨方法学Ruby第十四天</h1>
+<span class="time">26 Jun 2016</span>
 
 <span class="categories">
     &raquo; <a href="/category/LRTHW">LRTHW</a>
@@ -55,13 +55,25 @@
 
 <div class="content">
     <div class="post">
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="s2">"Hello World!"</span>
-<span class="nb">puts</span> <span class="s2">"Hello Again"</span>
-<span class="nb">puts</span> <span class="s2">"I like typing this."</span>
-<span class="nb">puts</span> <span class="s2">"This is fun."</span>
-<span class="nb">puts</span> <span class="s2">"Yay! Printing."</span>
-<span class="nb">puts</span> <span class="s2">"I'd much rather you 'not'."</span>
-<span class="nb">puts</span> <span class="s1">'I "said" do not touch this.'</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">user_name</span><span class="p">,</span> <span class="n">race</span> <span class="o">=</span> <span class="no">ARGV</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="s1">'&gt; '</span>
+
+<span class="nb">puts</span> <span class="s2">"Hi </span><span class="si">#{</span><span class="n">user_name</span><span class="si">}</span><span class="s2"> the </span><span class="si">#{</span><span class="n">race</span><span class="si">}</span><span class="s2">."</span>
+<span class="nb">puts</span> <span class="s2">"I'd like to ask you a few questions."</span>
+<span class="nb">puts</span> <span class="s2">"Do you like me </span><span class="si">#{</span><span class="n">user_name</span><span class="si">}</span><span class="s2">? "</span><span class="p">,</span> <span class="n">prompt</span>
+<span class="n">likes</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+
+<span class="nb">puts</span> <span class="s2">"Where do you live </span><span class="si">#{</span><span class="n">user_name</span><span class="si">}</span><span class="s2">? "</span><span class="p">,</span> <span class="n">prompt</span>
+<span class="n">lives</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+
+<span class="nb">puts</span> <span class="s2">"What kind of computer do you have? "</span><span class="p">,</span><span class="n">prompt</span>
+<span class="n">computer</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+
+<span class="nb">puts</span> <span class="s2">"""
+Alright, so you said </span><span class="si">#{</span><span class="n">likes</span><span class="si">}</span><span class="s2"> about liking me.
+You live in </span><span class="si">#{</span><span class="n">lives</span><span class="si">}</span><span class="s2">. Not sure where that is.
+And you have a </span><span class="si">#{</span><span class="n">computer</span><span class="si">}</span><span class="s2"> computer. Nice.
+"""</span></code></pre></figure>
 
 </div>
 </div>
@@ -356,10 +368,10 @@
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/rails/2016/06/24/rails-3.html">&laquo; Rails日记第三天</a>
+    <a class="prev" href="/lrthw/2016/06/26/lrhw-13.html">&laquo; 笨方法学Ruby第十三天</a>
   
   
-    <a class="next" href="/rails/2016/06/25/rails-4.html">Rails日记第四天 &raquo;</a>
+    <a class="next" href="/lrthw/2016/06/26/lrhw-15.html">笨方法学Ruby第十五天 &raquo;</a>
   
 </div>
 

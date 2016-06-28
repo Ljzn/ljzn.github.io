@@ -1,0 +1,62 @@
+---
+layout: post
+title:  "笨方法学Ruby第二十一天"
+date:   2016-06-28 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+def add(a, b)
+	puts "ADDING #{a} + #{b}"
+	a + b
+end
+
+def subtract(a, b)
+	puts "SUBTRACTING #{a} - #{b}"
+	a - b
+end
+
+def multiply(a, b)
+	puts "MULTIPLYING #{a} * #{b}"
+	a * b
+end
+
+def divide(a, b)
+	puts "DIVIDING #{a} / #{b}"
+	a / b
+end
+
+
+puts "Let's do some math with just functions!"
+
+age = add(30, 5)
+height = subtract(78, 4)
+weight = multiply(90, 2)
+iq = divide(100, 2)
+
+puts "Age :#{age}, Height: #{height}, Weight: #{weight}, IQ: #{iq}"
+
+
+# A puzzle for the extra credit, type it anyway.
+puts "Here is a puzzle."
+
+what = add(age, subtract(height, multiply(weight, divide(iq, 2))))
+
+puts "That becomes: #{what}. Can you do it by hand?"
+
+first = divide(iq, 2)
+second = multiply(weight, first)
+third = subtract(height, second)
+fourth = add(age, third)
+puts fourth
+
+puts " 24 + 34 / 100 - 1023 = ?"
+answer = subtract(add(24, divide(34, 100)), 1023)
+
+puts "#{answer}"
+
+
+{% endhighlight %}
+
+

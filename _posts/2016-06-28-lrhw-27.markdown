@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "笨方法学Ruby第二十七天"
+date:   2016-06-28 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+# 或非什么都不会才是真的
+# 与非什么都会才是假的
+
+{% endhighlight %}
+
+

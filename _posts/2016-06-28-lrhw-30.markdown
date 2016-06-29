@@ -20,24 +20,6 @@ else
 	puts "We can't decide."
 end
 
-if trucks > cars
-	puts "That's too many trucks."
-elsif trucks < cars
-	puts "May be we could take the trucks."
-else
-	puts "We still can't decide."
-end
-
-if people > trucks
-	puts "Alright, let's just take the trucks."
-else
-	puts "Fine, let's stay home then."
-end
-
-if cars > people || trucks < cars
-	puts "Cars No.1!"
-end
-
 {% endhighlight %}
 
-条件语句中ruby只会启动它遇到的第一个为真的块。
+

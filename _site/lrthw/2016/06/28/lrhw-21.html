@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="/static/img/ruby.ico" />
+        <title>笨方法学Ruby第二十一天 - LJZN</title>
+        <meta name="author" content="LJZN" />
+        <meta name="description" content="笨方法学Ruby第二十一天" />
+        <meta name="keywords" content="笨方法学Ruby第二十一天, LJZN, LRTHW" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!-- Custom CSS -->        
+        <link rel="stylesheet" href="/static/css/main.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-sm-3">
+                <a href="/"><img id="about" src="/static/img/ruby.png" height="75px" width="75px" /></a>
+                <h1 class="author-name">LJZN</h1>
+                
+                <div id="about">
+                    It's me.
+                </div>
+                
+                <hr size=2>
+                    &raquo; <a href="/">Home</a> <br />
+		    &raquo; <a href="/category/original">Category</a> <br />
+                
+                    &raquo; <a class="about" href="/about/">About Me</a><br />
+                
+                    &raquo; <a class="about" href="https://github.com/ljzn">Github</a><br />
+                
+            </div>
+
+            <div class="col-sm-8 col-offset-1">
+                
+		<h1>笨方法学Ruby第二十一天</h1>
+<span class="time">28 Jun 2016</span>
+
+<span class="categories">
+    &raquo; <a href="/category/LRTHW">LRTHW</a>
+</span>
+
+
+<div class="content">
+    <div class="post">
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+	<span class="nb">puts</span> <span class="s2">"ADDING </span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">b</span><span class="si">}</span><span class="s2">"</span>
+	<span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+	<span class="nb">puts</span> <span class="s2">"SUBTRACTING </span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2"> - </span><span class="si">#{</span><span class="n">b</span><span class="si">}</span><span class="s2">"</span>
+	<span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+	<span class="nb">puts</span> <span class="s2">"MULTIPLYING </span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2"> * </span><span class="si">#{</span><span class="n">b</span><span class="si">}</span><span class="s2">"</span>
+	<span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+	<span class="nb">puts</span> <span class="s2">"DIVIDING </span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2"> / </span><span class="si">#{</span><span class="n">b</span><span class="si">}</span><span class="s2">"</span>
+	<span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+<span class="k">end</span>
+
+
+<span class="nb">puts</span> <span class="s2">"Let's do some math with just functions!"</span>
+
+<span class="n">age</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">subtract</span><span class="p">(</span><span class="mi">78</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">multiply</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">iq</span> <span class="o">=</span> <span class="n">divide</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">puts</span> <span class="s2">"Age :</span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2">, Height: </span><span class="si">#{</span><span class="n">height</span><span class="si">}</span><span class="s2">, Weight: </span><span class="si">#{</span><span class="n">weight</span><span class="si">}</span><span class="s2">, IQ: </span><span class="si">#{</span><span class="n">iq</span><span class="si">}</span><span class="s2">"</span>
+
+
+<span class="c1"># A puzzle for the extra credit, type it anyway.</span>
+<span class="nb">puts</span> <span class="s2">"Here is a puzzle."</span>
+
+<span class="n">what</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">subtract</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">multiply</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">divide</span><span class="p">(</span><span class="n">iq</span><span class="p">,</span> <span class="mi">2</span><span class="p">))))</span>
+
+<span class="nb">puts</span> <span class="s2">"That becomes: </span><span class="si">#{</span><span class="n">what</span><span class="si">}</span><span class="s2">. Can you do it by hand?"</span>
+
+<span class="n">first</span> <span class="o">=</span> <span class="n">divide</span><span class="p">(</span><span class="n">iq</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">second</span> <span class="o">=</span> <span class="n">multiply</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">first</span><span class="p">)</span>
+<span class="n">third</span> <span class="o">=</span> <span class="n">subtract</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span>
+<span class="n">fourth</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">third</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">fourth</span>
+
+<span class="nb">puts</span> <span class="s2">" 24 + 34 / 100 - 1023 = ?"</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="n">subtract</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="n">divide</span><span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="mi">100</span><span class="p">)),</span> <span class="mi">1023</span><span class="p">)</span>
+
+<span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">answer</span><span class="si">}</span><span class="s2">"</span></code></pre></figure>
+
+</div>
+</div>
+
+
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/06/28/lrhw-30.html">笨方法学Ruby第三十天</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/06/28/lrhw-29.html">笨方法学Ruby第二十九天</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/06/28/lrhw-28.html">笨方法学Ruby第二十八天</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/06/28/lrhw-27.html">笨方法学Ruby第二十七天</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/06/28/lrhw-26.html">笨方法学Ruby第二十六天</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/06/28/lrhw-25.html">笨方法学Ruby第二十五天</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+
+    </ul>
+    </div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/rails/2016/06/27/rails-6.html">&laquo; Rails日记第六天</a>
+  
+  
+    <a class="next" href="/lrthw/2016/06/28/lrhw-22.html">笨方法学Ruby第二十二天 &raquo;</a>
+  
+</div>
+
+
+<div class="disqus-comments">
+<div id="disqus_thread"></div>
+<script>
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//ljzn.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+                <footer>
+                    &copy; LJZN
+                     
+                    - <a href="https://github.com/ljzn">https://github.com/ljzn</a> - Powered by Jekyll.
+                    
+
+
+                </footer>
+            </div><!-- end /.col-sm-8 -->
+        </div><!-- end /.container -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+<script id="dsq-count-scr" src="//ljzn.disqus.com/count.js" async></script>
+    </body>
+</html>

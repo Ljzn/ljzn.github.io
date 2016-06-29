@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "Rails日记第七天"
+date:   2016-06-28 00:18:23
+categories: [rails]
+---
+
+在整个app中都可以调用application_helper中的方法。  
+CSRF意为跨站请求伪造。  
+方法是在浏览器加载图片时将其中的表单认作是其它站点的用户授权。  
+防范CSRF的方法有：  
+要求用户身份认证;  
+定期登出不活跃用户;  
+GET请求必须是只读的;  
+期待POST请求的动作只能回应POST请求。  
+用request.post？来验证POST请求。  
+在application_controller中可以关闭CSRF保护。  
+
+

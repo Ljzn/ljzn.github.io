@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "Rails日记第八天"
+date:   2016-06-29 00:10:10
+categories: [rails]
+---
+
+Validation Methods有空白，长度，数字，包含于，除外，格式，唯一，接受，确认，相关。  
+大多数方法都有空白合法，修改限制，条件语句的设置。  
+validates_length\_of不计算空格。  
+errors.full_messages可查看完整错误信息。  
+maximum maximum maximum  
+自定义单个方法时，类名记得要用单数形式。  
+与特定属性无关的错误可以被添加进errors[:base\].  
+rake de:migerate可以方便地修改schema.rb。  
+rails常用命令：g生成，c控制台，s服务器，db数据管理，new新建应用，d撤销生成，plugin new新建插件，r运行一段代码，-h帮助。  
+控制器反馈方法包括before_action,after\_action等。
+

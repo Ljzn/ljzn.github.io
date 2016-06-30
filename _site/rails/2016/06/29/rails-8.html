@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>Rails日记第五天 - LJZN</title>
+        <title>Rails日记第八天 - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="Rails日记第五天" />
-        <meta name="keywords" content="Rails日记第五天, LJZN, rails" />
+        <meta name="description" content="Rails日记第八天" />
+        <meta name="keywords" content="Rails日记第八天, LJZN, rails" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,8 +45,8 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>Rails日记第五天</h1>
-<span class="time">26 Jun 2016</span>
+		<h1>Rails日记第八天</h1>
+<span class="time">29 Jun 2016</span>
 
 <span class="categories">
     &raquo; <a href="/category/rails">rails</a>
@@ -54,21 +54,28 @@
 
 
 <div class="content">
-    <div class="post"><p>数字助手包括单位，百分比，精度，千分位，口语表述，体积表述和电话格式。<br />
-日期时间计算使用整数。<br />
-Rails可以通过格式符号来设置日期时间如何转换成字符串。<br />
-自定义助手在生成控制器的时候被创建，它的方法可以在view模板中使用。<br />
-自定义助手的用途：代替高频使用的代码，存放复杂代码以简化view，或书写大量Ruby代码。<br />
-清理助手可以屏蔽不必要的HTML代码。<br />
-sanitize的设置参数是白名单形式，默认是全部元素。<br />
-raw（）代表直接执行其中的代码。<br />
-资源管线用于优化css和javascript的管理。<br />
-在生产环境中不会进行预编译，因为很耗时间。</p>
+    <div class="post"><p>Validation Methods有空白，长度，数字，包含于，除外，格式，唯一，接受，确认，相关。<br />
+大多数方法都有空白合法，修改限制，条件语句的设置。<br />
+validates_length_of不计算空格。<br />
+errors.full_messages可查看完整错误信息。<br />
+maximum maximum maximum<br />
+自定义单个方法时，类名记得要用单数形式。<br />
+与特定属性无关的错误可以被添加进errors[:base].<br />
+rake de:migerate可以方便地修改schema.rb。<br />
+rails常用命令：g生成，c控制台，s服务器，db数据管理，new新建应用，d撤销生成，plugin new新建插件，r运行一段代码，-h帮助。<br />
+控制器反馈方法包括before_action,after_action等。</p>
 
 </div>
 </div>
 
 
+
+    
+    
+        
+            
+        
+    
 
     
     
@@ -134,23 +141,6 @@ raw（）代表直接执行其中的代码。<br />
                 <div class="panel-body">
                 <h4>Related Posts</h4>
                 <ul>
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/rails/2016/06/29/rails-8.html">Rails日记第八天</a>
-                    
-                        (Categories: <a href="/category/rails">rails</a>)
-                    
-                </li>
-                
-                
-            
-        
-    
-
-    
-    
-        
-            
                 
                 <li class="relatedPost">
                     <a href="https://ljzn.github.io/rails/2016/06/28/rails-7.html">Rails日记第七天</a>
@@ -289,6 +279,16 @@ raw（）代表直接执行其中的代码。<br />
     
     
         
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/rails/2016/06/26/rails-5.html">Rails日记第五天</a>
+                    
+                        (Categories: <a href="/category/rails">rails</a>)
+                    
+                </li>
+                
+                
             
         
     
@@ -540,10 +540,10 @@ raw（）代表直接执行其中的代码。<br />
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/lrthw/2016/06/26/lrhw-9.html">&laquo; 笨方法学Ruby第九天</a>
+    <a class="prev" href="/rails/2016/06/28/rails-7.html">&laquo; Rails日记第七天</a>
   
   
-    <a class="next" href="/lrthw/2016/06/27/lrhw-16.html">笨方法学Ruby第十六天 &raquo;</a>
+    <a class="next" href="/lrthw/2016/06/29/lrhw-31.html">笨方法学Ruby第三十一天 &raquo;</a>
   
 </div>
 

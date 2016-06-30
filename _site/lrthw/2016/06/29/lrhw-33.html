@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>笨方法学Ruby第二十四天 - LJZN</title>
+        <title>笨方法学Ruby第三十三天 - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="笨方法学Ruby第二十四天" />
-        <meta name="keywords" content="笨方法学Ruby第二十四天, LJZN, LRTHW" />
+        <meta name="description" content="笨方法学Ruby第三十三天" />
+        <meta name="keywords" content="笨方法学Ruby第三十三天, LJZN, LRTHW" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,8 +45,8 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>笨方法学Ruby第二十四天</h1>
-<span class="time">28 Jun 2016</span>
+		<h1>笨方法学Ruby第三十三天</h1>
+<span class="time">29 Jun 2016</span>
 
 <span class="categories">
     &raquo; <a href="/category/LRTHW">LRTHW</a>
@@ -55,41 +55,46 @@
 
 <div class="content">
     <div class="post">
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="s2">"Let's practice everthing."</span>
-<span class="nb">puts</span> <span class="s1">'You\'d need to know \'bout escapes with \\ that do \n newlines and \t tabs.'</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">poem</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">END</span><span class="sh">
-</span><span class="se">\t</span><span class="sh">The lovely world
-with logic so firmly planted
-cannot discern </span><span class="se">\n</span><span class="sh"> the needs of love
-nor comprehend passion from intuition
-and requires an explanation
-</span><span class="se">\n\t\t</span><span class="sh">where there is none.
-</span><span class="no">END</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">6</span>
+	<span class="nb">puts</span> <span class="s2">"At the top i is </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span>
+	<span class="n">numbers</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
-<span class="nb">puts</span> <span class="s2">"--------------"</span>
-<span class="nb">puts</span> <span class="n">poem</span>
-<span class="nb">puts</span> <span class="s2">"--------------"</span>
-
-
-<span class="n">five</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">6</span>
-<span class="nb">puts</span> <span class="s2">"This should be five: </span><span class="si">#{</span><span class="n">five</span><span class="si">}</span><span class="s2">"</span>
-
-<span class="k">def</span> <span class="nf">secret_formula</span><span class="p">(</span><span class="n">started</span><span class="p">)</span>
-	<span class="n">jelly_beans</span> <span class="o">=</span> <span class="n">started</span> <span class="o">*</span> <span class="mi">500</span>
-	<span class="n">jars</span> <span class="o">=</span> <span class="n">jelly_beans</span> <span class="o">/</span> <span class="mi">1000</span>
-	<span class="n">crates</span> <span class="o">=</span> <span class="n">jars</span> <span class="o">/</span> <span class="mi">100</span>
-	<span class="k">return</span> <span class="n">jelly_beans</span><span class="p">,</span> <span class="n">jars</span><span class="p">,</span> <span class="n">crates</span>
+	<span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="nb">puts</span> <span class="s2">"Numbers now: "</span><span class="p">,</span> <span class="n">numbers</span>
+	<span class="nb">puts</span> <span class="s2">"At the bottom i is </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span>
 <span class="k">end</span>
 
+<span class="nb">puts</span> <span class="s2">"The numbers: "</span>
 
-<span class="n">start_point</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="n">beans</span><span class="p">,</span> <span class="n">jars</span><span class="p">,</span> <span class="n">crates</span> <span class="o">=</span> <span class="n">secret_formula</span><span class="p">(</span><span class="n">start_point</span><span class="p">)</span>
+<span class="c1"># remember you can write this 2 other ways?</span>
+<span class="n">numbers</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span><span class="o">|</span><span class="n">num</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">num</span> <span class="p">}</span></code></pre></figure>
 
-<span class="nb">puts</span> <span class="s2">"With a starting point of: </span><span class="si">#{</span><span class="n">start_point</span><span class="si">}</span><span class="s2">"</span>
-<span class="nb">puts</span> <span class="s2">"We'd have </span><span class="si">#{</span><span class="n">beans</span><span class="si">}</span><span class="s2"> beans, </span><span class="si">#{</span><span class="n">jars</span><span class="si">}</span><span class="s2"> jars, and </span><span class="si">#{</span><span class="n">crates</span><span class="si">}</span><span class="s2"> crates."</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">zero_to_n</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
-<span class="n">start_point</span> <span class="o">=</span> <span class="n">start_point</span> <span class="o">/</span> <span class="mi">10</span></code></pre></figure>
+	<span class="vi">@numbers</span> <span class="o">=</span> <span class="p">[]</span>
+
+	<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="p">.</span><span class="nf">n</span><span class="p">)</span>
+		<span class="nb">puts</span> <span class="s2">"At the top i is </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span>
+		<span class="vi">@numbers</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+		<span class="nb">puts</span> <span class="s2">"Numbers now: "</span><span class="p">,</span> <span class="vi">@numbers</span>
+		<span class="nb">puts</span> <span class="s2">"At the bottom i is </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span>
+	<span class="k">end</span>
+
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="s2">"Please input a number:"</span>
+<span class="n">n</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span><span class="p">.</span><span class="nf">to_i</span>
+
+<span class="n">zero_to_n</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="nb">puts</span> <span class="s2">"The numbers: "</span>
+
+<span class="c1"># remember you can write this 2 other ways?</span>
+<span class="vi">@numbers</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span><span class="o">|</span><span class="n">num</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">num</span> <span class="p">}</span></code></pre></figure>
 
 </div>
 </div>
@@ -189,22 +194,22 @@ and requires an explanation
     
         
             
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/lrthw/2016/06/29/lrhw-33.html">笨方法学Ruby第三十三天</a>
-                    
-                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
-                    
-                </li>
-                
-                
-            
         
     
 
     
     
         
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/06/29/lrhw-32.html">笨方法学Ruby第三十二天</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
             
         
     
@@ -566,10 +571,10 @@ and requires an explanation
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/lrthw/2016/06/28/lrhw-23.html">&laquo; 笨方法学Ruby第二十三天</a>
+    <a class="prev" href="/lrthw/2016/06/29/lrhw-32.html">&laquo; 笨方法学Ruby第三十二天</a>
   
   
-    <a class="next" href="/lrthw/2016/06/28/lrhw-25.html">笨方法学Ruby第二十五天 &raquo;</a>
+    <a class="next" href="/lrthw/2016/06/29/lrhw-34.html">笨方法学Ruby第三十二天 &raquo;</a>
   
 </div>
 

@@ -1,13 +1,15 @@
 ---
 layout: post
-title:  "笨方法学Ruby第三十二天"
-date:   2016-06-29 00:18:23
+title:  "笨方法学Ruby第三十四天"
+date:   2016-06-30 00:18:23
 categories: [LRTHW]
 ---
 
 {% highlight ruby %}
 
+animals = ['bear','ruby','peacock','kangaroo','whale','platypus']
 
+animals[0]
 
 {% endhighlight %}
 

@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>笨方法学Ruby第二十四天 - LJZN</title>
+        <title>笨方法学Ruby第三十二天 - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="笨方法学Ruby第二十四天" />
-        <meta name="keywords" content="笨方法学Ruby第二十四天, LJZN, LRTHW" />
+        <meta name="description" content="笨方法学Ruby第三十二天" />
+        <meta name="keywords" content="笨方法学Ruby第三十二天, LJZN, LRTHW" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,8 +45,8 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>笨方法学Ruby第二十四天</h1>
-<span class="time">28 Jun 2016</span>
+		<h1>笨方法学Ruby第三十二天</h1>
+<span class="time">29 Jun 2016</span>
 
 <span class="categories">
     &raquo; <a href="/category/LRTHW">LRTHW</a>
@@ -55,41 +55,54 @@
 
 <div class="content">
     <div class="post">
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="s2">"Let's practice everthing."</span>
-<span class="nb">puts</span> <span class="s1">'You\'d need to know \'bout escapes with \\ that do \n newlines and \t tabs.'</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">the_count</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'apples'</span><span class="p">,</span> <span class="s1">'oranges'</span><span class="p">,</span> <span class="s1">'pears'</span><span class="p">,</span> <span class="s1">'apricots'</span><span class="p">]</span>
+<span class="n">change</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'pennies'</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'dimes'</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'quarters'</span><span class="p">]</span>
 
-<span class="n">poem</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">END</span><span class="sh">
-</span><span class="se">\t</span><span class="sh">The lovely world
-with logic so firmly planted
-cannot discern </span><span class="se">\n</span><span class="sh"> the needs of love
-nor comprehend passion from intuition
-and requires an explanation
-</span><span class="se">\n\t\t</span><span class="sh">where there is none.
-</span><span class="no">END</span>
-
-<span class="nb">puts</span> <span class="s2">"--------------"</span>
-<span class="nb">puts</span> <span class="n">poem</span>
-<span class="nb">puts</span> <span class="s2">"--------------"</span>
-
-
-<span class="n">five</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">6</span>
-<span class="nb">puts</span> <span class="s2">"This should be five: </span><span class="si">#{</span><span class="n">five</span><span class="si">}</span><span class="s2">"</span>
-
-<span class="k">def</span> <span class="nf">secret_formula</span><span class="p">(</span><span class="n">started</span><span class="p">)</span>
-	<span class="n">jelly_beans</span> <span class="o">=</span> <span class="n">started</span> <span class="o">*</span> <span class="mi">500</span>
-	<span class="n">jars</span> <span class="o">=</span> <span class="n">jelly_beans</span> <span class="o">/</span> <span class="mi">1000</span>
-	<span class="n">crates</span> <span class="o">=</span> <span class="n">jars</span> <span class="o">/</span> <span class="mi">100</span>
-	<span class="k">return</span> <span class="n">jelly_beans</span><span class="p">,</span> <span class="n">jars</span><span class="p">,</span> <span class="n">crates</span>
+<span class="c1"># this first kind of for-loop goes through a list</span>
+<span class="c1"># in a more traditional style found in other languagues</span>
+<span class="k">for</span> <span class="n">number</span> <span class="k">in</span> <span class="n">the_count</span>
+	<span class="nb">puts</span> <span class="s2">"This is count </span><span class="si">#{</span><span class="n">number</span><span class="si">}</span><span class="s2">"</span>
 <span class="k">end</span>
 
+<span class="c1"># same as above, but in a more Ruby style</span>
+<span class="c1"># this and the next one are the preferred</span>
+<span class="c1"># way Ruby for-loops are written</span>
+<span class="n">fruits</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">fruit</span><span class="o">|</span>
+	<span class="nb">puts</span> <span class="s2">"A fruit of type: </span><span class="si">#{</span><span class="n">fruit</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
 
-<span class="n">start_point</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="n">beans</span><span class="p">,</span> <span class="n">jars</span><span class="p">,</span> <span class="n">crates</span> <span class="o">=</span> <span class="n">secret_formula</span><span class="p">(</span><span class="n">start_point</span><span class="p">)</span>
+<span class="c1"># also we can go through mixed lists too</span>
+<span class="c1"># note this is yet another style, exactly like above</span>
+<span class="c1"># but a different syntax (way to write it).</span>
+<span class="n">change</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"I got </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
 
-<span class="nb">puts</span> <span class="s2">"With a starting point of: </span><span class="si">#{</span><span class="n">start_point</span><span class="si">}</span><span class="s2">"</span>
-<span class="nb">puts</span> <span class="s2">"We'd have </span><span class="si">#{</span><span class="n">beans</span><span class="si">}</span><span class="s2"> beans, </span><span class="si">#{</span><span class="n">jars</span><span class="si">}</span><span class="s2"> jars, and </span><span class="si">#{</span><span class="n">crates</span><span class="si">}</span><span class="s2"> crates."</span>
+<span class="c1"># we can also bulid lists, first start with an empty one</span>
+<span class="n">elements</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">start_point</span> <span class="o">=</span> <span class="n">start_point</span> <span class="o">/</span> <span class="mi">10</span></code></pre></figure>
+<span class="c1"># then use the range operator to do 0 to 5 counts</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="mi">5</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+	<span class="nb">puts</span> <span class="s2">"adding </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2"> to the list."</span>
+	<span class="c1"># pushes the i variable on the *end* of the list</span>
+	<span class="n">elements</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1"># now we can print them out too</span>
+<span class="n">elements</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"Element was: </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">the_count</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">the_count</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">number</span><span class="o">|</span>
+	<span class="nb">puts</span> <span class="s2">"This is count </span><span class="si">#{</span><span class="n">number</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+
+<span class="n">elements</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="mi">5</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+	<span class="nb">puts</span> <span class="s2">"adding </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2"> to the list."</span>
+	<span class="c1"># pushes the i variable on the *end* of the list</span>
+	<span class="n">elements</span> <span class="o">&lt;&lt;</span> <span class="n">i</span>
+<span class="k">end</span></code></pre></figure>
 
 </div>
 </div>
@@ -566,10 +579,10 @@ and requires an explanation
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/lrthw/2016/06/28/lrhw-23.html">&laquo; 笨方法学Ruby第二十三天</a>
+    <a class="prev" href="/lrthw/2016/06/29/lrhw-31.html">&laquo; 笨方法学Ruby第三十一天</a>
   
   
-    <a class="next" href="/lrthw/2016/06/28/lrhw-25.html">笨方法学Ruby第二十五天 &raquo;</a>
+    <a class="next" href="/lrthw/2016/06/29/lrhw-33.html">笨方法学Ruby第三十三天 &raquo;</a>
   
 </div>
 

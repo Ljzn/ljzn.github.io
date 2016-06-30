@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "Rails日记第九天"
+date:   2016-06-30 23:00:10
+categories: [rails]
+---
+
+link_to\_unless\_current方法可以让当前页面自身链接不可点击。  
+rubygems.org上有6万多个gems可供使用和查看源码。  
+在controllers文件中可以设置动作相关的回调。  
+act_as\_list是一个按位置管理对象的gem。  
+网站需要有为public和admin显示的不同页面。  
+在Gemfile中粘贴gem的名称和版本即可下载安装。  
+在config/routes.rb中可对域名进行管理。  
+在contorller中调用layout。  
+touch方法作用是传递更新时间。  
+不同文件间实例变量到本地变量的转换要注意。  
+

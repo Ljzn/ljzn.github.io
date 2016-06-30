@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" href="/static/img/ruby.ico" />
-        <title>笨方法学Ruby第二十四天 - LJZN</title>
+        <title>笨方法学Ruby第三十一天 - LJZN</title>
         <meta name="author" content="LJZN" />
-        <meta name="description" content="笨方法学Ruby第二十四天" />
-        <meta name="keywords" content="笨方法学Ruby第二十四天, LJZN, LRTHW" />
+        <meta name="description" content="笨方法学Ruby第三十一天" />
+        <meta name="keywords" content="笨方法学Ruby第三十一天, LJZN, LRTHW" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
         <!-- syntax highlighting CSS -->
@@ -45,8 +45,8 @@
 
             <div class="col-sm-8 col-offset-1">
                 
-		<h1>笨方法学Ruby第二十四天</h1>
-<span class="time">28 Jun 2016</span>
+		<h1>笨方法学Ruby第三十一天</h1>
+<span class="time">29 Jun 2016</span>
 
 <span class="categories">
     &raquo; <a href="/category/LRTHW">LRTHW</a>
@@ -55,41 +55,75 @@
 
 <div class="content">
     <div class="post">
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="s2">"Let's practice everthing."</span>
-<span class="nb">puts</span> <span class="s1">'You\'d need to know \'bout escapes with \\ that do \n newlines and \t tabs.'</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="s2">"You enter a dark room with two doors. Do you go through door #1 or door #2?"</span>
 
-<span class="n">poem</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">END</span><span class="sh">
-</span><span class="se">\t</span><span class="sh">The lovely world
-with logic so firmly planted
-cannot discern </span><span class="se">\n</span><span class="sh"> the needs of love
-nor comprehend passion from intuition
-and requires an explanation
-</span><span class="se">\n\t\t</span><span class="sh">where there is none.
-</span><span class="no">END</span>
+<span class="nb">print</span> <span class="s2">"&gt; "</span>
+<span class="n">door</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
 
-<span class="nb">puts</span> <span class="s2">"--------------"</span>
-<span class="nb">puts</span> <span class="n">poem</span>
-<span class="nb">puts</span> <span class="s2">"--------------"</span>
+<span class="k">if</span> <span class="n">door</span> <span class="o">==</span> <span class="s2">"1"</span>
+	<span class="nb">puts</span> <span class="s2">"There's a giant bear here eating a cheese cake. What do you do?"</span>
+	<span class="nb">puts</span> <span class="s2">"1. Take the cake."</span>
+	<span class="nb">puts</span> <span class="s2">"2. Scream at the bear."</span>
 
+	<span class="nb">print</span> <span class="s2">"&gt; "</span>
+	<span class="n">bear</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
 
-<span class="n">five</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">6</span>
-<span class="nb">puts</span> <span class="s2">"This should be five: </span><span class="si">#{</span><span class="n">five</span><span class="si">}</span><span class="s2">"</span>
+	<span class="k">if</span> <span class="n">bear</span> <span class="o">==</span> <span class="s2">"1"</span>
+		<span class="nb">puts</span> <span class="s2">"The bear eats your face off. Good job!"</span>
+	<span class="k">elsif</span> <span class="n">bear</span> <span class="o">==</span> <span class="s2">"2"</span>
+		<span class="nb">puts</span> <span class="s2">"The bear eats your legs off. Good job!"</span>
+	<span class="k">else</span>
+		<span class="nb">puts</span> <span class="s2">"Well, doing %s is probably better. Bear runs away."</span> <span class="o">%</span> <span class="n">bear</span>
+	<span class="k">end</span>
 
-<span class="k">def</span> <span class="nf">secret_formula</span><span class="p">(</span><span class="n">started</span><span class="p">)</span>
-	<span class="n">jelly_beans</span> <span class="o">=</span> <span class="n">started</span> <span class="o">*</span> <span class="mi">500</span>
-	<span class="n">jars</span> <span class="o">=</span> <span class="n">jelly_beans</span> <span class="o">/</span> <span class="mi">1000</span>
-	<span class="n">crates</span> <span class="o">=</span> <span class="n">jars</span> <span class="o">/</span> <span class="mi">100</span>
-	<span class="k">return</span> <span class="n">jelly_beans</span><span class="p">,</span> <span class="n">jars</span><span class="p">,</span> <span class="n">crates</span>
-<span class="k">end</span>
+<span class="k">elsif</span> <span class="n">door</span> <span class="o">==</span> <span class="s2">"2"</span>
+	<span class="nb">puts</span> <span class="s2">"You stare into the endless abyss at Cthulhu's retina."</span>
+	<span class="nb">puts</span> <span class="s2">"1. Blueberries."</span>
+	<span class="nb">puts</span> <span class="s2">"2. Yellow jacket clothespins."</span>
+	<span class="nb">puts</span> <span class="s2">"3. Understanding revolvers yelling melodies."</span>
 
+	<span class="nb">print</span> <span class="s2">"&gt; "</span>
+	<span class="n">insanity</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
 
-<span class="n">start_point</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="n">beans</span><span class="p">,</span> <span class="n">jars</span><span class="p">,</span> <span class="n">crates</span> <span class="o">=</span> <span class="n">secret_formula</span><span class="p">(</span><span class="n">start_point</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">insanity</span> <span class="o">==</span> <span class="s2">"1"</span> <span class="o">||</span> <span class="n">insanity</span> <span class="o">==</span> <span class="s2">"2"</span>
+		<span class="nb">puts</span> <span class="s2">"You body survives powered by a mind of jello. Good job!"</span>
+	<span class="k">else</span>
+		<span class="nb">puts</span> <span class="s2">"The insanity rots you eyes into a pool of muck. Good job!"</span>
+	<span class="k">end</span>
 
-<span class="nb">puts</span> <span class="s2">"With a starting point of: </span><span class="si">#{</span><span class="n">start_point</span><span class="si">}</span><span class="s2">"</span>
-<span class="nb">puts</span> <span class="s2">"We'd have </span><span class="si">#{</span><span class="n">beans</span><span class="si">}</span><span class="s2"> beans, </span><span class="si">#{</span><span class="n">jars</span><span class="si">}</span><span class="s2"> jars, and </span><span class="si">#{</span><span class="n">crates</span><span class="si">}</span><span class="s2"> crates."</span>
+<span class="k">else</span>
+	<span class="nb">puts</span> <span class="s2">"You stumble around and fall on a knife and die. Good job!"</span>
+<span class="k">end</span></code></pre></figure>
 
-<span class="n">start_point</span> <span class="o">=</span> <span class="n">start_point</span> <span class="o">/</span> <span class="mi">10</span></code></pre></figure>
+<p>以下是自己的版本。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="s2">"Weapon Forge Machine v1</span><span class="se">\n</span><span class="s2">Please choose your weapon: #1 Blade or #2 Axe."</span>
+
+<span class="nb">print</span> <span class="s2">"&gt; "</span>
+<span class="n">weapon</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+
+<span class="k">if</span> <span class="n">weapon</span> <span class="o">==</span> <span class="s2">"1"</span>
+	<span class="nb">puts</span> <span class="s2">"You have a wood Blade, how you will forge it?"</span>
+	<span class="nb">puts</span> <span class="s2">"1.Using gold."</span>
+	<span class="nb">puts</span> <span class="s2">"2.Using fire."</span>
+
+	<span class="nb">print</span> <span class="s2">"&gt; "</span>
+	<span class="n">forge</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+
+	<span class="k">if</span> <span class="n">forge</span> <span class="o">==</span> <span class="s2">"1"</span>
+		<span class="nb">puts</span> <span class="s2">"You got some piece of Gold.Good job!"</span>
+	<span class="k">elsif</span> <span class="n">forge</span> <span class="o">==</span> <span class="s2">"2"</span>
+		<span class="nb">puts</span> <span class="s2">"You got a magic fire blade.Good job!"</span>
+	<span class="k">else</span>
+		<span class="nb">puts</span> <span class="s2">"The machine exploded!!!"</span>
+	<span class="k">end</span>
+
+<span class="k">elsif</span> <span class="n">weapon</span> <span class="o">==</span> <span class="s2">"2"</span>
+	<span class="nb">puts</span> <span class="s2">"Your axe disappered."</span>
+
+<span class="k">else</span>
+	<span class="nb">puts</span> <span class="s2">"Get that thing out!"</span>
+<span class="k">end</span></code></pre></figure>
 
 </div>
 </div>
@@ -566,10 +600,10 @@ and requires an explanation
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/lrthw/2016/06/28/lrhw-23.html">&laquo; 笨方法学Ruby第二十三天</a>
+    <a class="prev" href="/rails/2016/06/29/rails-8.html">&laquo; Rails日记第八天</a>
   
   
-    <a class="next" href="/lrthw/2016/06/28/lrhw-25.html">笨方法学Ruby第二十五天 &raquo;</a>
+    <a class="next" href="/lrthw/2016/06/29/lrhw-32.html">笨方法学Ruby第三十二天 &raquo;</a>
   
 </div>
 

@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "Rails日记第十天"
+date:   2016-07-01 23:00:10
+categories: [rails]
+---
+
+REST意为呈现式区域转换（Representatinal State Transfer）。  
+Rails鼓励一个model一个控制器。  
+通过URL来控制app的动作。  
+REST URL HELPERS可以快速配置号REST路径。  
+ERRORS出现在三个地方：浏览器，rails控制台，应用的log文件。  
+log信息等级由多到少分为debug,info,warn,error,fatal.  
+代码中所有puts语句都会呈现在服务控制台里。  
+测试的种类包括单元测试，函数测试，集成测试，表现测试，压力测试，安全测试。  
+功能全面的服务器有Apache,Nginx,Lighttpd。  
+轻量级的服务器有passenger/mod-rails,Unicorn,Mongrel,Thin.  
+

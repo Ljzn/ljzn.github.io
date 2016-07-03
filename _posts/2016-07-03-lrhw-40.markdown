@@ -1,0 +1,38 @@
+---
+layout: post
+title:  "40模块、类和对象"
+date:   2016-07-03 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+class Song
+
+	def initialize(lyrics)
+		@lyrics = lyrics
+	end
+	
+	def sing_me_a_song()
+		@lyrics.each {|line| puts line }
+	end
+	
+	def add_lyrics()
+		new_lyrics = $stdin.gets.chomp
+		@lyrics.push(new_lyrics)
+	end
+end
+
+hblyrics = ["Happy birthday to you", "I don't want to ger sued", "So I will stop right there"]
+
+happy_bday = Song.new(hblyrics)
+
+happy_bday.sing_me_a_song()
+
+happy_bday.add_lyrics()
+
+happy_bday.sing_me_a_song()
+
+{% endhighlight %}
+
+

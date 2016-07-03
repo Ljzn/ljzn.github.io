@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="/static/img/ruby.ico" />
+        <title>笨方法学Ruby第三十五天 - LJZN</title>
+        <meta name="author" content="LJZN" />
+        <meta name="description" content="笨方法学Ruby第三十五天" />
+        <meta name="keywords" content="笨方法学Ruby第三十五天, LJZN, LRTHW" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!-- Custom CSS -->        
+        <link rel="stylesheet" href="/static/css/main.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-sm-3">
+                <a href="/"><img id="about" src="/static/img/ruby.png" height="75px" width="75px" /></a>
+                <h1 class="author-name">LJZN</h1>
+                
+                <div id="about">
+                    It's me.
+                </div>
+                
+                <hr size=2>
+                    &raquo; <a href="/">Home</a> <br />
+		    &raquo; <a href="/category/original">Category</a> <br />
+                
+                    &raquo; <a class="about" href="/about/">About Me</a><br />
+                
+                    &raquo; <a class="about" href="https://github.com/ljzn">Github</a><br />
+                
+            </div>
+
+            <div class="col-sm-8 col-offset-1">
+                
+		<h1>笨方法学Ruby第三十五天</h1>
+<span class="time">30 Jun 2016</span>
+
+<span class="categories">
+    &raquo; <a href="/category/LRTHW">LRTHW</a>
+</span>
+
+
+<div class="content">
+    <div class="post">
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">gold_room</span>
+	<span class="nb">puts</span> <span class="s2">"This room is full of gold. How much do you take?"</span>
+
+	<span class="nb">print</span> <span class="s2">"&gt; "</span>
+	<span class="n">choice</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+
+	<span class="c1"># this line has a bug, so fix it</span>
+	<span class="c1">#if choice.include?("0") || choice.include?("1")</span>
+	<span class="k">if</span> <span class="n">choice</span> <span class="o">=~</span> <span class="sr">/\d/</span>
+		<span class="n">how_much</span> <span class="o">=</span> <span class="n">choice</span><span class="p">.</span><span class="nf">to_i</span>
+	<span class="k">else</span>
+		<span class="n">dead</span><span class="p">(</span><span class="s2">"Man, learn to type a number."</span><span class="p">)</span>
+	<span class="k">end</span>
+
+	<span class="k">if</span> <span class="n">how_much</span> <span class="o">&lt;</span> <span class="mi">50</span>
+		<span class="nb">puts</span> <span class="s2">"Nice, you're not greedy, you win!"</span>
+	  <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+	<span class="k">else</span>
+		<span class="n">dead</span><span class="p">(</span><span class="s2">"You greedy bastard!"</span><span class="p">)</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+
+<span class="k">def</span> <span class="nf">bear_room</span>
+	<span class="nb">puts</span> <span class="s2">"There is a bear here."</span>
+	<span class="nb">puts</span> <span class="s2">"The bear has a bunch of honey."</span>
+	<span class="nb">puts</span> <span class="s2">"The fat bear is in front of another door."</span>
+	<span class="nb">puts</span> <span class="s2">"How are you going to move the bear?"</span>
+	<span class="n">bear_moved</span> <span class="o">=</span> <span class="kp">false</span>
+
+	<span class="k">while</span> <span class="kp">true</span>
+		<span class="nb">print</span> <span class="s2">"&gt; "</span>
+		<span class="n">choice</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+
+		<span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">"take honey"</span>
+			<span class="n">dead</span><span class="p">(</span><span class="s2">"The bear looks at you then slaps your face off."</span><span class="p">)</span>
+		<span class="k">elsif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">"taunt bear"</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">bear_moved</span>
+			<span class="nb">puts</span> <span class="s2">"The bear has moved from the door.You can go through it now."</span>
+			<span class="n">bear_moved</span> <span class="o">=</span> <span class="kp">true</span>
+		<span class="k">elsif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">"taunt bear"</span> <span class="o">&amp;&amp;</span> <span class="n">bear_moved</span>
+			<span class="n">dead</span><span class="p">(</span><span class="s2">"The bear gets pissed off and chews your leg off."</span><span class="p">)</span>
+		<span class="k">elsif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">"open door"</span> <span class="o">&amp;&amp;</span> <span class="n">bear_moved</span>
+			<span class="n">gold_room</span>
+		<span class="k">else</span>
+			<span class="nb">puts</span> <span class="s2">"I got no idea what that means."</span>
+		<span class="k">end</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+
+<span class="k">def</span> <span class="nf">cthulhu_room</span>
+	<span class="nb">puts</span> <span class="s2">"Here you see the great evil Cthulhu."</span>
+	<span class="nb">puts</span> <span class="s2">"He, it, whatever stares at you and you go insane."</span>
+	<span class="nb">puts</span> <span class="s2">"Do you flee for your life or eat your head?"</span>
+
+	<span class="nb">print</span> <span class="s2">"&gt; "</span>
+	<span class="n">choice</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+
+	<span class="k">if</span> <span class="n">choice</span><span class="p">.</span><span class="nf">include?</span><span class="s2">"flee"</span>
+		<span class="n">start</span>
+	<span class="k">elsif</span> <span class="n">choice</span><span class="p">.</span><span class="nf">include?</span><span class="s2">"head"</span>
+		<span class="n">dead</span><span class="p">(</span><span class="s2">"Well that was tasty!"</span><span class="p">)</span>
+	<span class="k">else</span>
+		<span class="n">cthulhu_room</span>
+	<span class="k">end</span>		
+<span class="k">end</span>
+
+
+<span class="k">def</span> <span class="nf">dead</span><span class="p">(</span><span class="n">why</span><span class="p">)</span>
+	<span class="nb">puts</span> <span class="n">why</span><span class="p">,</span> <span class="s2">"Good job!"</span>
+	<span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">start</span>
+	<span class="nb">puts</span> <span class="s2">"You are in a dark room."</span>
+	<span class="nb">puts</span> <span class="s2">"There is a door to your right and left."</span>
+	<span class="nb">puts</span> <span class="s2">"Which one do you take?"</span>
+
+	<span class="nb">print</span> <span class="s2">"&gt; "</span>
+	<span class="n">choice</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+
+	<span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">"left"</span>
+		<span class="n">bear_room</span>
+	<span class="k">elsif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">"right"</span>
+		<span class="n">cthulhu_room</span>
+	<span class="k">else</span>
+		<span class="n">dead</span><span class="p">(</span><span class="s2">"You stumble around the room until you starve."</span><span class="p">)</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">start</span></code></pre></figure>
+
+</div>
+</div>
+
+
+
+    
+    
+        
+            
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-42.html">42对象、类及从属关系</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-41.html">41学习面向对象术语</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-40.html">40模块、类和对象</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-39.html">39散列，可爱的散列</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-38.html">38数组的操作</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-37.html">37复习各种符号</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+
+    </ul>
+    </div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/lrthw/2016/06/30/lrhw-34.html">&laquo; 笨方法学Ruby第三十四天</a>
+  
+  
+    <a class="next" href="/rails/2016/07/01/rails-9.html">Rails日记第九天 &raquo;</a>
+  
+</div>
+
+
+<div class="disqus-comments">
+<div id="disqus_thread"></div>
+<script>
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//ljzn.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+                <footer>
+                    &copy; LJZN
+                     
+                    - <a href="https://github.com/ljzn">https://github.com/ljzn</a> - Powered by Jekyll.
+                    
+
+
+                </footer>
+            </div><!-- end /.col-sm-8 -->
+        </div><!-- end /.container -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+<script id="dsq-count-scr" src="//ljzn.disqus.com/count.js" async></script>
+    </body>
+</html>

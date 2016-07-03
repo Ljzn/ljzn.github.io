@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="/static/img/ruby.ico" />
+        <title>41学习面向对象术语 - LJZN</title>
+        <meta name="author" content="LJZN" />
+        <meta name="description" content="41学习面向对象术语" />
+        <meta name="keywords" content="41学习面向对象术语, LJZN, LRTHW" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!-- Custom CSS -->        
+        <link rel="stylesheet" href="/static/css/main.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-sm-3">
+                <a href="/"><img id="about" src="/static/img/ruby.png" height="75px" width="75px" /></a>
+                <h1 class="author-name">LJZN</h1>
+                
+                <div id="about">
+                    It's me.
+                </div>
+                
+                <hr size=2>
+                    &raquo; <a href="/">Home</a> <br />
+		    &raquo; <a href="/category/original">Category</a> <br />
+                
+                    &raquo; <a class="about" href="/about/">About Me</a><br />
+                
+                    &raquo; <a class="about" href="https://github.com/ljzn">Github</a><br />
+                
+            </div>
+
+            <div class="col-sm-8 col-offset-1">
+                
+		<h1>41学习面向对象术语</h1>
+<span class="time">03 Jul 2016</span>
+
+<span class="categories">
+    &raquo; <a href="/category/LRTHW">LRTHW</a>
+</span>
+
+
+<div class="content">
+    <div class="post">
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'open-uri'</span>
+
+<span class="no">WORD_URL</span> <span class="o">=</span> <span class="s2">"http://learncodethehardway.org/words.txt"</span>
+<span class="no">WORDS</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="no">PHRASES</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="s2">"class ### &lt; ###/nend"</span> <span class="o">=&gt;</span> 
+		<span class="s2">"Make a class named ### that is-a ###."</span><span class="p">,</span>
+	<span class="s2">"class ###</span><span class="se">\n\t</span><span class="s2">def initialize(@@@)</span><span class="se">\n\t</span><span class="s2">end</span><span class="se">\n</span><span class="s2">end"</span> <span class="o">=&gt;</span>
+		<span class="s2">"class ### has-a initialize that takes @@@ parameters."</span><span class="p">,</span>
+	<span class="s2">"class ###</span><span class="se">\n\t</span><span class="s2">def ***(@@@)</span><span class="se">\n\t</span><span class="s2">end</span><span class="se">\n</span><span class="s2">end"</span> <span class="o">=&gt;</span>
+		<span class="s2">"class ### has-a function named *** that takes @@@ parameters."</span><span class="p">,</span>
+	<span class="s2">"*** = ###.new()"</span> <span class="o">=&gt;</span>
+		<span class="s2">"Set *** to a instance class ###."</span><span class="p">,</span>
+	<span class="s2">"***.***(@@@)"</span> <span class="o">=&gt;</span>
+		<span class="s2">"From *** get the *** function, and call it with parameters @@@."</span><span class="p">,</span>
+	<span class="s2">"***.*** = '***'"</span> <span class="o">=&gt;</span>
+		<span class="s2">"From *** get the *** attribute and set it to '***'."</span>
+<span class="p">}</span>
+
+<span class="no">PHRASE_FIRST</span> <span class="o">=</span> <span class="no">ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"english"</span>
+
+<span class="nb">open</span><span class="p">(</span><span class="no">WORD_URL</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span>
+	<span class="n">f</span><span class="p">.</span><span class="nf">each_line</span> <span class="p">{</span><span class="o">|</span><span class="n">word</span><span class="o">|</span> <span class="no">WORDS</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">word</span><span class="p">.</span><span class="nf">chomp</span><span class="p">)}</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">craft_names</span><span class="p">(</span><span class="n">rand_words</span><span class="p">,</span> <span class="n">snippet</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">caps</span><span class="o">=</span><span class="kp">false</span><span class="p">)</span>
+	<span class="n">names</span> <span class="o">=</span> <span class="n">snippet</span><span class="p">.</span><span class="nf">scan</span><span class="p">(</span><span class="n">pattern</span><span class="p">).</span><span class="nf">map</span> <span class="k">do</span>
+		<span class="n">word</span> <span class="o">=</span> <span class="n">rand_words</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+		<span class="n">caps</span> <span class="p">?</span> <span class="n">word</span><span class="p">.</span><span class="nf">capitalize</span> <span class="p">:</span> <span class="n">word</span>
+	<span class="k">end</span>
+	
+	<span class="k">return</span> <span class="n">names</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">craft_params</span><span class="p">(</span><span class="n">rand_words</span><span class="p">,</span> <span class="n">snippet</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)</span>
+	<span class="n">names</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="p">.</span><span class="nf">snippet</span><span class="p">.</span><span class="nf">scan</span><span class="p">(</span><span class="n">pattern</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">map</span> <span class="k">do</span>
+		<span class="n">param_count</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+		<span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="p">.</span><span class="nf">param_count</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">rand_words</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span> <span class="p">}</span>
+		<span class="n">params</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s1">', '</span><span class="p">)</span>
+	<span class="k">end</span>
+	
+	<span class="k">return</span> <span class="n">names</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">snippet</span><span class="p">,</span> <span class="n">phrase</span><span class="p">)</span>
+	<span class="n">rand_words</span> <span class="o">=</span> <span class="no">WORDS</span><span class="p">.</span><span class="nf">sort_by</span> <span class="p">{</span><span class="nb">rand</span><span class="p">}</span>
+	<span class="n">class_names</span> <span class="o">=</span> <span class="n">craft_names</span><span class="p">(</span><span class="n">rand_words</span><span class="p">,</span> <span class="n">snippet</span><span class="p">,</span> <span class="sr">/###/</span><span class="p">,</span> <span class="n">caps</span><span class="o">=</span><span class="kp">true</span><span class="p">)</span>
+	<span class="n">other_names</span> <span class="o">=</span> <span class="n">craft_names</span><span class="p">(</span><span class="n">rand_words</span><span class="p">,</span> <span class="n">snippet</span><span class="p">,</span> <span class="sr">/\*\*\*/</span><span class="p">)</span>
+	<span class="n">param_names</span> <span class="o">=</span> <span class="n">craft_params</span><span class="p">(</span><span class="n">rand_words</span><span class="p">,</span> <span class="n">snippet</span><span class="p">,</span> <span class="sr">/@@@/</span><span class="p">)</span>
+	
+	<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+	
+	<span class="p">[</span><span class="n">snippet</span><span class="p">,</span> <span class="n">phrase</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">sentence</span><span class="o">|</span>
+		<span class="c1"># fake class names, also copies sentence</span>
+		<span class="n">result</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/###/</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">class_names</span><span class="p">.</span><span class="nf">pop</span> <span class="p">}</span>
+		
+		<span class="c1"># fake other names</span>
+		<span class="n">result</span><span class="p">.</span><span class="nf">gsub!</span><span class="p">(</span><span class="sr">/\*\*\*/</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">other_names</span><span class="p">.</span><span class="nf">pop</span> <span class="p">}</span>
+		
+		<span class="c1"># fake parameter lists</span>
+		<span class="n">result</span><span class="p">.</span><span class="nf">gsub!</span><span class="p">(</span><span class="sr">/@@@/</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">param_names</span><span class="p">.</span><span class="nf">pop</span> <span class="p">}</span>
+	
+		<span class="n">results</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+	<span class="k">end</span>
+	
+	<span class="k">return</span> <span class="n">results</span>
+<span class="k">end</span>
+
+<span class="c1"># keep going until they hit CTRL-D</span>
+<span class="kp">loop</span> <span class="k">do</span>
+	<span class="n">snippets</span> <span class="o">=</span> <span class="no">PHRASES</span><span class="p">.</span><span class="nf">keys</span><span class="p">().</span><span class="nf">sort_by</span> <span class="p">{</span><span class="nb">rand</span><span class="p">}</span>
+	
+	<span class="k">for</span> <span class="n">snippet</span> <span class="k">in</span> <span class="n">snippets</span>
+		<span class="n">phrase</span> <span class="o">=</span> <span class="no">PHRASES</span><span class="p">[</span><span class="n">snippet</span><span class="p">]</span>
+		<span class="n">question</span><span class="p">,</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">convert</span><span class="p">(</span><span class="n">snippet</span><span class="p">,</span> <span class="n">phrase</span><span class="p">)</span>
+		
+		<span class="k">if</span> <span class="no">PHRASE_FIRST</span>
+			<span class="n">question</span><span class="p">,</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span><span class="p">,</span> <span class="n">question</span>
+		<span class="k">end</span>
+		
+		<span class="nb">print</span> <span class="n">question</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">&gt; "</span>
+		
+		<span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">unless</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span>
+		
+		<span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">ANSWER: %s</span><span class="se">\n\n</span><span class="s2">"</span> <span class="o">%</span> <span class="n">answer</span>
+	<span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+</div>
+</div>
+
+
+
+    
+    
+        
+            
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-42.html">42对象、类及从属关系</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-40.html">40模块、类和对象</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-39.html">39散列，可爱的散列</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-38.html">38数组的操作</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-37.html">37复习各种符号</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-36.html">笨方法学Ruby第三十六天</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+
+    </ul>
+    </div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/lrthw/2016/07/03/lrhw-40.html">&laquo; 40模块、类和对象</a>
+  
+  
+    <a class="next" href="/lrthw/2016/07/03/lrhw-42.html">42对象、类及从属关系 &raquo;</a>
+  
+</div>
+
+
+<div class="disqus-comments">
+<div id="disqus_thread"></div>
+<script>
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//ljzn.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+                <footer>
+                    &copy; LJZN
+                     
+                    - <a href="https://github.com/ljzn">https://github.com/ljzn</a> - Powered by Jekyll.
+                    
+
+
+                </footer>
+            </div><!-- end /.col-sm-8 -->
+        </div><!-- end /.container -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+<script id="dsq-count-scr" src="//ljzn.disqus.com/count.js" async></script>
+    </body>
+</html>

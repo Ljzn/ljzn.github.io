@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="/static/img/ruby.ico" />
+        <title>39散列，可爱的散列 - LJZN</title>
+        <meta name="author" content="LJZN" />
+        <meta name="description" content="39散列，可爱的散列" />
+        <meta name="keywords" content="39散列，可爱的散列, LJZN, LRTHW" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!-- Custom CSS -->        
+        <link rel="stylesheet" href="/static/css/main.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-sm-3">
+                <a href="/"><img id="about" src="/static/img/ruby.png" height="75px" width="75px" /></a>
+                <h1 class="author-name">LJZN</h1>
+                
+                <div id="about">
+                    It's me.
+                </div>
+                
+                <hr size=2>
+                    &raquo; <a href="/">Home</a> <br />
+		    &raquo; <a href="/category/original">Category</a> <br />
+                
+                    &raquo; <a class="about" href="/about/">About Me</a><br />
+                
+                    &raquo; <a class="about" href="https://github.com/ljzn">Github</a><br />
+                
+            </div>
+
+            <div class="col-sm-8 col-offset-1">
+                
+		<h1>39散列，可爱的散列</h1>
+<span class="time">01 Jul 2016</span>
+
+<span class="categories">
+    &raquo; <a href="/category/LRTHW">LRTHW</a>
+</span>
+
+
+<div class="content">
+    <div class="post">
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># create a mapping of state to abbreviation</span>
+<span class="n">states</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="s1">'Oregon'</span> <span class="o">=&gt;</span> <span class="s1">'OR'</span><span class="p">,</span>
+	<span class="s1">'Florida'</span> <span class="o">=&gt;</span> <span class="s1">'FL'</span><span class="p">,</span>
+	<span class="s1">'California'</span> <span class="o">=&gt;</span> <span class="s1">'CA'</span><span class="p">,</span>
+	<span class="s1">'New York'</span> <span class="o">=&gt;</span> <span class="s1">'NY'</span><span class="p">,</span>
+	<span class="s1">'Michigan'</span> <span class="o">=&gt;</span> <span class="s1">'MI'</span>
+<span class="p">}</span>
+
+<span class="c1"># create a basic set of states and some cities in them</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="s1">'CA'</span> <span class="o">=&gt;</span> <span class="s1">'San Francisco'</span><span class="p">,</span>
+	<span class="s1">'MI'</span> <span class="o">=&gt;</span> <span class="s1">'Detroit'</span><span class="p">,</span>
+	<span class="s1">'FL'</span> <span class="o">=&gt;</span> <span class="s1">'Jacksonville'</span>
+<span class="p">}</span>
+
+<span class="c1"># add some more cities</span>
+<span class="n">cities</span><span class="p">[</span><span class="s1">'NY'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'New York'</span>
+<span class="n">cities</span><span class="p">[</span><span class="s1">'OR'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Portland'</span>
+
+<span class="c1"># puts out some cities</span>
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="nb">puts</span> <span class="s2">"NY State has: </span><span class="si">#{</span><span class="n">cities</span><span class="p">[</span><span class="s1">'NY'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+<span class="nb">puts</span> <span class="s2">"OR State has: </span><span class="si">#{</span><span class="n">cities</span><span class="p">[</span><span class="s1">'OR'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># puts some states</span>
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="nb">puts</span> <span class="s2">"Michigan's abbreviation is: </span><span class="si">#{</span><span class="n">states</span><span class="p">[</span><span class="s1">'Michigan'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+<span class="nb">puts</span> <span class="s2">"Florida's abbreviation is: </span><span class="si">#{</span><span class="n">states</span><span class="p">[</span><span class="s1">'Florida'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># do it by using the state then cities dict</span>
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="nb">puts</span> <span class="s2">"Michigan has: </span><span class="si">#{</span><span class="n">cities</span><span class="p">[</span><span class="n">states</span><span class="p">[</span><span class="s1">'Michigan'</span><span class="p">]]</span><span class="si">}</span><span class="s2">"</span>
+<span class="nb">puts</span> <span class="s2">"Florida has: </span><span class="si">#{</span><span class="n">cities</span><span class="p">[</span><span class="n">states</span><span class="p">[</span><span class="s1">'Florida'</span><span class="p">]]</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># puts every state abbreviation</span>
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="n">states</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">state</span><span class="p">,</span> <span class="n">abbrev</span><span class="o">|</span>
+	<span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">state</span><span class="si">}</span><span class="s2"> is abbreviated </span><span class="si">#{</span><span class="n">abbrev</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+
+<span class="c1"># puts every city in state</span>
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="n">cities</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">abbrev</span><span class="p">,</span> <span class="n">city</span><span class="o">|</span>
+	<span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">abbrev</span><span class="si">}</span><span class="s2"> has the city </span><span class="si">#{</span><span class="n">city</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+
+<span class="c1"># now do both at the same time</span>
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="n">states</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">state</span><span class="p">,</span> <span class="n">abbrev</span><span class="o">|</span>
+	<span class="n">city</span> <span class="o">=</span> <span class="n">cities</span><span class="p">[</span><span class="n">abbrev</span><span class="p">]</span>
+	<span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">state</span><span class="si">}</span><span class="s2"> is abbreviated </span><span class="si">#{</span><span class="n">abbrev</span><span class="si">}</span><span class="s2"> and has city </span><span class="si">#{</span><span class="n">city</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="c1"># by default ruby says "nil" when something isn't in there</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">states</span><span class="p">[</span><span class="s1">'Texas'</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="o">!</span><span class="n">state</span>
+	<span class="nb">puts</span> <span class="s2">"Sorry, no Texas."</span>
+<span class="k">end</span>
+
+<span class="c1"># default values using ||= with the nil result</span>
+<span class="n">city</span> <span class="o">=</span> <span class="n">cities</span><span class="p">[</span><span class="s1">'TX'</span><span class="p">]</span>
+<span class="n">city</span> <span class="o">||=</span> <span class="s1">'Does Not Exist'</span>
+<span class="nb">puts</span> <span class="s2">"The city for the state 'TX' is: </span><span class="si">#{</span><span class="n">city</span><span class="si">}</span><span class="s2">"</span></code></pre></figure>
+
+<p>创建函数</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Dict</span>
+	<span class="k">def</span> <span class="nc">Dict</span><span class="o">.</span><span class="nf">new</span><span class="p">(</span><span class="n">num_buckets</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+		<span class="c1">#Initializes a Dict with the given number of buckets.</span>
+		<span class="n">aDict</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="p">.</span><span class="nf">num_buckets</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+			<span class="n">aDict</span><span class="p">.</span><span class="nf">push</span><span class="p">([])</span>
+		<span class="k">end</span>
+
+		<span class="k">return</span> <span class="n">aDict</span>
+	<span class="k">end</span>
+
+	<span class="k">def</span> <span class="nc">Dict</span><span class="o">.</span><span class="nf">hash_key</span><span class="p">(</span><span class="n">aDict</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+		<span class="c1"># Given a key this will create a number and then convert it to</span>
+		<span class="c1"># an index for the aDict's buckets.</span>
+		<span class="k">return</span> <span class="n">key</span><span class="p">.</span><span class="nf">hash</span> <span class="o">%</span> <span class="n">aDict</span><span class="p">.</span><span class="nf">length</span>
+	<span class="k">end</span>
+
+	<span class="k">def</span> <span class="nc">Dict</span><span class="o">.</span><span class="nf">get_bucket</span><span class="p">(</span><span class="n">aDict</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+		<span class="c1">#Given a key, find the bucket where it would go</span>
+		<span class="n">bucket_id</span> <span class="o">=</span> <span class="no">Dict</span><span class="p">.</span><span class="nf">hash_key</span><span class="p">(</span><span class="n">aDict</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">aDict</span><span class="p">[</span><span class="n">bucket_id</span><span class="p">]</span>
+ 	<span class="k">end</span>
+
+	<span class="k">def</span> <span class="nc">Dict</span><span class="o">.</span><span class="nf">get_slot</span><span class="p">(</span><span class="n">aDict</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kp">nil</span><span class="p">)</span>
+		<span class="c1"># Returns the index, key, and value of a slot found in a bucket.</span>
+		<span class="n">bucket</span> <span class="o">=</span> <span class="no">Dict</span><span class="p">.</span><span class="nf">get_bucket</span><span class="p">(</span><span class="n">aDict</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+		
+		<span class="n">bucket</span><span class="p">.</span><span class="nf">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">kv</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+			<span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">kv</span>
+			<span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">k</span>
+				<span class="k">return</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span>
+			<span class="k">end</span>
+		<span class="k">end</span>
+		
+		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span>
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nc">Dict</span><span class="o">.</span><span class="nf">get</span><span class="p">(</span><span class="n">aDict</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kp">nil</span><span class="p">)</span>
+		<span class="c1"># Gets the value in a bucket for the given key, or the default.</span>
+		<span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="no">Dict</span><span class="p">.</span><span class="nf">get_slot</span><span class="p">(</span><span class="n">aDict</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">v</span>
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nc">Dict</span><span class="o">.</span><span class="nf">set</span><span class="p">(</span><span class="n">aDict</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+		<span class="c1"># Sets the key to the value, replacing any existing value.</span>
+		<span class="n">bucket</span> <span class="o">=</span> <span class="no">Dict</span><span class="p">.</span><span class="nf">get_bucket</span><span class="p">(</span><span class="n">aDict</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+		<span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="no">Dict</span><span class="p">.</span><span class="nf">get_slot</span><span class="p">(</span><span class="n">aDict</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+		
+		<span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+			<span class="n">bucket</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">]</span>
+		<span class="k">else</span>
+			<span class="n">bucket</span><span class="p">.</span><span class="nf">push</span><span class="p">([</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">])</span>
+		<span class="k">end</span>
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nc">Dict</span><span class="o">.</span><span class="nf">delete</span><span class="p">(</span><span class="n">aDict</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+		<span class="c1"># Deletes the given key from the Dict.</span>
+		<span class="n">bucket</span> <span class="o">=</span> <span class="no">Dict</span><span class="p">.</span><span class="nf">get_bucket</span><span class="p">(</span><span class="n">aDict</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+		
+		<span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="p">.</span><span class="nf">bucket</span><span class="p">.</span><span class="nf">length</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+			<span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">bucket</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+			<span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">k</span>
+				<span class="n">bucket</span><span class="p">.</span><span class="nf">delete_at</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+				<span class="k">break</span>
+			<span class="k">end</span>
+		<span class="k">end</span>
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nc">Dict</span><span class="o">.</span><span class="nf">list</span><span class="p">(</span><span class="n">aDict</span><span class="p">)</span>
+		<span class="c1"># Prints out what's in the Dict.</span>
+		<span class="n">aDict</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">bucket</span><span class="o">|</span>
+			<span class="k">if</span> <span class="n">bucket</span>
+				<span class="n">bucket</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">}</span>
+			<span class="k">end</span>
+		<span class="k">end</span>
+	<span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>修改后</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'./dict.rb'</span>
+
+<span class="c1"># create a mapping of state to abbreviation</span>
+<span class="n">states</span> <span class="o">=</span> <span class="no">Dict</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
+<span class="no">Dict</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="s1">'Oregon'</span><span class="p">,</span> <span class="s1">'OR'</span><span class="p">)</span>
+<span class="no">Dict</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="s1">'Florida'</span><span class="p">,</span> <span class="s1">'FL'</span><span class="p">)</span>
+<span class="no">Dict</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="s1">'California'</span><span class="p">,</span> <span class="s1">'CA'</span><span class="p">)</span>
+<span class="no">Dict</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="s1">'New York'</span><span class="p">,</span> <span class="s1">'NY'</span><span class="p">)</span>
+<span class="no">Dict</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="s1">'Michigan'</span><span class="p">,</span> <span class="s1">'MI'</span><span class="p">)</span>
+
+<span class="c1"># create a basic set of states and some cities in them</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="no">Dict</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
+<span class="no">Dict</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="s1">'CA'</span><span class="p">,</span> <span class="s1">'San Francisco'</span><span class="p">)</span>
+<span class="no">Dict</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="s1">'MI'</span><span class="p">,</span> <span class="s1">'Detroit'</span><span class="p">)</span>
+<span class="no">Dict</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="s1">'FL'</span><span class="p">,</span> <span class="s1">'Jacksonville'</span><span class="p">)</span>
+
+<span class="c1"># add some more cities</span>
+<span class="no">Dict</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="s1">'NY'</span><span class="p">,</span> <span class="s1">'New York'</span><span class="p">)</span>
+<span class="no">Dict</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="s1">'OR'</span><span class="p">,</span> <span class="s1">'Portland'</span><span class="p">)</span>
+
+
+<span class="c1"># puts out some cities</span>
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="nb">puts</span> <span class="s2">"NY State has: </span><span class="si">#{</span><span class="no">Dict</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="s1">'NY'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+<span class="nb">puts</span> <span class="s2">"OR State has: </span><span class="si">#{</span><span class="no">Dict</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="s1">'OR'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># puts some states</span>
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="nb">puts</span> <span class="s2">"Michigan's abbreviation is: </span><span class="si">#{</span><span class="no">Dict</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="s1">'Michigan'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+<span class="nb">puts</span> <span class="s2">"Florida's abbreviation is: </span><span class="si">#{</span><span class="no">Dict</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="s1">'Florida'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># do it by using the state then cities dict</span>
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="nb">puts</span> <span class="s2">"Michigan has: </span><span class="si">#{</span><span class="no">Dict</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="no">Dict</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="s1">'Michigan'</span><span class="p">))</span><span class="si">}</span><span class="s2">"</span>
+<span class="nb">puts</span> <span class="s2">"Florida has: </span><span class="si">#{</span><span class="no">Dict</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="no">Dict</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="s1">'Florida'</span><span class="p">))</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># puts every state abbreviation</span>
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="no">Dict</span><span class="p">.</span><span class="nf">list</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
+
+<span class="c1"># puts every city in state</span>
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="no">Dict</span><span class="p">.</span><span class="nf">list</span><span class="p">(</span><span class="n">cities</span><span class="p">)</span>
+
+<span class="nb">puts</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="c1"># by default ruby says "nil" when something isn't in there</span>
+<span class="n">state</span> <span class="o">=</span> <span class="no">Dict</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="s1">'Texas'</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="o">!</span><span class="n">state</span>
+	<span class="nb">puts</span> <span class="s2">"Sorry, no Texas."</span>
+<span class="k">end</span>
+
+<span class="c1"># default values using ||= with the nil result</span>
+<span class="n">city</span> <span class="o">=</span> <span class="no">Dict</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="s1">'TX'</span><span class="p">,</span> <span class="s1">'Does Not Exist'</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="s2">"The city for the state 'TX' is: </span><span class="si">#{</span><span class="n">city</span><span class="si">}</span><span class="s2">"</span></code></pre></figure>
+
+</div>
+</div>
+
+
+
+    
+    
+        
+            
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-42.html">42对象、类及从属关系</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-41.html">41学习面向对象术语</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-40.html">40模块、类和对象</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-38.html">38数组的操作</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-37.html">37复习各种符号</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-36.html">笨方法学Ruby第三十六天</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+
+    </ul>
+    </div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/lrthw/2016/07/01/lrhw-38.html">&laquo; 38数组的操作</a>
+  
+  
+    <a class="next" href="/rails/2016/07/02/rails-10.html">Rails日记第十天 &raquo;</a>
+  
+</div>
+
+
+<div class="disqus-comments">
+<div id="disqus_thread"></div>
+<script>
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//ljzn.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+                <footer>
+                    &copy; LJZN
+                     
+                    - <a href="https://github.com/ljzn">https://github.com/ljzn</a> - Powered by Jekyll.
+                    
+
+
+                </footer>
+            </div><!-- end /.col-sm-8 -->
+        </div><!-- end /.container -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+<script id="dsq-count-scr" src="//ljzn.disqus.com/count.js" async></script>
+    </body>
+</html>

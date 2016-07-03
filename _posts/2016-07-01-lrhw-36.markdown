@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "笨方法学Ruby第三十六天"
+date:   2016-07-01 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+puts "调试程序最好的方法是使用puts在各个想要检查的环节将关键变量打印出来，从而检查那里是否有错。"
+
+puts "让程序一部分一部分地运行起来。"
+
+{% endhighlight %}
+
+

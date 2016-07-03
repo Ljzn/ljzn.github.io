@@ -1,0 +1,95 @@
+---
+layout: post
+title:  "42对象、类及从属关系"
+date:   2016-07-03 00:18:23
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+## Animal is-a object look at the extra credit
+class Animal
+
+	def is_what()
+		puts "#{@name} is an animal."
+	end
+end
+
+## is-a
+class Dog < Animal
+
+	def initialize(name)
+		## has-a
+		@name = name
+	end
+	
+	def is_what()
+		puts "#{@name} is a dog."
+	end
+end
+
+## is-a
+class Cat < Animal
+
+	def initialize(name)
+		## has-a
+		@name = name
+	end
+end
+
+## is-a
+class Person
+
+	def initialize(name)
+		## has-a
+		@name = name
+		
+		##Person has-a pet of some kind
+		@pet = nil
+	end
+	
+	attr_accessor :pet
+end
+
+## is-a
+class Employee < Person
+
+	def initialize(name, salary)
+		## has-a
+		super(name)
+		## has-a
+		@salary = salary
+	end
+	
+end
+
+## is-a
+class Fish
+end
+
+## is-a
+class Salmon < Fish
+end
+
+## is-a
+class Halibut < Fish
+end
+
+
+## rover is-a Dog
+rover = Dog.new("Rover")
+
+## is-a
+satan = Cat.new("Satan")
+
+## is-a
+mary = Person.new("Mary")
+
+## has-many
+mary.pet = [satan, rover]
+
+rover.is_what
+
+{% endhighlight %}
+
+

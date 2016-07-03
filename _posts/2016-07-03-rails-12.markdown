@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "Rails日记第十二天"
+date:   2016-07-03 23:00:10
+categories: [rails]
+---
+
+### 今日任务
+
+1.完成习题40,41,42  
+2.看完”Efficient Ruby"第一章  
+3.看完"How to build a Pinterest Clone in Rails 4"  
+4.完善blog  
+
+### 小结
+
+1.haml是一种简洁的html嵌入文件格式  
+2.devise是一个能生成注册表单的gem  
+3.-w参数运行ruby会启用编译时警告  
+4.使用全局变量时要用例如$LOAD_PATH这种更表意的别名  
+5.用String#match代替String#=~  
+6.Array#compact的作用是返回一个剔除了nil的副本数组  
+7.false要放在==的左边  
+8.类名后的#号代表实例方法  
+9.require是方法调用而非关键字  
+10.belongs_to 对应has\_many  

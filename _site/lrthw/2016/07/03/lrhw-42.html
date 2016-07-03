@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="/static/img/ruby.ico" />
+        <title>42对象、类及从属关系 - LJZN</title>
+        <meta name="author" content="LJZN" />
+        <meta name="description" content="42对象、类及从属关系" />
+        <meta name="keywords" content="42对象、类及从属关系, LJZN, LRTHW" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!-- Custom CSS -->        
+        <link rel="stylesheet" href="/static/css/main.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-sm-3">
+                <a href="/"><img id="about" src="/static/img/ruby.png" height="75px" width="75px" /></a>
+                <h1 class="author-name">LJZN</h1>
+                
+                <div id="about">
+                    It's me.
+                </div>
+                
+                <hr size=2>
+                    &raquo; <a href="/">Home</a> <br />
+		    &raquo; <a href="/category/original">Category</a> <br />
+                
+                    &raquo; <a class="about" href="/about/">About Me</a><br />
+                
+                    &raquo; <a class="about" href="https://github.com/ljzn">Github</a><br />
+                
+            </div>
+
+            <div class="col-sm-8 col-offset-1">
+                
+		<h1>42对象、类及从属关系</h1>
+<span class="time">03 Jul 2016</span>
+
+<span class="categories">
+    &raquo; <a href="/category/LRTHW">LRTHW</a>
+</span>
+
+
+<div class="content">
+    <div class="post">
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">## Animal is-a object look at the extra credit</span>
+<span class="k">class</span> <span class="nc">Animal</span>
+
+	<span class="k">def</span> <span class="nf">is_what</span><span class="p">()</span>
+		<span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="s2"> is an animal."</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1">## is-a</span>
+<span class="k">class</span> <span class="nc">Dog</span> <span class="o">&lt;</span> <span class="no">Animal</span>
+
+	<span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+		<span class="c1">## has-a</span>
+		<span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nf">is_what</span><span class="p">()</span>
+		<span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="vi">@name</span><span class="si">}</span><span class="s2"> is a dog."</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1">## is-a</span>
+<span class="k">class</span> <span class="nc">Cat</span> <span class="o">&lt;</span> <span class="no">Animal</span>
+
+	<span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+		<span class="c1">## has-a</span>
+		<span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1">## is-a</span>
+<span class="k">class</span> <span class="nc">Person</span>
+
+	<span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+		<span class="c1">## has-a</span>
+		<span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+		
+		<span class="c1">##Person has-a pet of some kind</span>
+		<span class="vi">@pet</span> <span class="o">=</span> <span class="kp">nil</span>
+	<span class="k">end</span>
+	
+	<span class="kp">attr_accessor</span> <span class="ss">:pet</span>
+<span class="k">end</span>
+
+<span class="c1">## is-a</span>
+<span class="k">class</span> <span class="nc">Employee</span> <span class="o">&lt;</span> <span class="no">Person</span>
+
+	<span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">salary</span><span class="p">)</span>
+		<span class="c1">## has-a</span>
+		<span class="k">super</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+		<span class="c1">## has-a</span>
+		<span class="vi">@salary</span> <span class="o">=</span> <span class="n">salary</span>
+	<span class="k">end</span>
+	
+<span class="k">end</span>
+
+<span class="c1">## is-a</span>
+<span class="k">class</span> <span class="nc">Fish</span>
+<span class="k">end</span>
+
+<span class="c1">## is-a</span>
+<span class="k">class</span> <span class="nc">Salmon</span> <span class="o">&lt;</span> <span class="no">Fish</span>
+<span class="k">end</span>
+
+<span class="c1">## is-a</span>
+<span class="k">class</span> <span class="nc">Halibut</span> <span class="o">&lt;</span> <span class="no">Fish</span>
+<span class="k">end</span>
+
+
+<span class="c1">## rover is-a Dog</span>
+<span class="n">rover</span> <span class="o">=</span> <span class="no">Dog</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Rover"</span><span class="p">)</span>
+
+<span class="c1">## is-a</span>
+<span class="n">satan</span> <span class="o">=</span> <span class="no">Cat</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Satan"</span><span class="p">)</span>
+
+<span class="c1">## is-a</span>
+<span class="n">mary</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Mary"</span><span class="p">)</span>
+
+<span class="c1">## has-many</span>
+<span class="n">mary</span><span class="p">.</span><span class="nf">pet</span> <span class="o">=</span> <span class="p">[</span><span class="n">satan</span><span class="p">,</span> <span class="n">rover</span><span class="p">]</span>
+
+<span class="n">rover</span><span class="p">.</span><span class="nf">is_what</span></code></pre></figure>
+
+</div>
+</div>
+
+
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-41.html">41学习面向对象术语</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-40.html">40模块、类和对象</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-39.html">39散列，可爱的散列</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-38.html">38数组的操作</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-37.html">37复习各种符号</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-36.html">笨方法学Ruby第三十六天</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+
+    </ul>
+    </div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/lrthw/2016/07/03/lrhw-41.html">&laquo; 41学习面向对象术语</a>
+  
+  
+</div>
+
+
+<div class="disqus-comments">
+<div id="disqus_thread"></div>
+<script>
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//ljzn.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+                <footer>
+                    &copy; LJZN
+                     
+                    - <a href="https://github.com/ljzn">https://github.com/ljzn</a> - Powered by Jekyll.
+                    
+
+
+                </footer>
+            </div><!-- end /.col-sm-8 -->
+        </div><!-- end /.container -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+<script id="dsq-count-scr" src="//ljzn.disqus.com/count.js" async></script>
+    </body>
+</html>

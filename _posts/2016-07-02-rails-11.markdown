@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "Rails日记第十一天"
+date:   2016-07-02 23:00:10
+categories: [rails]
+---
+
+### 今日任务
+
+1.完成习题39
+2.完成Getting Started with Rails
+
+### 小结
+
+1.在不同文件间要用实例变量来传递。如form_for @article  
+2.dependent: :destroy可以传递删除动作给下级  
+3.references 表示该model从属于  
+4.源的create和update操作可以不用指定路径，如resources :articles  
+5.controller之间的link_to需要指定controller。  
+6.private包含的方法只有该文件中的方法可以调用。  
+7.require调用model，permit传递参数。  
+8.model是保存在数据库中的格式。  
+9.迁移文件的作用是记录对数据库的操作。
+10.root 'welcome#index'意为将根域名指向welcome主页。

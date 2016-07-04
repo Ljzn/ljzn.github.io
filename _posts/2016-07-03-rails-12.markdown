@@ -1,18 +1,18 @@
 ---
 layout: post
 title:  "Rails日记第十二天"
-date:   2016-07-03 23:00:10
+date:   2016-07-03 20:00:10
 categories: [rails]
 ---
 
-### 今日任务
+#今日任务
 
 1.完成习题40,41,42  
 2.看完”Efficient Ruby"第一章  
 3.看完"How to build a Pinterest Clone in Rails 4"  
 4.完善blog  
 
-### 小结
+#小结
 
 1.haml是一种简洁的html嵌入文件格式  
 2.devise是一个能生成注册表单的gem  

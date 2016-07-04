@@ -1,0 +1,190 @@
+---
+layout: post
+title:  "43基本的面向对象分析和设计"
+date:   2016-07-04
+categories: [LRTHW]
+---
+
+{% highlight ruby %}
+
+class Scene
+	def enter()
+		puts "This scene is not yet configured. Subclass it and implement enter()."
+		exit(1)
+	end
+end
+
+
+class Engine
+	
+	def initialize(scene_map)
+		@scene_map = scene_map
+	end
+	
+	def play()
+		current_scene = @scene_map.opening_scene()
+		last_scene = @scene_map.next_scene('finished')
+		
+		while current_scene != last_scene
+			next_scene_name = current_scene.enter()
+			current_scene = @scene_map.next_scene(next_scene_name)
+		end
+		
+		# be sure to print out the last scene
+		current_scene.enter()
+	end
+end
+
+class Death < Scene
+	
+	@@quips = [
+		"You died. You kinda suck at this.",
+		"Your mom would be proud...if she were smarter.",
+		"Suck a luser.",
+		"I have a small puppy that's better at this.",
+	]
+	
+	def enter()
+		puts @@quips[rand(0..(@@quips.length - 1))]
+		exit(1)
+	end
+end
+
+class CentralCorridor < Scene
+
+	def enter()
+		puts "'Hello!' A red dog says,"
+		puts "\n"
+		puts "'What are you doing here?'\n"
+		print "> "
+		action = $stdin.gets.chomp
+		
+		if action == "shoot!"
+			puts "The dog avoid the bullet."
+			puts "And shoot you with his eye."
+			puts "You dead."
+			return 'death'
+			
+		elsif action == "tell a joke"
+			puts "You say:'Catch the ball!'"
+			puts "The dog run away."
+			return 'laser_weapon_armory' 
+			
+		else 
+			puts "The dog says:'Get out!'"
+			return 'central_corridor'
+		end
+	end
+end
+
+class LaserWeaponArmory < Scene
+
+	def enter()
+		puts "enter 1 numbers:"
+		code = "#{rand(1..9)}"
+		print "[keypad]> "
+		guess = $stdin.gets.chomp
+		guesses = 1
+		
+		while guess != code && guesses < 5
+			puts "Wrong!"
+			guesses += 1
+			print "[keypad]> "
+			guess = $stdin.gets.chomp
+		end
+		
+		if guess == code
+			puts "The door open."
+			puts "You see a bridge."
+			return 'the_bridge'
+		else
+			puts "Huge fire out from the door!\n"
+			puts "You die."
+			return 'death'
+		end
+	end
+end
+
+class TheBridge < Scene
+
+	def enter()
+		puts "A large potato lies on the road.\n"
+		puts "How you go through?\n"
+		print "> "
+		
+		action = $stdin.gets.chomp
+		
+		if action == "throw the bomb"
+			puts "The potato explode and the piece hit you."
+			return 'death'
+			
+		elsif action == "slowly place the bomb"
+			puts "You placed the bomb and run away."
+			puts "You successfully sweep out the potato."
+			return 'escape_pod'
+		else
+			puts "Nothing happened."
+			return "the_bridge"
+		end
+	end
+end
+
+class EscapePod < Scene
+
+	def enter()
+		puts "There are 5 pods."
+		good_pod = rand(1..5)
+		print "[pod #]> "
+		guess = $stdin.gets.chomp.to_i
+		
+		if guess != good_pod
+			puts "Nothing happened.\n"
+			puts "10 days passed, you dead."
+			return 'death'
+		else
+			puts "win!"
+			
+			return 'finished'
+		end
+	end
+end
+
+class Finished < Scene
+	def enter()
+		puts "Good job!"
+	end
+end
+
+class Map
+	@@scenes = {
+		'central_corridor' => CentralCorridor.new(),
+		'laser_weapon_armory' => LaserWeaponArmory.new(),
+		'the_bridge' => TheBridge.new(),
+		'escape_pod' => EscapePod.new(),
+		'death' => Death.new(),
+	}
+	
+	def initialize(start_scene)
+		@start_scene = start_scene
+	end
+	
+	def next_scene(scene_name)
+		val = @@scenes[scene_name]
+		return val
+	end
+	
+	def opening_scene()
+		return next_scene(@start_scene)
+	end
+end
+
+
+a_map = Map.new('central_corridor')
+a_game = Engine.new(a_map)
+a_game.play()
+
+
+
+{% endhighlight %}
+
+

@@ -1,0 +1,27 @@
+---
+layout: post
+title:  "Rails日记第十五天"
+date:   2016-07-06
+categories: [rails]
+---
+
+#今日任务
+
+1.完成习题46  
+2.看到"Efficient Ruby"第16，17，18条  
+3.看完"How to build a Dribble type app in Rails 4"  
+4.看完"Ruby基础教程"第1章。  
+
+#小结
+
+1.优先使用实例变量而非类变量。  
+2.超类中的类变量会被所有子类共享。  
+3.clone方法会保留接收者的冻结状态，使用clone方法也会复制单例类。而dup方法不会。  
+4.dup方法和clone方法只会进行浅拷贝，对元素本身的修改会影响原件。  
+5.对于多数对象来说，可以使用，Marshal来完成深拷贝。  
+6.使用Array方法将nil及标量对象转换成数组。  
+7.考虑使用Set来高效地检测元素的包含性。  
+8.irb --simple-prompt 会简化irb的输出结果。  
+9.=begin到=end中间的部分即是多行注释。  
+10.迭代器(iterator)表示的是循环(iterate)的容器(-or)。  
+

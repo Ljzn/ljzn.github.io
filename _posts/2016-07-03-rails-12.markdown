@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Rails日记第十二天"
-date:   2016-07-03 20:00:10
+date:   2016-07-03
 categories: [rails]
 ---
 

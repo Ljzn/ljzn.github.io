@@ -1,0 +1,110 @@
+---
+layout: post
+title:  "45制作一个游戏"
+date:   2016-07-05
+categories: [LRTHW]
+---
+
+## 一个小游戏
+
+{% highlight ruby %}
+
+@debt = 0
+@i = 0
+@identity = "初出茅庐"
+
+def game()
+
+	@identity = "久经沙场" if @debt > 0
+	puts "这里是硅谷。"
+	puts "你是一位#{@identity}的创业者。"
+	puts "怀揣10万美元开始创业项目。"
+	puts "游戏一旦开始就只有两种结局："
+	puts "成为千万富翁，或是血本无归。"
+	puts " "
+	puts "按Enter确认开始。"
+	print "> "
+	$stdin.gets
+	money = 10
+
+	while money < 1000 && money > 0 
+		winrate = rand(50..80).to_f
+		profile = 200/winrate.to_i
+		@i += 1
+		puts "第#{@i}个项目，成功率#{winrate}%，收益#{profile}倍。"
+	
+		finish = false
+		until finish
+			puts "请输入你要投入的金额,"
+			puts "0～#{money}万元，全部投入请输入'a'。"
+			print "> "
+		
+			g = $stdin.gets.chomp
+			if	g.to_i == 0
+				if g == 'a'
+					invest = money
+				elsif g == ''
+					invest = 0
+				else 
+					next
+				end
+			else
+				invest = g.to_i
+			end
+		
+			if invest == 0
+				puts "深思熟虑之后，你没有投入这个项目。"
+				print "[Enter]> "
+				$stdin.gets
+				finish = true
+			elsif invest > money
+				puts "抱歉，你没有那么多钱。"
+			elsif invest < 0
+				puts "你在逗我吗。"
+			else
+				money = money - invest	
+				if winrate >= rand(1..100)
+					puts "创业成功，你得到了#{income = profile * invest}万美元回报。"
+					puts "现在你有#{money = money + income}万美元。"
+					print "[Enter]> "
+					$stdin.gets
+				else
+					puts "创业失败,你还剩下#{money}万美元。"
+					print "[Enter]> "
+					$stdin.gets
+				end
+				finish = true	
+			end
+		end
+	
+		puts " "
+	
+	end
+
+	if money >= 1000 - @debt
+		puts "Congratulations! 经历过#{@i}个项目之后，你成为了千万富翁。"
+	else
+		puts "Good job! 你输得裤子都不剩。"
+		print "[Enter]> "
+		$stdin.gets
+		answer = nil
+		until ["yes", "no"].include?(answer)
+			puts "目前你的债务是#{@debt}万美元，需要贷款吗？"
+			print "[yes/no]> "
+			answer = $stdin.gets.chomp
+			if answer == "yes"
+				@debt += 10
+				game()
+			elsif answer == "no"
+				puts "再见。"
+			end
+		end
+	end
+end
+
+game()
+
+
+{% endhighlight %}
+
+

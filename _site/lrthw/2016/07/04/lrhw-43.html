@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="/static/img/ruby.ico" />
+        <title>43基本的面向对象分析和设计 - LJZN</title>
+        <meta name="author" content="LJZN" />
+        <meta name="description" content="43基本的面向对象分析和设计" />
+        <meta name="keywords" content="43基本的面向对象分析和设计, LJZN, LRTHW" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!-- Custom CSS -->        
+        <link rel="stylesheet" href="/static/css/main.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-sm-3">
+                <a href="/"><img id="about" src="/static/img/ruby.png" height="75px" width="75px" /></a>
+                <h1 class="author-name">LJZN</h1>
+                
+                <div id="about">
+                    每天更新Rails练习项目到Github～
+                </div>
+                
+                <hr size=2>
+                    &raquo; <a href="/">Home</a> <br />
+		    &raquo; <a href="/category/original">Category</a> <br />
+                
+                    &raquo; <a class="about" href="/about/">About Me</a><br />
+                
+                    &raquo; <a class="about" href="https://github.com/ljzn">Github</a><br />
+                
+            </div>
+
+            <div class="col-sm-8 col-offset-1">
+                
+		<h1>43基本的面向对象分析和设计</h1>
+<span class="time">04 Jul 2016</span>
+
+<span class="categories">
+    &raquo; <a href="/category/LRTHW">LRTHW</a>
+</span>
+
+
+<div class="content">
+    <div class="post">
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Scene</span>
+	<span class="k">def</span> <span class="nf">enter</span><span class="p">()</span>
+		<span class="nb">puts</span> <span class="s2">"This scene is not yet configured. Subclass it and implement enter()."</span>
+		<span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+
+<span class="k">class</span> <span class="nc">Engine</span>
+	
+	<span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">scene_map</span><span class="p">)</span>
+		<span class="vi">@scene_map</span> <span class="o">=</span> <span class="n">scene_map</span>
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nf">play</span><span class="p">()</span>
+		<span class="n">current_scene</span> <span class="o">=</span> <span class="vi">@scene_map</span><span class="p">.</span><span class="nf">opening_scene</span><span class="p">()</span>
+		<span class="n">last_scene</span> <span class="o">=</span> <span class="vi">@scene_map</span><span class="p">.</span><span class="nf">next_scene</span><span class="p">(</span><span class="s1">'finished'</span><span class="p">)</span>
+		
+		<span class="k">while</span> <span class="n">current_scene</span> <span class="o">!=</span> <span class="n">last_scene</span>
+			<span class="n">next_scene_name</span> <span class="o">=</span> <span class="n">current_scene</span><span class="p">.</span><span class="nf">enter</span><span class="p">()</span>
+			<span class="n">current_scene</span> <span class="o">=</span> <span class="vi">@scene_map</span><span class="p">.</span><span class="nf">next_scene</span><span class="p">(</span><span class="n">next_scene_name</span><span class="p">)</span>
+		<span class="k">end</span>
+		
+		<span class="c1"># be sure to print out the last scene</span>
+		<span class="n">current_scene</span><span class="p">.</span><span class="nf">enter</span><span class="p">()</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Death</span> <span class="o">&lt;</span> <span class="no">Scene</span>
+	
+	<span class="vc">@@quips</span> <span class="o">=</span> <span class="p">[</span>
+		<span class="s2">"You died. You kinda suck at this."</span><span class="p">,</span>
+		<span class="s2">"Your mom would be proud...if she were smarter."</span><span class="p">,</span>
+		<span class="s2">"Suck a luser."</span><span class="p">,</span>
+		<span class="s2">"I have a small puppy that's better at this."</span><span class="p">,</span>
+	<span class="p">]</span>
+	
+	<span class="k">def</span> <span class="nf">enter</span><span class="p">()</span>
+		<span class="nb">puts</span> <span class="vc">@@quips</span><span class="p">[</span><span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="p">(</span><span class="vc">@@quips</span><span class="p">.</span><span class="nf">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))]</span>
+		<span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">CentralCorridor</span> <span class="o">&lt;</span> <span class="no">Scene</span>
+
+	<span class="k">def</span> <span class="nf">enter</span><span class="p">()</span>
+		<span class="nb">puts</span> <span class="s2">"'Hello!' A red dog says,"</span>
+		<span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+		<span class="nb">puts</span> <span class="s2">"'What are you doing here?'</span><span class="se">\n</span><span class="s2">"</span>
+		<span class="nb">print</span> <span class="s2">"&gt; "</span>
+		<span class="n">action</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+		
+		<span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"shoot!"</span>
+			<span class="nb">puts</span> <span class="s2">"The dog avoid the bullet."</span>
+			<span class="nb">puts</span> <span class="s2">"And shoot you with his eye."</span>
+			<span class="nb">puts</span> <span class="s2">"You dead."</span>
+			<span class="k">return</span> <span class="s1">'death'</span>
+			
+		<span class="k">elsif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"tell a joke"</span>
+			<span class="nb">puts</span> <span class="s2">"You say:'Catch the ball!'"</span>
+			<span class="nb">puts</span> <span class="s2">"The dog run away."</span>
+			<span class="k">return</span> <span class="s1">'laser_weapon_armory'</span> 
+			
+		<span class="k">else</span> 
+			<span class="nb">puts</span> <span class="s2">"The dog says:'Get out!'"</span>
+			<span class="k">return</span> <span class="s1">'central_corridor'</span>
+		<span class="k">end</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">LaserWeaponArmory</span> <span class="o">&lt;</span> <span class="no">Scene</span>
+
+	<span class="k">def</span> <span class="nf">enter</span><span class="p">()</span>
+		<span class="nb">puts</span> <span class="s2">"enter 1 numbers:"</span>
+		<span class="n">code</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">9</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+		<span class="nb">print</span> <span class="s2">"[keypad]&gt; "</span>
+		<span class="n">guess</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+		<span class="n">guesses</span> <span class="o">=</span> <span class="mi">1</span>
+		
+		<span class="k">while</span> <span class="n">guess</span> <span class="o">!=</span> <span class="n">code</span> <span class="o">&amp;&amp;</span> <span class="n">guesses</span> <span class="o">&lt;</span> <span class="mi">5</span>
+			<span class="nb">puts</span> <span class="s2">"Wrong!"</span>
+			<span class="n">guesses</span> <span class="o">+=</span> <span class="mi">1</span>
+			<span class="nb">print</span> <span class="s2">"[keypad]&gt; "</span>
+			<span class="n">guess</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+		<span class="k">end</span>
+		
+		<span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">code</span>
+			<span class="nb">puts</span> <span class="s2">"The door open."</span>
+			<span class="nb">puts</span> <span class="s2">"You see a bridge."</span>
+			<span class="k">return</span> <span class="s1">'the_bridge'</span>
+		<span class="k">else</span>
+			<span class="nb">puts</span> <span class="s2">"Huge fire out from the door!</span><span class="se">\n</span><span class="s2">"</span>
+			<span class="nb">puts</span> <span class="s2">"You die."</span>
+			<span class="k">return</span> <span class="s1">'death'</span>
+		<span class="k">end</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">TheBridge</span> <span class="o">&lt;</span> <span class="no">Scene</span>
+
+	<span class="k">def</span> <span class="nf">enter</span><span class="p">()</span>
+		<span class="nb">puts</span> <span class="s2">"A large potato lies on the road.</span><span class="se">\n</span><span class="s2">"</span>
+		<span class="nb">puts</span> <span class="s2">"How you go through?</span><span class="se">\n</span><span class="s2">"</span>
+		<span class="nb">print</span> <span class="s2">"&gt; "</span>
+		
+		<span class="n">action</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span>
+		
+		<span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"throw the bomb"</span>
+			<span class="nb">puts</span> <span class="s2">"The potato explode and the piece hit you."</span>
+			<span class="k">return</span> <span class="s1">'death'</span>
+			
+		<span class="k">elsif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"slowly place the bomb"</span>
+			<span class="nb">puts</span> <span class="s2">"You placed the bomb and run away."</span>
+			<span class="nb">puts</span> <span class="s2">"You successfully sweep out the potato."</span>
+			<span class="k">return</span> <span class="s1">'escape_pod'</span>
+		<span class="k">else</span>
+			<span class="nb">puts</span> <span class="s2">"Nothing happened."</span>
+			<span class="k">return</span> <span class="s2">"the_bridge"</span>
+		<span class="k">end</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">EscapePod</span> <span class="o">&lt;</span> <span class="no">Scene</span>
+
+	<span class="k">def</span> <span class="nf">enter</span><span class="p">()</span>
+		<span class="nb">puts</span> <span class="s2">"There are 5 pods."</span>
+		<span class="n">good_pod</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">5</span><span class="p">)</span>
+		<span class="nb">print</span> <span class="s2">"[pod #]&gt; "</span>
+		<span class="n">guess</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="p">.</span><span class="nf">gets</span><span class="p">.</span><span class="nf">chomp</span><span class="p">.</span><span class="nf">to_i</span>
+		
+		<span class="k">if</span> <span class="n">guess</span> <span class="o">!=</span> <span class="n">good_pod</span>
+			<span class="nb">puts</span> <span class="s2">"Nothing happened.</span><span class="se">\n</span><span class="s2">"</span>
+			<span class="nb">puts</span> <span class="s2">"10 days passed, you dead."</span>
+			<span class="k">return</span> <span class="s1">'death'</span>
+		<span class="k">else</span>
+			<span class="nb">puts</span> <span class="s2">"win!"</span>
+			
+			<span class="k">return</span> <span class="s1">'finished'</span>
+		<span class="k">end</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Finished</span> <span class="o">&lt;</span> <span class="no">Scene</span>
+	<span class="k">def</span> <span class="nf">enter</span><span class="p">()</span>
+		<span class="nb">puts</span> <span class="s2">"Good job!"</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Map</span>
+	<span class="vc">@@scenes</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="s1">'central_corridor'</span> <span class="o">=&gt;</span> <span class="no">CentralCorridor</span><span class="p">.</span><span class="nf">new</span><span class="p">(),</span>
+		<span class="s1">'laser_weapon_armory'</span> <span class="o">=&gt;</span> <span class="no">LaserWeaponArmory</span><span class="p">.</span><span class="nf">new</span><span class="p">(),</span>
+		<span class="s1">'the_bridge'</span> <span class="o">=&gt;</span> <span class="no">TheBridge</span><span class="p">.</span><span class="nf">new</span><span class="p">(),</span>
+		<span class="s1">'escape_pod'</span> <span class="o">=&gt;</span> <span class="no">EscapePod</span><span class="p">.</span><span class="nf">new</span><span class="p">(),</span>
+		<span class="s1">'death'</span> <span class="o">=&gt;</span> <span class="no">Death</span><span class="p">.</span><span class="nf">new</span><span class="p">(),</span>
+	<span class="p">}</span>
+	
+	<span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">start_scene</span><span class="p">)</span>
+		<span class="vi">@start_scene</span> <span class="o">=</span> <span class="n">start_scene</span>
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nf">next_scene</span><span class="p">(</span><span class="n">scene_name</span><span class="p">)</span>
+		<span class="n">val</span> <span class="o">=</span> <span class="vc">@@scenes</span><span class="p">[</span><span class="n">scene_name</span><span class="p">]</span>
+		<span class="k">return</span> <span class="n">val</span>
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nf">opening_scene</span><span class="p">()</span>
+		<span class="k">return</span> <span class="n">next_scene</span><span class="p">(</span><span class="vi">@start_scene</span><span class="p">)</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+
+<span class="n">a_map</span> <span class="o">=</span> <span class="no">Map</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'central_corridor'</span><span class="p">)</span>
+<span class="n">a_game</span> <span class="o">=</span> <span class="no">Engine</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">a_map</span><span class="p">)</span>
+<span class="n">a_game</span><span class="p">.</span><span class="nf">play</span><span class="p">()</span></code></pre></figure>
+
+</div>
+</div>
+
+
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/04/lrhw-44.html">44继承与合成</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-42.html">42对象、类及从属关系</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-41.html">41学习面向对象术语</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-40.html">40模块、类和对象</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-39.html">39散列，可爱的散列</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-38.html">38数组的操作</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+
+    </ul>
+    </div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/lrthw/2016/07/03/lrhw-42.html">&laquo; 42对象、类及从属关系</a>
+  
+  
+    <a class="next" href="/lrthw/2016/07/04/lrhw-44.html">44继承与合成 &raquo;</a>
+  
+</div>
+
+
+<div class="disqus-comments">
+<div id="disqus_thread"></div>
+<script>
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//ljzn.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+                <footer>
+                    &copy; LJZN
+                     
+                    - <a href="https://github.com/ljzn">https://github.com/ljzn</a> - Powered by Jekyll.
+                    
+
+
+                </footer>
+            </div><!-- end /.col-sm-8 -->
+        </div><!-- end /.container -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+<script id="dsq-count-scr" src="//ljzn.disqus.com/count.js" async></script>
+    </body>
+</html>

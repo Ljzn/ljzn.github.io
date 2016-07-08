@@ -1,0 +1,33 @@
+---
+layout: post
+title:  "46项目骨架"
+date:   2016-07-06
+categories: [LRTHW]
+---
+
+
+{% highlight ruby %}
+
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+Gem::Specification.new do |spec|
+	spec.name		 			= "KIKU"
+	spec.version 			= '1.0'
+	spec.authors 			= ["LJZN"]
+	spec.email	 			= ["rubyminer@foxmail.com"]
+	spec.summary 			= %q{Work Schedule Manage}
+	spec.description	= %q{Daily porduct more visible and more readable.}
+	spec.homepage			= "http://ljzn.github.io"
+	spec.license			= "MIT"
+	
+	spec.files				= ['lib/KIKU.rb']
+	spec.executables	= ['bin/KIKU']
+	spec.test_files		= ['tests/test_KIKU.rb']
+	spec.require_paths =["lib"]
+end
+
+{% endhighlight %}
+
+

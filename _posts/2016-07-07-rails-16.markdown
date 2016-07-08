@@ -1,0 +1,27 @@
+---
+layout: post
+title:  "Rails日记第十六天"
+date:   2016-07-07
+categories: [rails]
+---
+
+#今日任务
+
+1.完成习题47  
+2.看到"Efficient Ruby"第19条  
+3.看完"How to build a Dribble type app in Rails 4"  
+4.看完"Ruby基础教程"第2,3章。  
+
+#小结
+
+1.to_sym方法可以将字符串转换成符号。  
+2.正则表达式右边的/后加上i表示不区分大小写。  
+3.给予reduce的块总是要返回一个累加器。对当前累加器的修改是可行的，要记住从块中返回。  
+4.Regexp.new()可以创建正则匹配。  
+5.'./'表示文件存放在当前目录。  
+6.调用pp库，在用pp输出时会适当的换行。  
+7.在ruby中，表现数据的基本单位称为对象。  
+8.nil,true,false,self等都是伪变量。  
+9.pwd代表print workong directory。  
+10.ls -lR可以列出所有文件的详细信息。  
+

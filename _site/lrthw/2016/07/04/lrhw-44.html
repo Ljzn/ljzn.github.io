@@ -54,94 +54,7 @@
 
 
 <div class="content">
-    <div class="post"><h2 id="section">继承</h2>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Parent</span>
-
-	<span class="k">def</span> <span class="nf">override</span><span class="p">()</span>
-		<span class="nb">puts</span> <span class="s2">"PARENT override()"</span>
-	<span class="k">end</span>
-	
-	<span class="k">def</span> <span class="nf">implicit</span><span class="p">()</span>
-		<span class="nb">puts</span> <span class="s2">"PARENT implicit()"</span>
-	<span class="k">end</span>
-	
-	<span class="k">def</span> <span class="nf">altered</span><span class="p">()</span>
-		<span class="nb">puts</span> <span class="s2">"PARENT altered()"</span>
-	<span class="k">end</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">Child</span> <span class="o">&lt;</span> <span class="no">Parent</span>
-
-	<span class="k">def</span> <span class="nf">override</span><span class="p">()</span>
-		<span class="nb">puts</span> <span class="s2">"CHILD override()"</span>
-	<span class="k">end</span>
-	
-	<span class="k">def</span> <span class="nf">altered</span><span class="p">()</span>
-		<span class="nb">puts</span> <span class="s2">"CHILD, BEFORE PARENT altered()"</span>
-		<span class="k">super</span><span class="p">()</span>
-		<span class="nb">puts</span> <span class="s2">"CHILD, AFTER PARENT altered()"</span>
-	<span class="k">end</span>
-<span class="k">end</span>
-
-<span class="n">dad</span> <span class="o">=</span> <span class="no">Parent</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
-<span class="n">son</span> <span class="o">=</span> <span class="no">Child</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
-
-<span class="n">dad</span><span class="p">.</span><span class="nf">implicit</span><span class="p">()</span>
-<span class="n">son</span><span class="p">.</span><span class="nf">implicit</span><span class="p">()</span>
-
-<span class="n">dad</span><span class="p">.</span><span class="nf">override</span><span class="p">()</span>
-<span class="n">son</span><span class="p">.</span><span class="nf">override</span><span class="p">()</span>
-
-<span class="n">dad</span><span class="p">.</span><span class="nf">altered</span><span class="p">()</span>
-<span class="n">son</span><span class="p">.</span><span class="nf">altered</span><span class="p">()</span></code></pre></figure>
-
-<h2 id="class">class合成</h2>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Other</span>
-	
-	<span class="k">def</span> <span class="nf">override</span><span class="p">()</span>
-		<span class="nb">puts</span> <span class="s2">"OTHER override()"</span>
-	<span class="k">end</span>
-	
-	<span class="k">def</span> <span class="nf">implicit</span><span class="p">()</span>
-		<span class="nb">puts</span> <span class="s2">"OTHER implicit()"</span>
-	<span class="k">end</span>
-	
-	<span class="k">def</span> <span class="nf">altered</span><span class="p">()</span>
-		<span class="nb">puts</span> <span class="s2">"OTHER altered()"</span>
-	<span class="k">end</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">Child</span>
-
-	<span class="k">def</span> <span class="nf">initialize</span><span class="p">()</span>
-		<span class="vi">@other</span> <span class="o">=</span> <span class="no">Other</span><span class="p">.</span><span class="nf">new</span>
-	<span class="k">end</span>
-	
-	<span class="k">def</span> <span class="nf">implicit</span><span class="p">()</span>
-		<span class="vi">@other</span><span class="p">.</span><span class="nf">implicit</span><span class="p">()</span>
-	<span class="k">end</span>
-	
-	<span class="k">def</span> <span class="nf">override</span><span class="p">()</span>
-		<span class="nb">puts</span> <span class="s2">"CHILD override()"</span>
-	<span class="k">end</span>
-	
-	<span class="k">def</span> <span class="nf">altered</span><span class="p">()</span>
-		<span class="nb">puts</span> <span class="s2">"CHILD, BEFORE OTHER altered()"</span>
-		<span class="vi">@other</span><span class="p">.</span><span class="nf">altered</span><span class="p">()</span>
-		<span class="nb">puts</span> <span class="s2">"CHILD, AFTER OTHER altered()"</span>
-	<span class="k">end</span>
-<span class="k">end</span>
-
-<span class="n">son</span> <span class="o">=</span> <span class="no">Child</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
-
-<span class="n">son</span><span class="p">.</span><span class="nf">implicit</span><span class="p">()</span>
-<span class="n">son</span><span class="p">.</span><span class="nf">override</span><span class="p">()</span>
-<span class="n">son</span><span class="p">.</span><span class="nf">altered</span><span class="p">()</span></code></pre></figure>
-
-<h2 id="modulemodulemethod">module合成，注意不能以module.method的形式调用函数</h2>
-
+    <div class="post">
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Other</span>
 
 	<span class="k">def</span> <span class="nf">override</span><span class="p">()</span>
@@ -186,98 +99,19 @@
     
         
             
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
                 
                 <div class="panel-body">
                 <h4>Related Posts</h4>
                 <ul>
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/lrthw/2016/07/04/lrhw-43.html">43基本的面向对象分析和设计</a>
+                    <a href="https://ljzn.github.io/lrthw/2016/07/10/lrhw-50.html">50sinatra建造网站</a>
                     
                         (Categories: <a href="/category/LRTHW">LRTHW</a>)
                     
                 </li>
                 
                 
-            
-        
-    
-
-    
-    
-        
-            
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-42.html">42对象、类及从属关系</a>
-                    
-                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
-                    
-                </li>
-                
-                
-            
-        
-    
-
-    
-    
-        
-            
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-41.html">41学习面向对象术语</a>
-                    
-                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
-                    
-                </li>
-                
-                
-            
-        
-    
-
-    
-    
-        
-            
-                
-                <li class="relatedPost">
-                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-40.html">40模块、类和对象</a>
-                    
-                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
-                    
-                </li>
-                
-                
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
             
         
     
@@ -295,7 +129,7 @@
             
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-39.html">39散列，可爱的散列</a>
+                    <a href="https://ljzn.github.io/lrthw/2016/07/09/lrhw-49.html">49创建句子</a>
                     
                         (Categories: <a href="/category/LRTHW">LRTHW</a>)
                     
@@ -312,13 +146,169 @@
             
                 
                 <li class="relatedPost">
-                    <a href="https://ljzn.github.io/lrthw/2016/07/01/lrhw-38.html">38数组的操作</a>
+                    <a href="https://ljzn.github.io/lrthw/2016/07/08/lrhw-48.html">48进阶用户输入</a>
                     
                         (Categories: <a href="/category/LRTHW">LRTHW</a>)
                     
                 </li>
                 
                 
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/08/lrhw-47.html">47自动化测试</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/06/lrhw-46.html">46项目骨架</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/05/lrhw-45.html">45制作一个游戏</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
             
         
     

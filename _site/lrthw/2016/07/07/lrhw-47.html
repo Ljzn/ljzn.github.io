@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="/static/img/ruby.ico" />
+        <title>47自动化测试 - LJZN</title>
+        <meta name="author" content="LJZN" />
+        <meta name="description" content="47自动化测试" />
+        <meta name="keywords" content="47自动化测试, LJZN, LRTHW" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!-- Custom CSS -->        
+        <link rel="stylesheet" href="/static/css/main.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-sm-3">
+                <a href="/"><img id="about" src="/static/img/ruby.png" height="75px" width="75px" /></a>
+                <h1 class="author-name">LJZN</h1>
+                
+                <div id="about">
+                    每天更新Rails练习项目到Github～
+                </div>
+                
+                <hr size=2>
+                    &raquo; <a href="/">Home</a> <br />
+		    &raquo; <a href="/category/original">Category</a> <br />
+                
+                    &raquo; <a class="about" href="/about/">About Me</a><br />
+                
+                    &raquo; <a class="about" href="https://github.com/ljzn">Github</a><br />
+                
+            </div>
+
+            <div class="col-sm-8 col-offset-1">
+                
+		<h1>47自动化测试</h1>
+<span class="time">07 Jul 2016</span>
+
+<span class="categories">
+    &raquo; <a href="/category/LRTHW">LRTHW</a>
+</span>
+
+
+<div class="content">
+    <div class="post">
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">"VC/game.rb"</span>
+<span class="nb">require</span> <span class="s2">"test/unit"</span>
+
+<span class="k">class</span> <span class="nc">TestGame</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
+
+	<span class="k">def</span> <span class="nf">test_room</span>
+		<span class="n">gold</span> <span class="o">=</span> <span class="no">Room</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"GoldRoom"</span><span class="p">,</span> <span class="s2">"""This room has gold in it you can grab."""</span><span class="p">)</span>
+		<span class="n">assert_equal</span><span class="p">(</span><span class="n">gold</span><span class="p">.</span><span class="nf">name</span><span class="p">,</span> <span class="s2">"GoldRoom"</span><span class="p">)</span>
+		<span class="n">assert_equal</span><span class="p">(</span><span class="n">gold</span><span class="p">.</span><span class="nf">paths</span><span class="p">,</span> <span class="p">{})</span>
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nf">test_room_paths</span><span class="p">()</span>
+		<span class="n">center</span> <span class="o">=</span> <span class="no">Room</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Center"</span><span class="p">,</span> <span class="s2">"Test room is in the center."</span><span class="p">)</span>
+		<span class="n">north</span> <span class="o">=</span> <span class="no">Room</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"North"</span><span class="p">,</span> <span class="s2">"Test room is in the north."</span><span class="p">)</span>
+		<span class="n">south</span> <span class="o">=</span> <span class="no">Room</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"South"</span><span class="p">,</span> <span class="s2">"Test room is in the south."</span><span class="p">)</span>
+		
+		<span class="n">center</span><span class="p">.</span><span class="nf">add_paths</span><span class="p">({</span><span class="s1">'north'</span><span class="o">=&gt;</span> <span class="n">north</span><span class="p">,</span> <span class="s1">'south'</span><span class="o">=&gt;</span> <span class="n">south</span><span class="p">})</span>
+		<span class="n">assert_equal</span><span class="p">(</span><span class="n">center</span><span class="p">.</span><span class="nf">go</span><span class="p">(</span><span class="s1">'north'</span><span class="p">),</span> <span class="n">north</span><span class="p">)</span>
+		<span class="n">assert_equal</span><span class="p">(</span><span class="n">center</span><span class="p">.</span><span class="nf">go</span><span class="p">(</span><span class="s1">'south'</span><span class="p">),</span> <span class="n">south</span><span class="p">)</span>
+		
+	<span class="k">end</span>
+
+	<span class="k">def</span> <span class="nf">test_map</span><span class="p">()</span>
+		<span class="n">start</span> <span class="o">=</span> <span class="no">Room</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Start"</span><span class="p">,</span> <span class="s2">"You can go west and down a hole."</span><span class="p">)</span>
+		<span class="n">west</span> <span class="o">=</span> <span class="no">Room</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Trees"</span><span class="p">,</span> <span class="s2">"There are trees here, you can go east."</span><span class="p">)</span>
+		<span class="n">down</span> <span class="o">=</span> <span class="no">Room</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Dungeon"</span><span class="p">,</span> <span class="s2">"It's dark down here, you can go up."</span><span class="p">)</span>
+	
+		<span class="n">start</span><span class="p">.</span><span class="nf">add_paths</span><span class="p">({</span><span class="s1">'west'</span><span class="o">=&gt;</span> <span class="n">west</span><span class="p">,</span> <span class="s1">'down'</span><span class="o">=&gt;</span> <span class="n">down</span><span class="p">})</span>
+		<span class="n">west</span><span class="p">.</span><span class="nf">add_paths</span><span class="p">({</span><span class="s1">'east'</span> <span class="o">=&gt;</span> <span class="n">start</span><span class="p">})</span>
+		<span class="n">down</span><span class="p">.</span><span class="nf">add_paths</span><span class="p">({</span><span class="s1">'up'</span> <span class="o">=&gt;</span> <span class="n">start</span><span class="p">})</span>
+	
+		<span class="n">assert_equal</span><span class="p">(</span><span class="n">start</span><span class="p">.</span><span class="nf">go</span><span class="p">(</span><span class="s1">'west'</span><span class="p">),</span> <span class="n">west</span><span class="p">)</span>
+		<span class="n">assert_equal</span><span class="p">(</span><span class="n">start</span><span class="p">.</span><span class="nf">go</span><span class="p">(</span><span class="s1">'west'</span><span class="p">).</span><span class="nf">go</span><span class="p">(</span><span class="s1">'east'</span><span class="p">),</span> <span class="n">start</span><span class="p">)</span>
+		<span class="n">assert_equal</span><span class="p">(</span><span class="n">start</span><span class="p">.</span><span class="nf">go</span><span class="p">(</span><span class="s1">'down'</span><span class="p">).</span><span class="nf">go</span><span class="p">(</span><span class="s1">'up'</span><span class="p">),</span> <span class="n">start</span><span class="p">)</span>
+	<span class="k">end</span>
+	
+<span class="k">end</span></code></pre></figure>
+
+</div>
+</div>
+
+
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/06/lrhw-46.html">46项目骨架</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/05/lrhw-45.html">45制作一个游戏</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/04/lrhw-44.html">44继承与合成</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/04/lrhw-43.html">43基本的面向对象分析和设计</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-42.html">42对象、类及从属关系</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/03/lrhw-41.html">41学习面向对象术语</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+
+    </ul>
+    </div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/rails/2016/07/06/rails-15.html">&laquo; Rails日记第十五天</a>
+  
+  
+    <a class="next" href="/rails/2016/07/07/rails-16.html">Rails日记第十六天 &raquo;</a>
+  
+</div>
+
+
+<div class="disqus-comments">
+<div id="disqus_thread"></div>
+<script>
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//ljzn.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+                <footer>
+                    &copy; LJZN
+                     
+                    - <a href="https://github.com/ljzn">https://github.com/ljzn</a> - Powered by Jekyll.
+                    
+
+
+                </footer>
+            </div><!-- end /.col-sm-8 -->
+        </div><!-- end /.container -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+<script id="dsq-count-scr" src="//ljzn.disqus.com/count.js" async></script>
+    </body>
+</html>

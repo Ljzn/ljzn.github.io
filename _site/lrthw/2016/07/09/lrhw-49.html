@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="/static/img/ruby.ico" />
+        <title>49创建句子 - LJZN</title>
+        <meta name="author" content="LJZN" />
+        <meta name="description" content="49创建句子" />
+        <meta name="keywords" content="49创建句子, LJZN, LRTHW" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/static/css/syntax.css">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!-- Custom CSS -->        
+        <link rel="stylesheet" href="/static/css/main.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-sm-3">
+                <a href="/"><img id="about" src="/static/img/ruby.png" height="75px" width="75px" /></a>
+                <h1 class="author-name">LJZN</h1>
+                
+                <div id="about">
+                    每天更新Rails练习项目到Github～
+                </div>
+                
+                <hr size=2>
+                    &raquo; <a href="/">Home</a> <br />
+		    &raquo; <a href="/category/original">Category</a> <br />
+                
+                    &raquo; <a class="about" href="/about/">About Me</a><br />
+                
+                    &raquo; <a class="about" href="https://github.com/ljzn">Github</a><br />
+                
+            </div>
+
+            <div class="col-sm-8 col-offset-1">
+                
+		<h1>49创建句子</h1>
+<span class="time">09 Jul 2016</span>
+
+<span class="categories">
+    &raquo; <a href="/category/LRTHW">LRTHW</a>
+</span>
+
+
+<div class="content">
+    <div class="post"><h2 id="section">测试文件</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'ex48/parser.rb'</span>
+<span class="nb">require</span> <span class="s2">"test/unit"</span>
+
+<span class="k">class</span> <span class="nc">TestParser</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
+
+	<span class="k">def</span> <span class="nf">test_sentence</span><span class="p">()</span>
+		<span class="n">x</span> <span class="o">=</span> <span class="n">parse_sentence</span><span class="p">([[</span><span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'bear'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'verb'</span><span class="p">,</span> <span class="s1">'eat'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'honey'</span><span class="p">]])</span>
+		
+		<span class="n">assert_equal</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="nf">subject</span><span class="p">,</span> <span class="s2">"bear"</span><span class="p">)</span>
+		<span class="n">assert_equal</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="nf">verb</span><span class="p">,</span> <span class="s2">"eat"</span><span class="p">)</span>
+		<span class="n">assert_equal</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="nf">object</span><span class="p">,</span> <span class="s2">"honey"</span><span class="p">)</span>
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nf">test_player</span><span class="p">()</span>
+		<span class="n">x</span> <span class="o">=</span> <span class="n">parse_sentence</span><span class="p">([[</span><span class="s1">'verb'</span><span class="p">,</span> <span class="s1">'eat'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'honey'</span><span class="p">]])</span>
+		
+		<span class="n">assert_equal</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="nf">subject</span><span class="p">,</span> <span class="s2">"player"</span><span class="p">)</span>
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nf">test_subject</span><span class="p">()</span>
+		<span class="n">assert_raises</span><span class="p">(</span><span class="no">ParserError</span><span class="p">){</span><span class="n">parse_sentence</span><span class="p">([[</span><span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'honey'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'honey'</span><span class="p">]])}</span>
+
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nf">test_verb</span><span class="p">()</span>
+		<span class="n">assert_raises</span><span class="p">(</span><span class="no">ParserError</span><span class="p">){</span><span class="n">parse_sentence</span><span class="p">([[</span><span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'bear'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'honey'</span><span class="p">]])}</span>
+
+	<span class="k">end</span>
+	
+	<span class="k">def</span> <span class="nf">test_object</span><span class="p">()</span>
+		<span class="n">assert_raises</span><span class="p">(</span><span class="no">ParserError</span><span class="p">){</span><span class="n">parse_sentence</span><span class="p">([[</span><span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'bear'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'verb'</span><span class="p">,</span> <span class="s1">'eat'</span><span class="p">],</span>  <span class="p">[</span><span class="s1">'verb'</span><span class="p">,</span> <span class="s1">'eat'</span><span class="p">]])}</span>
+
+	<span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<h2 id="section-1">程序文件</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">ParserError</span> <span class="o">&lt;</span> <span class="no">Exception</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Sentence</span>
+
+	<span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">verb</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
+		<span class="c1"># remember we take ['noun', 'princess'] pairs and convert them</span>
+		<span class="vi">@subject</span> <span class="o">=</span> <span class="n">subject</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+		<span class="vi">@verb</span> <span class="o">=</span> <span class="n">verb</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+		<span class="vi">@object</span> <span class="o">=</span> <span class="n">obj</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+	<span class="k">end</span>
+	
+	<span class="kp">attr_reader</span> <span class="ss">:subject</span>
+	<span class="kp">attr_reader</span> <span class="ss">:verb</span>
+	<span class="kp">attr_reader</span> <span class="ss">:object</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">word_list</span>
+		<span class="n">word</span> <span class="o">=</span> <span class="n">word_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+		<span class="k">return</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="k">else</span>
+		<span class="n">retrun</span> <span class="kp">nil</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="n">expecting</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">word_list</span>
+		<span class="n">word</span> <span class="o">=</span> <span class="n">word_list</span><span class="p">.</span><span class="nf">shift</span>
+		
+		<span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">expecting</span>
+			<span class="k">return</span> <span class="n">word</span>
+		<span class="k">else</span>
+			<span class="k">return</span> <span class="kp">nil</span>
+		<span class="k">end</span>
+	<span class="k">else</span>
+		<span class="k">return</span> <span class="kp">nil</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">skip</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="n">word_type</span><span class="p">)</span>
+	<span class="k">while</span> <span class="n">peek</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span> <span class="o">==</span> <span class="n">word_type</span>
+		<span class="n">match</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="n">word_type</span><span class="p">)</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">parse_verb</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+	<span class="n">skip</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'stop'</span><span class="p">)</span>
+	
+	<span class="k">if</span> <span class="n">peek</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span> <span class="o">==</span> <span class="s1">'verb'</span>
+		<span class="k">return</span> <span class="n">match</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'verb'</span><span class="p">)</span>
+	<span class="k">else</span>
+		<span class="k">raise</span> <span class="no">ParserError</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Expected a verb next."</span><span class="p">)</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">parse_object</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+	<span class="n">skip</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'stop'</span><span class="p">)</span>
+	<span class="n">next_word</span> <span class="o">=</span> <span class="n">peek</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+	
+	<span class="k">if</span> <span class="n">next_word</span> <span class="o">==</span> <span class="s1">'noun'</span>
+		<span class="k">return</span> <span class="n">match</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'noun'</span><span class="p">)</span>
+	<span class="k">elsif</span> <span class="n">next_word</span> <span class="o">==</span> <span class="s1">'direction'</span>
+		<span class="k">return</span> <span class="n">match</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'direction'</span><span class="p">)</span>
+	<span class="k">else</span>
+		<span class="k">raise</span> <span class="no">ParserError</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Expected a noun or direction next."</span><span class="p">)</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">parse_subject</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+	<span class="n">skip</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'stop'</span><span class="p">)</span>
+	<span class="n">next_word</span> <span class="o">=</span> <span class="n">peek</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+	
+	<span class="k">if</span> <span class="n">next_word</span> <span class="o">==</span> <span class="s1">'noun'</span>
+		<span class="k">return</span> <span class="n">match</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'noun'</span><span class="p">)</span>
+	<span class="k">elsif</span> <span class="n">next_word</span> <span class="o">==</span> <span class="s1">'verb'</span>
+		<span class="k">return</span> <span class="p">[</span><span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'player'</span><span class="p">]</span>
+	<span class="k">else</span>
+		<span class="k">raise</span> <span class="no">ParserError</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Expected a verb next."</span><span class="p">)</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">parse_sentence</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+	<span class="n">subj</span> <span class="o">=</span> <span class="n">parse_subject</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+	<span class="n">verb</span> <span class="o">=</span> <span class="n">parse_verb</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+	<span class="n">obj</span> <span class="o">=</span> <span class="n">parse_object</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+	
+	<span class="k">return</span> <span class="no">Sentence</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">subj</span><span class="p">,</span> <span class="n">verb</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
+<span class="k">end</span></code></pre></figure>
+
+</div>
+</div>
+
+
+
+    
+    
+        
+            
+                
+                <div class="panel-body">
+                <h4>Related Posts</h4>
+                <ul>
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/10/lrhw-50.html">50sinatra建造网站</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/08/lrhw-48.html">48进阶用户输入</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/08/lrhw-47.html">47自动化测试</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/06/lrhw-46.html">46项目骨架</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/05/lrhw-45.html">45制作一个游戏</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+                
+                <li class="relatedPost">
+                    <a href="https://ljzn.github.io/lrthw/2016/07/04/lrhw-44.html">44继承与合成</a>
+                    
+                        (Categories: <a href="/category/LRTHW">LRTHW</a>)
+                    
+                </li>
+                
+                
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+    
+    
+        
+            
+        
+    
+
+
+    </ul>
+    </div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/lrthw/2016/07/08/lrhw-48.html">&laquo; 48进阶用户输入</a>
+  
+  
+    <a class="next" href="/rails/2016/07/09/rails-18.html">Rails日记第十八天 &raquo;</a>
+  
+</div>
+
+
+<div class="disqus-comments">
+<div id="disqus_thread"></div>
+<script>
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//ljzn.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+                <footer>
+                    &copy; LJZN
+                     
+                    - <a href="https://github.com/ljzn">https://github.com/ljzn</a> - Powered by Jekyll.
+                    
+
+
+                </footer>
+            </div><!-- end /.col-sm-8 -->
+        </div><!-- end /.container -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+<script id="dsq-count-scr" src="//ljzn.disqus.com/count.js" async></script>
+    </body>
+</html>

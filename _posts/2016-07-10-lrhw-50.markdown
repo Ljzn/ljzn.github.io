@@ -1,0 +1,44 @@
+---
+layout: post
+title:  "50sinatra建造网站"
+date:   2016-07-10
+categories: [LRTHW]
+---
+
+## views文件
+
+{% highlight haml %}
+
+%html
+	%head
+		%title
+			Gothons Of Planet Percal #25
+%body
+	%p
+		I just wanted to say 
+		%em{:style => "color: green; font-size: 2em;"}
+			= greeting
+
+{% endhighlight %}
+
+## bin文件
+
+{% highlight ruby %}
+
+require 'sinatra'
+
+set :port, 8080
+set :static, true
+set :public_folder, "static"
+set :views, "views"
+
+get '/' do
+	return 'Hello world'
+end
+
+get '/hello/' do
+	greeting = params[:greeting] || "Hi there"
+	haml :index, :locals => {'greeting' => greeting}
+end
+
+{% endhighlight %}

@@ -1,0 +1,23 @@
+---
+layout: post
+title:  "Rails日记第二十二天"
+date:   2016-07-13
+categories: [rails]
+---
+
+#今日任务
+
+1.看完"Ruby基础教程"第9，10章。  
+
+#小结
+
+1.模块不能拥有实例，不能被继承。  
+2..ancestors方法可以取得继承关系列表。  
+3..extend()方法可以使单例类包含模块。  
+4.URL指的是URI标识符中某种特定种类的东西。  
+5.将二元运算符与赋值组合起来的运算符称为赋值运算符。  
+6..succ方法意为返回下一个值。  
+7.inspect方法主要使用p方法输出。  
+8.Ruby中使用begin~rescue~end语句描述异常处理。  
+9.ensure关键字定义的是不管是否有异常都希望执行的处理。  
+10.MyError = Class.new(StandardError)这种写法的作用是定义一个继承StandardError类的新类。  

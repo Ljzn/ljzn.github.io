@@ -39,4 +39,5 @@ categories: [rails]
 26.tempfile库用于管理临时文件。  
 27.FileUtils.compare(from,to)比较from与to的内容，相同返回true，不同返回false。  
 28.外部编码是指作为输入／输出对象的文件、控制台等的编码，内部编码是指ruby脚本中的编码。  
-29.
+29.Array#pack方法可以将数组变为字节串。  
+30.Time.parse可以将字符串形式表示的时间转换为Time对象。  

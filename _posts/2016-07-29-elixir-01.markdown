@@ -1,0 +1,38 @@
+---
+layout: post
+title:  "Elixir和Phoenix的安装"
+date:   2016-07-29
+categories: [elixir]
+---
+
+# 安装
+
+Elixir 参见 http://elixir-lang.org/install.html
+
+PostgreSQL，node.js
+
+安装好之后，安装Elixir的包管理程序
+
+```
+$ mix local.hex
+```
+
+如果出现连接错误，请直接下载hex的安装文件 http://s3.amazonaws.com/s3.hex.pm/installs/1.1.0/hex-0.9.0.ez
+再运行
+
+```
+$ mix archive.install path/to/downloaded/hex-0.9.0.ez
+$ mix local.hex
+```
+
+# 设置Hex的镜像
+
+```
+$ mix hex.config mirror_url https://hex.elixir-cn.org
+```
+
+# 安装Phoenix
+
+```
+$ mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
+```
